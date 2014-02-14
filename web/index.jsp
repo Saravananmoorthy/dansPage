@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link href="mystyle.css" rel="stylesheet" type="text/css" />
+        <script src="myscript.js"  type="text/javascript"> </script>
         <title>Get Out Local</title>
     </head>
     <body>
@@ -49,9 +50,4 @@
                 <p>
                     <a href="files/data_model.docx">My Data Model<a/>
                 </p>
-            </div> <!-- finishes off the content div -->
-            <div id="footer">Web Site Design by 
-                <a href="mailto:dmcginni@temple.edu">Dan McGinnis</a></div>
-        </div> <!-- finishes off the container div -->
-    </body>
-</html>
+            <jsp:include page="post-content.jsp" />
