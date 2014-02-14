@@ -13,21 +13,13 @@
         <script src="myscript.js"  type="text/javascript"> </script>
         <title>Get Out Local</title>
     </head>
-    <body>
-        <br/>
-        <div id="container">
-            <div id="title">Get Out Local</div>  <!-- finishes off the title div -->
-            <div id="nav">
-                <div id="home"    class="tab"> <a href="index.jsp">  Home</a></div>
-                <div id="assoc"   class="tab">          <a href="assoc.jsp">Trip Reports</a></div>
-                <div id="other"   class="tab">          <a href="other.jsp">Parks</a></div>
-                <div id="users"   class="tab">          <a href="users.jsp">Campers</a></div>
-                <div id="search"  class="tab">          <a href="search.jsp"> Search</a></div>
-                <div id="contact" class="tab">          <a href="contact.jsp">Contact</a></div>
-                <div id="labs"    class="tab">          <a href="labs.jsp">   Labs</a></div>
-                
-            </div>  <!-- finishes off the nav div -->
-            <div id="content" class="selected">
+    <jsp:include page="pre-content.jsp" />
+    
+    <script> // apply “tab selected” to the element with id “home”
+        document.getElementById("home").className = "tab selected";
+    </script>                
+
+    
                 <br>
                 <p>
                     <img src ='images/cultus_lake_01.jpg' alt ="A sign for Cultus Lake Campground">
