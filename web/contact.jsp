@@ -9,8 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link id="cssLinkID" href="defaultTheme.css" rel="stylesheet" type="text/css" />
-        <script src="myscript.js"  type="text/javascript"> </script>
+        <link id="cssLinkID" href="defaultTheme.css" rel="stylesheet" type="text/css"/>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="myscript.js"  type="text/javascript"></script>
         <title>Get Out Local</title>
     </head>
     <jsp:include page="pre-content.jsp" />
@@ -30,11 +31,11 @@
         <tbody>
             <tr>
                 <td>Name:</td>
-                <td><input type="text" name="userName"/></td>
+                <td><input type="text" name="userName" required = "required"/></td>
             </tr>
             <tr>
                 <td>email address:</td>
-                <td><input type="text" name="emailAddress"/></td>
+                <td><input type="email" name="emailAddress" required = "required"/></td>
             </tr>
             <tr>
                 <td>Do you already have an account?</td>
@@ -64,7 +65,8 @@
                 <td></td>
             </tr>
             <tr>
-                <td><textarea name="inputcomments" cols="45" rows="5">Type your comments here</textarea></td>
+                <!--Max lenght is set to the size of the field in the attached database -->
+                <td><textarea name="inputcomments" cols="40" rows="5" required = "required" maxlength = 512></textarea></td>
                 <td></td>
             </tr>
             <tr>

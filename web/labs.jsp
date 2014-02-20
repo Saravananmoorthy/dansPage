@@ -9,8 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link id="cssLinkID" href="defaultTheme.css" rel="stylesheet" type="text/css" />
-        <script src="myscript.js"  type="text/javascript"> </script>
+        <link id="cssLinkID" href="defaultTheme.css" rel="stylesheet" type="text/css"/>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="myscript.js"  type="text/javascript"></script>
         <title>Get Out Local</title>
     </head>
     <jsp:include page="pre-content.jsp" />
