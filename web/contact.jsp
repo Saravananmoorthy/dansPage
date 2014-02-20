@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link href="mystyle.css" rel="stylesheet" type="text/css" />
+        <link id="cssLinkID" href="defaultTheme.css" rel="stylesheet" type="text/css" />
         <script src="myscript.js"  type="text/javascript"> </script>
         <title>Get Out Local</title>
     </head>
