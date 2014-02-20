@@ -18,17 +18,62 @@
     <script> // apply “tab selected” to the element with id “home”
         document.getElementById("labs").className = "tab selected";
     </script>                
+    <table border="0" width="2" cellspacing="3" cellpadding="4">
+        <thead>
+           <!-- I'm not sure what the table head is for. Netbeans created it for me. I'm leaving it in for now --> 
+            <tr>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <form name="myForm" method="post" action="http://www.temple.edu/cgi-bin/mail?dmcginni@temple.edu">
+        <tbody>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" name="userName"/></td>
+            </tr>
+            <tr>
+                <td>email address:</td>
+                <td><input type="text" name="emailAddress"/></td>
+            </tr>
+            <tr>
+                <td>Do you already have an account?</td>
+                <td><input type="radio" name="haveAccount" value="Y"/>Yes
+                    <input type="radio" name="haveAccount" value="N"/>No
+                </td>
+            </tr>
+            <tr>
+                <td>Would you like a response?</td>
+                <td><input type="checkbox" name="responseRequired"/></td>
+            </tr>
+            <tr>
+                <td>Type of comment:</td>
+                <td>
+                    <select name="commentType">
+                        <option value="Sg" >Suggestion</option>
+                        <option value="Co">Complaint</option>
+                        <option value="Su">Support</option>
+                        <option value="Ot">Other</option>
+                        <option value="Su" selected="selected">Support</option>
+                    </select> 
 
-   <h2>Lab 2 Data Model</h2>
-        <a href="files/data_model.docx">My Data Model<a/>
-    <h2>Lab 3 Home Page</h2>
-    <h2>Lab 4 Forms Javascript Cookies</h2>
-    <h2>Lab 5 Display Data</h2>
-    <h2>Lab 6 Delete</h2>
-    <h2>Lab 7 Insert</h2>
-    <h2>Lab 8 Log On</h2>
-    <h2>Lab 9 Insert Associative</h2>
-    <h2>Lab 10 Update Ajax</h2>
-    <h2>My Challenge</h2>
+                </td>
+            </tr>
+            <tr>
+                <td>Comments</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><textarea name="inputcomments" cols="45" rows="5">Type your comments here</textarea></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Submit"/></td>
+                <td></td>
+            </tr>
+        </tbody>
+        </form>
+    </table>
+
 
     <jsp:include page="post-content.jsp" />
