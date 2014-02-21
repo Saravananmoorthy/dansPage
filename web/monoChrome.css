@@ -10,11 +10,11 @@ and open the template in the editor.
 
             body {
                 font-family: "Tahoma", "Helvetica", "Arial", sans-serif;
-                background-image: url(images/campsite_background_by_dipi11.png);  /* Pic size:200-300K, but for sure <500K. Put in folder "images" */
+                background-image: url(images/shadowTrees.jpeg);  /* Pic size:200-300K, but for sure <500K. Put in folder "images" */
                 /*Background image courtesy of http://www.tonyjohnson.info/ */
                 background-repeat: no-repeat;
                 background-size: cover;  /* bg pic will stretch when window is resized */
-                background-color: #1c1c24; /* select color that matches your bg pic */
+                background-color: gainsboro; /* select color that matches your bg pic */
                 opacity:0.88;
             }
             
@@ -26,7 +26,7 @@ and open the template in the editor.
             }
             
             #title {
-                color: #bbbac2;
+                color: whitesmoke;
                 font-weight: bold;
                 font-size: 30px;
                 letter-spacing: 2px;
@@ -41,15 +41,16 @@ and open the template in the editor.
                 font-size:22px;
                 min-width:100px; /* tab will only get this narrow when user sizes down window */
                 text-align:center;
-                background-color:#bbbac2;
+                background-color:whitesmoke;
                 border-top-left-radius:10px;               
                 border-top-right-radius:10px;   
                 margin:auto; 
-                color: #1b1b24;
+                color: black;
              }
              
             .tab:hover { 
-                background-color:#a1a0af; 
+                background-color:gainsboro;
+                color: whitesmoke;
             }
             
             .tab a {
@@ -57,11 +58,11 @@ and open the template in the editor.
             }
             
             .tab a:link {
-                color:#1e1e29;
+                color:black;
             }
             
             .tab a:visited {
-                color:#2d2e3f;
+                color:grey;
             }
             
             .newLine {
@@ -69,25 +70,25 @@ and open the template in the editor.
             }
             
             #content {
-                color:#1b1b24;
+                color:black;
                 font-size: 18px;
                 clear:both;
                 margin:0px;
             }
             
             .selected {
-                background-color:#bbbac2;
+                background-color:whitesmoke;
             }
             
             #footer {
-                background-color:#bbbac2;
+                background-color:whitesmoke;
                 text-align: right;
-                color: #1b1b24; 
+                color: black; 
             }
             
             #footer a {
                 text-decoration: none;
-                color: #1b1b24;
+                color: black;
             }
             
             img {
@@ -96,3 +97,11 @@ and open the template in the editor.
                 margin-top:0px;
                 margin-bottom:15px;
             }
+            
+            #themeSelector {
+                background-color:whitesmoke;
+                text-align: left;
+                color: black;
+                font-size: 15px;
+            }
+            

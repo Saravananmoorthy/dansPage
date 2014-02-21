@@ -10,7 +10,7 @@ and open the template in the editor.
 
             body {
                 font-family: "Tahoma", "Helvetica", "Arial", sans-serif;
-                background-image: url(images/shadowTrees.jpeg);  /* Pic size:200-300K, but for sure <500K. Put in folder "images" */
+                background-image: url(images/campsite_background_by_dipi11.png);  /* Pic size:200-300K, but for sure <500K. Put in folder "images" */
                 /*Background image courtesy of http://www.tonyjohnson.info/ */
                 background-repeat: no-repeat;
                 background-size: cover;  /* bg pic will stretch when window is resized */
@@ -96,3 +96,11 @@ and open the template in the editor.
                 margin-top:0px;
                 margin-bottom:15px;
             }
+            
+            #themeSelector {
+                background-color:#bbbac2;
+                text-align: left;
+                color: #1b1b24; 
+                font-size: 15px;
+            }
+            

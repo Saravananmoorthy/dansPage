@@ -4,27 +4,57 @@
  * and open the template in the editor.
  */
 
-$(document).ready(function(){
-  $("#clickableHeaderOne").click(function(){
-    $("#pOne").slideToggle();
-  });
-  $("#clickableHeaderTwo").click(function(){
-      $("#pTwo").slideToggle();
-  });
+$(document).ready(function() {
+    $("#clickableHeaderOne").click(function() {
+        $("#pOne").slideToggle();
+    });
+    $("#clickableHeaderTwo").click(function() {
+        $("#pTwo").slideToggle();
+    });
 });
 
 
 // apply “tab selected” to the element with id “home”
 document.getElementById(this).className = "tab selected";
+var styleSheetName;
 
-function changeStyle(choice) {
-    // choice is the select list, an object, which has a value property
-    // alert ("user choice is " + choice.value);
-    document.getElementById('cssLinkID').href = choice.value;
+function setTheme() {
+    styleSheetName = readCookie("theme");
+    if (styleSheetName) {
+        document.getElementById("cssLinkID").href = styleSheetName;
+    };
 }
+
+function changeTheme(styleSheetFileName) {
+    document.getElementById("cssLinkID").href = styleSheetFileName;
+    createCookieNoPopUp("theme", styleSheetFileName, 30);
+}
+
+//an attempt to get the selector to default to the current theme. Borrowed from
+//http://stackoverflow.com/questions/7373058/how-to-change-the-selected-option-of-html-select-element
+//currently not working; to be properly implemented.
+$('#themeSelector').each(function() {
+    var $this = $(this); // cache this jQuery object to avoid overhead
+
+    if ($this.val() === styleSheetName) { // if this option's value is equal to our value
+        $this.prop('selected', true); // select this option
+        return false; // break the loop, no need to look further
+    }
+});
 
 function createCookie(name, value, days) {
     alert("Creating a cookie with name " + name + " and value " + value + " that will last " + days + " days");
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        var expires = "; expires=" + date.toGMTString();
+    }
+    else
+        var expires = "";
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+function createCookieNoPopUp(name, value, days) {
     if (days) {
         var date = new Date();
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));

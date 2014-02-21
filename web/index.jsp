@@ -46,12 +46,5 @@
 <p>
     <a href="files/data_model.docx">My Data Model<a/>
 </p>
-<div id="themeSelector">
-    Change Background To: 
-    <select onchange="javascript:changeStyle(this.value)">
-        <option value="defaultTheme.css">Default</option>
-        <option value="themeOne.css">Theme 1</option>
-        <option value="themeTwo">Theme 2</option>
-    </select>  
-</div>
+
 <jsp:include page="post-content.jsp" />

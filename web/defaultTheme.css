@@ -96,3 +96,11 @@ and open the template in the editor.
                 margin-top:0px;
                 margin-bottom:15px;
             }
+            
+            #themeSelector {
+                background-color:#bbbac2;
+                text-align: left;
+                color: #1b1b24; 
+                font-size: 15px;
+            }
+            

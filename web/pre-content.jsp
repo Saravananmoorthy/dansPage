@@ -4,7 +4,7 @@
     Author     : dan
 --%>
 
-<body>
+<body onload="setTheme()">
         <br/>
         <div id="container">
             <div id="title">Get Out Local</div>  <!-- finishes off the title div -->
