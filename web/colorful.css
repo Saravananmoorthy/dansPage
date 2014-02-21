@@ -14,8 +14,8 @@ and open the template in the editor.
                 /*Background image courtesy of http://www.tonyjohnson.info/ */
                 background-repeat: no-repeat;
                 background-size: cover;  /* bg pic will stretch when window is resized */
-                background-color: #1c1c24; /* select color that matches your bg pic */
-                opacity:0.88;
+                background-color: #6e7343; /* select color that matches your bg pic */
+                opacity:0.75;
             }
             
             #container {
@@ -26,7 +26,7 @@ and open the template in the editor.
             }
             
             #title {
-                color: #bbbac2;
+                color: #a17438;
                 font-weight: bold;
                 font-size: 30px;
                 letter-spacing: 2px;
@@ -41,7 +41,7 @@ and open the template in the editor.
                 font-size:22px;
                 min-width:100px; /* tab will only get this narrow when user sizes down window */
                 text-align:center;
-                background-color:#bbbac2;
+                background-color:#9b9b57;
                 border-top-left-radius:10px;               
                 border-top-right-radius:10px;   
                 margin:auto; 
@@ -49,7 +49,8 @@ and open the template in the editor.
              }
              
             .tab:hover { 
-                background-color:#a1a0af; 
+                background-color:#76a791;
+                color: #a5d6e1;
             }
             
             .tab a {
@@ -57,11 +58,11 @@ and open the template in the editor.
             }
             
             .tab a:link {
-                color:#1e1e29;
+                color:#023e56;
             }
             
             .tab a:visited {
-                color:#2d2e3f;
+                color:#023e56;
             }
             
             .newLine {
@@ -69,25 +70,25 @@ and open the template in the editor.
             }
             
             #content {
-                color:#1b1b24;
+                color:#023e56;
                 font-size: 18px;
                 clear:both;
                 margin:0px;
             }
             
             .selected {
-                background-color:#bbbac2;
+                background-color:#9b9b57;
             }
             
             #footer {
-                background-color:#bbbac2;
+                background-color:#9b9b57;
                 text-align: right;
-                color: #1b1b24; 
+                color: #023e56; 
             }
             
             #footer a {
                 text-decoration: none;
-                color: #1b1b24;
+                color: #023e56;
             }
             
             img {
@@ -98,7 +99,7 @@ and open the template in the editor.
             }
             
             #themeSelector {
-                background-color:#bbbac2;
+                background-color:#9b9b57;
                 text-align: left;
                 color: #1b1b24; 
                 font-size: 15px;

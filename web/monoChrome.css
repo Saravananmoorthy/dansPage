@@ -15,7 +15,7 @@ and open the template in the editor.
                 background-repeat: no-repeat;
                 background-size: cover;  /* bg pic will stretch when window is resized */
                 background-color: gainsboro; /* select color that matches your bg pic */
-                opacity:0.88;
+                opacity:0.70;
             }
             
             #container {

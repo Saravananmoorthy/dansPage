@@ -13,11 +13,6 @@ $(document).ready(function() {
     });
 });
 
-
-// apply “tab selected” to the element with id “home”
-document.getElementById(this).className = "tab selected";
-var styleSheetName;
-
 function setTheme() {
     styleSheetName = readCookie("theme");
     if (styleSheetName) {
