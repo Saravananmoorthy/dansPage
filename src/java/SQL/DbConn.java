@@ -40,11 +40,11 @@ public class DbConn {
             try {
                 
                 // Assume you are running from home using tunneling...
-                String url = "jdbc:mysql://localhost:3307/SP14_2308_dmcginni?user=dmcginni&password=Ambler416";
+                String url = "jdbc:mysql://localhost:3307/SP14_2308_dmcginni?user=dmcginni&password=yailooph";
                 
                 // unless you are working from temple (wachman hall)
                 if (isTemple) {
-                      url = "jdbc:mysql://cis-linux2.temple.edu:3306/SP14_2308_dmcginni?user=dmcginni&password=Ambler416";  
+                      url = "jdbc:mysql://cis-linux2.temple.edu:3306/SP14_2308_dmcginni?user=dmcginni&password=yailooph";  
                     this.connectionMsg += "Working from CIS network - no tunneling. <br/>";
                 }                 
                 this.conn = DriverManager.getConnection(url);

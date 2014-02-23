@@ -20,9 +20,7 @@
     </head>
     <jsp:include page="pre-content.jsp" />
     
-    <script> // apply “tab selected” to the element with id “home”
-        document.getElementById("labs").className = "tab selected";
-    </script>                
+                
     <table border="0" width="2" cellspacing="3" cellpadding="4">
         <thead>
            <!-- I'm not sure what the table head is for. Netbeans created it for me. I'm leaving it in for now --> 

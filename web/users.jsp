@@ -13,8 +13,15 @@
 
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>List All Users</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link id="cssLinkID" href="defaultTheme.css" rel="stylesheet" type="text/css"/>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="myscript.js"  type="text/javascript"></script>
+        <script>
+            // apply “tab selected” to the element with id “home”
+            document.getElementById(this).className = "tab selected";
+        </script>
+        <title>Get Out Local</title>
         <style>
             body {background-color:lightgray;}
             .resultSetFormat {background-color:beige;}
@@ -22,7 +29,7 @@
             .resultSetFormat td {border: thin solid brown; background-color:aliceblue; padding:5px;}
         </style>
     </head>
-    <body>
+    <jsp:include page="pre-content.jsp" />
 
         <%
             DbConn dbc = new DbConn();
@@ -40,6 +47,5 @@
 
         <h1>Web Users</h1>
         <% out.print(dbErrorOrData); %>
-        
-    </body>
-</html>
+   
+    <jsp:include page="post-content.jsp" />
