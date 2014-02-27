@@ -22,7 +22,7 @@ public class TripReportView {
         try {
             //sb.append("ready to create the statement & execute query " + "<br/>");
              String sql = "select trip_id, title, description, days_spent, "
-                     + "user_name, park_name, photos_url, gps_url "
+                     + "user_email, park_name, photos_url, gps_url "
                      + "from web_user, trip_reports, parks"
                      + "WHERE web_user.web_user_id = trip_reports.web_user_id"
                      + "and parks.park_id = trip_reports.park_id ";
@@ -44,12 +44,15 @@ public class TripReportView {
             sb.append("<th style='text-align:center'>GPS</th></tr>");
             while (results.next()) {
                 sb.append("<tr>");
-                sb.append(FormatUtils.formatIntegerTd(results.getObject("web_user_id")));
+                sb.append(FormatUtils.formatIntegerTd(results.getObject("trip_id")));
+                sb.append(FormatUtils.formatStringTd(results.getObject("title")));
+                sb.append(FormatUtils.formatStringTd(results.getObject("description")));
+                sb.append(FormatUtils.formatIntegerTd(results.getObject("days_spent")));
+                sb.append(FormatUtils.formatDateTd(results.getObject("date")));
                 sb.append(FormatUtils.formatStringTd(results.getObject("user_email")));
-                sb.append(FormatUtils.formatStringTd(results.getObject("user_password")));
-                sb.append(FormatUtils.formatDollarTd(results.getObject("membership_fee")));
-                sb.append(FormatUtils.formatIntegerTd(results.getObject("user_role_id")));
-                sb.append(FormatUtils.formatDateTd(results.getObject("birthday")));
+                sb.append(FormatUtils.formatStringTd(results.getObject("park_name")));
+                sb.append(FormatUtils.formatStringTd(results.getObject("photos_url")));
+                sb.append(FormatUtils.formatStringTd(results.getObject("gps_url")));
                 sb.append("</tr>\n");
             }
             sb.append("</table>");
