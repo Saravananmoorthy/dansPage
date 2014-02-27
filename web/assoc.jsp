@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%> 
 
 <%@page language="java" import="SQL.DbConn" %>
-<%@page language="java" import="view.WebUserView" %>
+<%@page language="java" import="view.TripReportView" %>
 
 <!DOCTYPE HTML>
 
@@ -37,7 +37,7 @@
             if (dbErrorOrData.length() == 0) { // got open connection
 
                 // this returns a string that contains a HTML table with the data in it
-                dbErrorOrData = WebUserView.listAllUsers("resultSetFormat", dbc);
+                dbErrorOrData = TripReportView.listAllTrips("resultSetFormat", dbc);
 
                 // PREVENT DB connection leaks:
                 //    EVERY code path that opens a db connection, must also close it.
@@ -45,7 +45,7 @@
             }
         %>
 
-        <h1>Campers</h1>
+        <h1>Trip Reports</h1>
         <% out.print(dbErrorOrData); %>
    
     <jsp:include page="post-content.jsp" />
