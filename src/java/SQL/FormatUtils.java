@@ -29,7 +29,7 @@ public class FormatUtils {
     } // formatDate
 
     public static String formatDateTd(Object obj) {
-        String out = "<td style='text-align:center'>";
+        String out = "<td>";
         String strDate = formatDate(obj);
         if (strDate.length() == 0) {
             // if you don't put a "non-breaking space" in an empty td/cell, 
@@ -57,7 +57,7 @@ public class FormatUtils {
     } // formatDollar
 
     public static String formatDollarTd(Object obj) {
-        String out = "<td style='text-align:right'>";
+        String out = "<td>";
         String strDollarAmt = formatDollar(obj);
         if (strDollarAmt.length() == 0) {
             // if you don't put a "non-breaking space" in an empty td/cell, 
@@ -85,7 +85,7 @@ public class FormatUtils {
     } // formatInteger
 
     public static String formatIntegerTd(Object obj) {
-        String out = "<td style='text-align:right'>";
+        String out = "<td>";
         String strInteger = formatInteger(obj);
         if (strInteger.length() == 0) {
             // if you don't put a "non-breaking space" in an empty td/cell, 
@@ -108,7 +108,7 @@ public class FormatUtils {
     } // formatString
 
     public static String formatStringTd(Object obj) {
-        String out = "<td style='text-align:left'>";
+        String out = "<td>";
         String str = formatString(obj);
         if (str.length() == 0) {
             out += "&nbsp;";

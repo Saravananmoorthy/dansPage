@@ -22,12 +22,6 @@
             document.getElementById(this).className = "tab selected";
         </script>
         <title>Get Out Local</title>
-        <style>
-            body {background-color:lightgray;}
-            .resultSetFormat {background-color:beige;}
-            .resultSetFormat th {border: medium solid brown; background-color:powderblue; padding:5px;}
-            .resultSetFormat td {border: thin solid brown; background-color:aliceblue; padding:5px;}
-        </style>
     </head>
     <jsp:include page="pre-content.jsp" />
 

@@ -105,3 +105,18 @@ and open the template in the editor.
                 font-size: 15px;
             }
             
+            
+            
+            .resultSetFormat th {
+                text-align: left;
+                border: medium solid brown; 
+                background-color:powderblue; 
+                padding:5px;
+            }
+            
+            .resultSetFormat td {
+                text-align: left;
+                border: thin solid brown; 
+                background-color:aliceblue; 
+                padding:5px;}
+            

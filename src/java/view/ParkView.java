@@ -21,28 +21,24 @@ public class ParkView {
         ResultSet results = null;
         try {
             //sb.append("ready to create the statement & execute query " + "<br/>");
-             String sql = "select web_user_id, user_email, user_password, membership_fee, user_role_id, birthday from web_user";
+             String sql = "select park_id, park_name, overnight_fee, state_name "
+                     + "FROM parks "
+                     + "ORDER BY park_id";
             stmt = dbc.getConn().prepareStatement(sql);
             results = stmt.executeQuery();
             //sb.append("executed the query " + "<br/><br/>");
-            sb.append("<table class='");
-            sb.append(cssClassForResultSetTable);
-            sb.append("'>");
+            sb.append("<table class='cssClassForResultSetTable'>");
             sb.append("<tr>");
-            sb.append("<th style='text-align:right'>User ID</th>");
-            sb.append("<th style='text-align:left'>User Email</th>");
-            sb.append("<th style='text-align:left'>User Password</th>");
-            sb.append("<th style='text-align:right'>Membership Fee</th>");
-            sb.append("<th style='text-align:right'>User Role</th>");
-            sb.append("<th style='text-align:center'>Birthday</th></tr>");
+            sb.append("<th style='text-align:right'>Park ID</th>");
+            sb.append("<th style='text-align:left'>Park Name</th>");
+            sb.append("<th style='text-align:left'>Fee</th>");
+            sb.append("<th style='text-align:right'>State</th>");
             while (results.next()) {
                 sb.append("<tr>");
-                sb.append(FormatUtils.formatIntegerTd(results.getObject("web_user_id")));
-                sb.append(FormatUtils.formatStringTd(results.getObject("user_email")));
-                sb.append(FormatUtils.formatStringTd(results.getObject("user_password")));
-                sb.append(FormatUtils.formatDollarTd(results.getObject("membership_fee")));
-                sb.append(FormatUtils.formatIntegerTd(results.getObject("user_role_id")));
-                sb.append(FormatUtils.formatDateTd(results.getObject("birthday")));
+                sb.append(FormatUtils.formatIntegerTd(results.getObject("park_id")));
+                sb.append(FormatUtils.formatStringTd(results.getObject("park_name")));
+                sb.append(FormatUtils.formatDollarTd(results.getObject("overnight_fee")));
+                sb.append(FormatUtils.formatStringTd(results.getObject("state_name")));
                 sb.append("</tr>\n");
             }
             sb.append("</table>");

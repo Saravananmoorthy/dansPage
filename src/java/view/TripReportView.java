@@ -21,38 +21,38 @@ public class TripReportView {
         ResultSet results = null;
         try {
             //sb.append("ready to create the statement & execute query " + "<br/>");
-             String sql = "select trip_id, title, description, days_spent, "
-                     + "user_email, park_name, photos_url, gps_url "
-                     + "from web_user, trip_reports, parks"
-                     + "WHERE web_user.web_user_id = trip_reports.web_user_id"
-                     + "and parks.park_id = trip_reports.park_id ";
+             String sql = "select trip_id, title, days_spent, date, "
+                     + "user_email, park_name, photos_url "
+                     + "FROM web_user, trip_reports, parks "
+                     + "WHERE web_user.web_user_id = trip_reports.web_user_id "
+                     + "and parks.park_id = trip_reports.park_id "
+                     + "ORDER BY trip_id";
             stmt = dbc.getConn().prepareStatement(sql);
             results = stmt.executeQuery();
             //sb.append("executed the query " + "<br/><br/>");
-            sb.append("<table class='");
-            sb.append(cssClassForResultSetTable);
-            sb.append("'>");
+            sb.append("<table class='cssClassForResultSetTable'>");
             sb.append("<tr>");
-            sb.append("<th style='text-align:right'>Trip ID</th>");
-            sb.append("<th style='text-align:left'>Title</th>");
-            sb.append("<th style='text-align:left'>Description</th>");
-            sb.append("<th style='text-align:right'>Days Spent</th>");
-            sb.append("<th style='text-align:right'>Date</th>");
-            sb.append("<th style='text-align:right'>Submitted By</th>");
-            sb.append("<th style='text-align:right'>Park Name</th>");
-            sb.append("<th style='text-align:center'>Photos</th></tr>");
-            sb.append("<th style='text-align:center'>GPS</th></tr>");
+            sb.append("<th>Trip ID</th>");
+            sb.append("<th>Title</th>");
+            //sb.append("<th style='text-align:left'>Description</th>");
+            sb.append("<th>Days Spent</th>");
+            sb.append("<th>Date</th>");
+            sb.append("<th>Submitted By</th>");
+            sb.append("<th>Park Name</th>");
+            sb.append("<th>Photos</th></tr>");
+            //sb.append("<th class='tableHeader'>GPS</th></tr>");
             while (results.next()) {
                 sb.append("<tr>");
                 sb.append(FormatUtils.formatIntegerTd(results.getObject("trip_id")));
                 sb.append(FormatUtils.formatStringTd(results.getObject("title")));
-                sb.append(FormatUtils.formatStringTd(results.getObject("description")));
+                //sb.append(FormatUtils.formatStringTd(results.getObject("description")));
+                //Description excluded because it makes for a very unbalanced table
                 sb.append(FormatUtils.formatIntegerTd(results.getObject("days_spent")));
                 sb.append(FormatUtils.formatDateTd(results.getObject("date")));
                 sb.append(FormatUtils.formatStringTd(results.getObject("user_email")));
                 sb.append(FormatUtils.formatStringTd(results.getObject("park_name")));
                 sb.append(FormatUtils.formatStringTd(results.getObject("photos_url")));
-                sb.append(FormatUtils.formatStringTd(results.getObject("gps_url")));
+                //sb.append(FormatUtils.formatStringTd(results.getObject("gps_url")));
                 sb.append("</tr>\n");
             }
             sb.append("</table>");
