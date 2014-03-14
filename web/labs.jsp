@@ -52,7 +52,39 @@
             moved it to the central javascript page.
         </p>
     <h2>Lab 5 Display Data</h2>
+        <p>
+            I ran into several issues with Firefox not refreshing the css files
+            as I changed them unless I specifically went to the url of the css
+            file itself. This really slowed down the process of checking color
+            combinations. Interestingly, this was not an issue in chrome.
+            <br>
+            As of this lab all the tabs work except for the "Search" tab. The
+            creation of the three new pages was mostly copying the working code
+            from webusersview.java and editting it as appropriate for the two
+            other sites. I looked for places to consolidate java code into a 
+            seperate class but the few places I saw the possibility seemed that
+            it would have added more complexity then was necessary to save a few
+            lines of code. The place where I see a lot of redundant code is in
+            the three css files. I'm not sure if there is a way to consolidate 
+            those files into one larger file and have the three individual ones 
+            just specify the particular colors and other minor differences. I 
+            suppose that is a project for future free time.
+            <br>
+            I still seem to be getting errors from the javascript I talked about
+            in the last lab even with the same code in each page. I'm approaching
+            the submission deadline, so I am leaving it in place, since it doesn't
+            seem to be affecting the site.
+        </p>
     <h2>Lab 6 Delete</h2>
+        <p>
+            The only issue that I had with this lab was an attempt to move the 
+            sample javascript for deleting into the myscript.js file. But, I was
+            unable to figure out how to reference the document when the javascript
+            was not running from the page in question.
+            <br>
+            I removed some commentted out code that was in the sample code 
+            provided for us.
+        </p>
     <h2>Lab 7 Insert</h2>
     <h2>Lab 8 Log On</h2>
     <h2>Lab 9 Insert Associative</h2>

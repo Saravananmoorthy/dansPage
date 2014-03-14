@@ -104,3 +104,19 @@ and open the template in the editor.
                 font-size: 15px;
             }
             
+            .resultSetFormat th {
+                text-align: center;
+                border: medium solid #ad4e1c ; 
+                background-color: #cb6b24; 
+                padding:5px;
+                color: #2e2f40;
+            }
+            
+            .resultSetFormat td {
+                text-align: right;
+                border: thin solid #2d2e3f; 
+                background-color:aliceblue; 
+                padding:5px;
+                color: #1b1b24;
+            }
+            

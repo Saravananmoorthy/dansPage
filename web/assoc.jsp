@@ -8,6 +8,7 @@
 
 <%@page language="java" import="SQL.DbConn" %>
 <%@page language="java" import="view.TripReportView" %>
+<%@page language="java" import="model.TripReport.TripReportMods" %>
 
 <!DOCTYPE HTML>
 
@@ -26,20 +27,55 @@
     <jsp:include page="pre-content.jsp" />
 
         <%
-            DbConn dbc = new DbConn();
-            String dbErrorOrData = dbc.getErr();
-            if (dbErrorOrData.length() == 0) { // got open connection
+        String dbDataOrError = "";
 
-                // this returns a string that contains a HTML table with the data in it
-                dbErrorOrData = TripReportView.listAllTrips("resultSetFormat", dbc);
+        // Get database connection and check if you got it.
+        DbConn dbc = new DbConn();
+        String dbError = dbc.getErr();
+        if (dbError.length() == 0) {
 
-                // PREVENT DB connection leaks:
-                //    EVERY code path that opens a db connection, must also close it.
-                dbc.close();
+            // got open connection, check to see if the user wants to delete a row.
+            String delKey = request.getParameter("deletePK");
+            if (delKey != null && delKey.length() > 0) {
+
+                // yep, they want to delete a row, instantiate objects needed to do the delete.
+                TripReportMods sqlMods = new TripReportMods(dbc);
+
+                // try to delete the row that has PK = delKey
+                String delMsg = sqlMods.delete(delKey);
+                if (delMsg.length() == 0) {
+                    out.println("<h3>Trip " + delKey + " has been deleted</h3>");
+                } else {
+                    out.println("<h3>Unable to delete Trip " + delKey + ". " + sqlMods.getErrorMsg() + "</h3>");
+                }
+            } else {
+                out.println("<h1>Trip Reports</h1>"); // place holder for message (so data grid remains in same place before and after delete.s
             }
-        %>
+            // delete processed (if necessary)
 
-        <h1>Trip Reports</h1>
-        <% out.print(dbErrorOrData); %>
-   
+            // now print out the whole table
+            dbDataOrError = TripReportView.listDelUsers("resultSetFormat", dbc,
+                    "javascript:deleteTripRow", "icons/delete.png");
+            dbc.close();
+        } else {
+            dbDataOrError = dbError;
+        }
+    %>
+    <form name="updateDelete" action="assoc.jsp" method="get">
+        <input type="hidden" name="deletePK">
+    </form>
+
+    <% out.println(dbDataOrError);%>
+    
+    <script language="Javascript" type="text/javascript">
+
+        function deleteTripRow(primaryKey) {
+            if (confirm("Do you really want to delete trip " + primaryKey + "?")) {
+                document.updateDelete.deletePK.value = primaryKey;
+                document.updateDelete.submit();
+            }
+        }
+
+    </script>
+
     <jsp:include page="post-content.jsp" />

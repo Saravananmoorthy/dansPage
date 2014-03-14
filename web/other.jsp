@@ -8,6 +8,7 @@
 
 <%@page language="java" import="SQL.DbConn" %>
 <%@page language="java" import="view.ParkView" %>
+<%@page language="java" import="model.Park.ParkMods" %>
 
 <!DOCTYPE HTML>
 
@@ -22,30 +23,59 @@
             document.getElementById(this).className = "tab selected";
         </script>
         <title>Get Out Local</title>
-        <style>
-            body {background-color:lightgray;}
-            .resultSetFormat {background-color:beige;}
-            .resultSetFormat th {border: medium solid brown; background-color:powderblue; padding:5px;}
-            .resultSetFormat td {border: thin solid brown; background-color:aliceblue; padding:5px;}
-        </style>
     </head>
     <jsp:include page="pre-content.jsp" />
 
         <%
-            DbConn dbc = new DbConn();
-            String dbErrorOrData = dbc.getErr();
-            if (dbErrorOrData.length() == 0) { // got open connection
+        String dbDataOrError = "";
 
-                // this returns a string that contains a HTML table with the data in it
-                dbErrorOrData = ParkView.listAllParks("resultSetFormat", dbc);
+        // Get database connection and check if you got it.
+        DbConn dbc = new DbConn();
+        String dbError = dbc.getErr();
+        if (dbError.length() == 0) {
 
-                // PREVENT DB connection leaks:
-                //    EVERY code path that opens a db connection, must also close it.
-                dbc.close();
+            // got open connection, check to see if the user wants to delete a row.
+            String delKey = request.getParameter("deletePK");
+            if (delKey != null && delKey.length() > 0) {
+
+                // yep, they want to delete a row, instantiate objects needed to do the delete.
+                ParkMods sqlMods = new ParkMods(dbc);
+
+                // try to delete the row that has PK = delKey
+                String delMsg = sqlMods.delete(delKey);
+                if (delMsg.length() == 0) {
+                    out.println("<h3>Park " + delKey + " has been deleted</h3>");
+                } else {
+                    out.println("<h3>Unable to delete Park " + delKey + ". " + sqlMods.getErrorMsg() + "</h3>");
+                }
+            } else {
+                out.println("<h1>Parks</h1>"); // place holder for message (so data grid remains in same place before and after delete.s
             }
-        %>
+            // delete processed (if necessary)
 
-        <h1>Parks</h1>
-        <% out.print(dbErrorOrData); %>
-   
+            // now print out the whole table
+            dbDataOrError = ParkView.listDelUsers("resultSetFormat", dbc,
+                    "javascript:deleteParkRow", "icons/delete.png");
+            dbc.close();
+        } else {
+            dbDataOrError = dbError;
+        }
+    %>
+    <form name="updateDelete" action="other.jsp" method="get">
+        <input type="hidden" name="deletePK">
+    </form>
+
+    <% out.println(dbDataOrError);%>
+    
+    <script language="Javascript" type="text/javascript">
+
+        function deleteParkRow(primaryKey) {
+            if (confirm("Do you really want to delete park " + primaryKey + "?")) {
+                document.updateDelete.deletePK.value = primaryKey;
+                document.updateDelete.submit();
+            }
+        }
+
+    </script>
+
     <jsp:include page="post-content.jsp" />

@@ -105,3 +105,16 @@ and open the template in the editor.
                 font-size: 15px;
             }
             
+            .resultSetFormat th {
+                text-align: center;
+                border: thick solid gainsboro; 
+                background-color:#e9e7e7; 
+                padding:5px;
+            }
+            
+            .resultSetFormat td {
+                text-align: right;
+                border: snow thick solid;
+                background-color:white; 
+                padding:5px;
+            }

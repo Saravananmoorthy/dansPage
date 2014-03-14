@@ -17,7 +17,8 @@ function setTheme() {
     styleSheetName = readCookie("theme");
     if (styleSheetName) {
         document.getElementById("cssLinkID").href = styleSheetName;
-    };
+    }
+    ;
 }
 
 function changeTheme(styleSheetFileName) {
