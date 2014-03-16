@@ -8,7 +8,7 @@
 
 <%@page language="java" import="SQL.DbConn" %>
 <%@page language="java" import="view.TripReportView" %>
-<%@page language="java" import="model.TripReport.TripReportMods" %>
+<%@page language="java" import="model.TripReportMods" %>
 
 <!DOCTYPE HTML>
 

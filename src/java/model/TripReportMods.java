@@ -1,4 +1,4 @@
-package model.Park;
+package model;
 
 import SQL.DbConn;
 import java.sql.*;
@@ -10,14 +10,14 @@ import java.sql.*;
  * 
  * This class requires an open database connection for its constructor method.
  */
-public class ParkMods {
+public class TripReportMods {
 
     private DbConn dbc;  // Open, live database connection
     private String errorMsg = "";
     private String debugMsg = "";
 
     // all methods of this class require an open database connection.
-    public ParkMods(DbConn dbc) {
+    public TripReportMods(DbConn dbc) {
         this.dbc = dbc;
     }
 
@@ -33,7 +33,7 @@ public class ParkMods {
     public String delete(String primaryKey) {
         this.errorMsg = "";  // clear any error message from before.
         
-        String sql = "DELETE FROM parks where park_id=?";
+        String sql = "DELETE FROM trip_reports where trip_id=?";
         try {
             PreparedStatement sqlSt = dbc.getConn().prepareStatement(sql);
             sqlSt.setString(1, primaryKey);
@@ -54,7 +54,7 @@ public class ParkMods {
                 this.errorMsg = "Could not delete.";
             }
 
-            this.errorMsg += "Problem with SQL in ParkSql.delete: "
+            this.errorMsg += "Problem with SQL in TripReportsSql.delete: "
                     + "SQLState [" + e.getSQLState()
                     + "], error message [" + e.getMessage() + "]";
             System.out.println(this.errorMsg);
@@ -62,7 +62,7 @@ public class ParkMods {
             return this.errorMsg;
         } // catch
         catch (Exception e) {
-            this.errorMsg = "General Error in ParkSql.delete: "
+            this.errorMsg = "General Error in TripReportsSql.delete: "
                     + e.getMessage();
             System.out.println(this.errorMsg);
             

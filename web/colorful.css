@@ -121,3 +121,7 @@ and open the template in the editor.
                 color: white;
             }
             
+            .error {
+                color:red;
+                font-weight: bold
+            }

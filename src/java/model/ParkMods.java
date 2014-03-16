@@ -1,4 +1,4 @@
-package model.TripReport;
+package model;
 
 import SQL.DbConn;
 import java.sql.*;
@@ -10,14 +10,14 @@ import java.sql.*;
  * 
  * This class requires an open database connection for its constructor method.
  */
-public class TripReportMods {
+public class ParkMods {
 
     private DbConn dbc;  // Open, live database connection
     private String errorMsg = "";
     private String debugMsg = "";
 
     // all methods of this class require an open database connection.
-    public TripReportMods(DbConn dbc) {
+    public ParkMods(DbConn dbc) {
         this.dbc = dbc;
     }
 
@@ -33,7 +33,7 @@ public class TripReportMods {
     public String delete(String primaryKey) {
         this.errorMsg = "";  // clear any error message from before.
         
-        String sql = "DELETE FROM trip_reports where trip_id=?";
+        String sql = "DELETE FROM parks where park_id=?";
         try {
             PreparedStatement sqlSt = dbc.getConn().prepareStatement(sql);
             sqlSt.setString(1, primaryKey);
@@ -53,16 +53,24 @@ public class TripReportMods {
             if (e.getSQLState().equalsIgnoreCase("S1000")) {
                 this.errorMsg = "Could not delete.";
             }
-
-            this.errorMsg += "Problem with SQL in TripReportsSql.delete: "
+            
+            String tempErrorMesg = e.getMessage();
+            
+            if (tempErrorMesg.contains("FOREIGN KEY")) {
+                this.errorMsg = "This park cannot be deleted because there are"
+                        + " still trip reports for the park.";
+            }
+            
+            else {
+                this.errorMsg += "Problem with SQL in WebUserSql.delete: "
                     + "SQLState [" + e.getSQLState()
-                    + "], error message [" + e.getMessage() + "]";
-            System.out.println(this.errorMsg);
+                    + "], error message [" + tempErrorMesg + "]";
+            }
             
             return this.errorMsg;
         } // catch
         catch (Exception e) {
-            this.errorMsg = "General Error in TripReportsSql.delete: "
+            this.errorMsg = "General Error in ParkSql.delete: "
                     + e.getMessage();
             System.out.println(this.errorMsg);
             

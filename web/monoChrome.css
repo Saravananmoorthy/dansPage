@@ -65,6 +65,18 @@ and open the template in the editor.
                 color:grey;
             }
             
+            .add a {
+                text-decoration: none;
+            }
+            
+            .add a:link {
+                color:black;
+            }
+            
+            .add a:visited {
+               color:grey;
+            }
+            
             .newLine {
                 clear:both;
             }
@@ -117,4 +129,9 @@ and open the template in the editor.
                 border: snow thick solid;
                 background-color:white; 
                 padding:5px;
+            }
+            
+            .error {
+                color:red;
+                font-weight: bold
             }
