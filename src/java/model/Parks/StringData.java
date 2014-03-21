@@ -1,6 +1,6 @@
 package model.Parks;
 
-import model.WebUser.*;
+import model.Parks.*;
 
 public class StringData {
 
