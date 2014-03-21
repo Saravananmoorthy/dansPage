@@ -14,31 +14,31 @@ public class StringData {
     public String recordStatus = "default"; // will be used later when doing ajax
 
     /**
-     * @return the userEmail
+     * @return the parkName
      */
-    public String getUserEmail() {
-        return userEmail;
+    public String getParkName() {
+        return parkName;
     }
 
     /**
-     * @param userEmail the userEmail to set
+     * @param parkName the parkName to set
      */
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setParkName(String parkName) {
+        this.parkName = parkName;
     }
 
     /**
      * @return the userPassword
      */
-    public String getUserPw() {
-        return userPw;
+    public String getOverNightFee() {
+        return overNightFee;
     }
 
     /**
      * @param userPassword the userPassword to set
      */
-    public void setUserPw(String userPw) {
-        this.userPw = userPw;
+    public void setOverNightFee(String overNightFee) {
+        this.overNightFee = overNightFee;
     }
 
     /**
@@ -70,17 +70,17 @@ public class StringData {
     }
 
     /**
-     * @return the userPw2
+     * @return the overNightFee2
      */
-    public String getUserPw2() {
-        return userPw2;
+    public String getStateName() {
+        return stateName;
     }
 
     /**
-     * @param userPw2 the userPw2 to set
+     * @param stateName the overNightFee2 to set
      */
-    public void setUserPw2(String userPw2) {
-        this.userPw2 = userPw2;
+    public void setStateName(String stateName) {
+        this.stateName = stateName;
     }
 
     /**
@@ -98,17 +98,17 @@ public class StringData {
     }
 
     /**
-     * @return the webUserId
+     * @return the parkId
      */
-    public String getWebUserId() {
-        return webUserId;
+    public String getParkId() {
+        return parkId;
     }
 
     /**
-     * @param webUserId the webUserId to set
+     * @param parkId the parkId to set
      */
-    public void setWebUserId(String webUserId) {
-        this.webUserId = webUserId;
+    public void setParkId(String parkId) {
+        this.parkId = parkId;
     }
 
     /**
@@ -127,8 +127,8 @@ public class StringData {
 
     @Override
     public String toString() {
-        return "webUserId[" + valueOrNull(webUserId) + "] userEmail[" + valueOrNull(userEmail)
-                + "] userPw[" + valueOrNull(userPw) + "] userPw2[" + valueOrNull(userPw2)
+        return "parkId[" + valueOrNull(parkId) + "] parkName[" + valueOrNull(parkName)
+                + "] overNightFee[" + valueOrNull(overNightFee) + "] stateName[" + valueOrNull(stateName)
                 + "] membershipFee[" + valueOrNull(membershipFee) + "] userRoleId[ " + valueOrNull(userRoleId)
                 + "] dateAdded[" + valueOrNull(birthday) + "] recordStatus[" + valueOrNull(recordStatus) + "]";
     } // toString()
@@ -141,8 +141,8 @@ public class StringData {
     }
 
     public String toJSON() {
-        return "({ webUserId: '" + valueOrNull(webUserId) + "', userEmail: '" + valueOrNull(userEmail)
-                + "', userPw: '" + valueOrNull(userPw) + "', userPw2: '" + valueOrNull(userPw2)
+        return "({ parkId: '" + valueOrNull(parkId) + "', parkName: '" + valueOrNull(parkName)
+                + "', overNightFee: '" + valueOrNull(overNightFee) + "', stateName: '" + valueOrNull(stateName)
                 + "', membershipFee: '" + valueOrNull(membershipFee) + "', userRoleId: '" + valueOrNull(userRoleId)
                 + "', birthday: '" + valueOrNull(birthday) + "', recordStatus: '" + valueOrNull(recordStatus) + "' })";
     }
