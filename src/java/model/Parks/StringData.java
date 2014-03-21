@@ -8,9 +8,6 @@ public class StringData {
     public String parkName = "";
     public String overNightFee = "";
     public String stateName = "";
-    public String membershipFee = "";
-    public String userRoleId = "";
-    public String birthday = "";
     public String recordStatus = "default"; // will be used later when doing ajax
 
     /**
@@ -41,33 +38,6 @@ public class StringData {
         this.overNightFee = overNightFee;
     }
 
-    /**
-     * @return the userRoleId
-     */
-    public String getUserRoleId() {
-        return userRoleId;
-    }
-
-    /**
-     * @param userRoleId the userRoleId to set
-     */
-    public void setUserRole(String userRoleId) {
-        this.userRoleId = userRoleId;
-    }
-
-    /**
-     * @return the dateAdded
-     */
-    public String getBirthday() {
-        return birthday;
-    }
-
-    /**
-     * @param dateAdded the dateAdded to set
-     */
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
 
     /**
      * @return the overNightFee2
@@ -83,19 +53,6 @@ public class StringData {
         this.stateName = stateName;
     }
 
-    /**
-     * @return the membershipFee
-     */
-    public String getMembershipFee() {
-        return membershipFee;
-    }
-
-    /**
-     * @param membershipFee the membershipFee to set
-     */
-    public void setMembershipFee(String membershipFee) {
-        this.membershipFee = membershipFee;
-    }
 
     /**
      * @return the parkId
@@ -129,8 +86,7 @@ public class StringData {
     public String toString() {
         return "parkId[" + valueOrNull(parkId) + "] parkName[" + valueOrNull(parkName)
                 + "] overNightFee[" + valueOrNull(overNightFee) + "] stateName[" + valueOrNull(stateName)
-                + "] membershipFee[" + valueOrNull(membershipFee) + "] userRoleId[ " + valueOrNull(userRoleId)
-                + "] dateAdded[" + valueOrNull(birthday) + "] recordStatus[" + valueOrNull(recordStatus) + "]";
+                + "] recordStatus[" + valueOrNull(recordStatus) + "]";
     } // toString()
 
     private String valueOrNull(String in) {
@@ -143,7 +99,6 @@ public class StringData {
     public String toJSON() {
         return "({ parkId: '" + valueOrNull(parkId) + "', parkName: '" + valueOrNull(parkName)
                 + "', overNightFee: '" + valueOrNull(overNightFee) + "', stateName: '" + valueOrNull(stateName)
-                + "', membershipFee: '" + valueOrNull(membershipFee) + "', userRoleId: '" + valueOrNull(userRoleId)
-                + "', birthday: '" + valueOrNull(birthday) + "', recordStatus: '" + valueOrNull(recordStatus) + "' })";
+                + "', recordStatus: '" + valueOrNull(recordStatus) + "' })";
     }
 } // class
