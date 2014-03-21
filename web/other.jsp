@@ -8,7 +8,7 @@
 
 <%@page language="java" import="SQL.DbConn" %>
 <%@page language="java" import="view.ParkView" %>
-<%@page language="java" import="model.ParkMods" %>
+<%@page language="java" import="model.Parks.ParkMods" %>
 
 <!DOCTYPE HTML>
 

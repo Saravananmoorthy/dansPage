@@ -1,4 +1,4 @@
-package model;
+package model.TripReport;
 
 import SQL.DbConn;
 import java.sql.*;

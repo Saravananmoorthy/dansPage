@@ -1,4 +1,4 @@
-package model;
+package model.Parks;
 
 import SQL.DbConn;
 import java.sql.*;
