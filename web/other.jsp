@@ -25,6 +25,11 @@
         <title>Get Out Local</title>
     </head>
     <jsp:include page="pre-content.jsp" />
+    
+    <br>
+    <span class="add">
+    <a href="insertOther.jsp"><h3>Add A New Park</h3></a>
+    </span>
 
         <%
         String dbDataOrError = "";
