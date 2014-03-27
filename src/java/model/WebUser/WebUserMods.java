@@ -80,6 +80,15 @@ public class WebUserMods {
         } // catch
     }// method delete
 
+    /* This method will create a pick list for user roles to prevent someone
+     * from entering an invalid user role.
+     */
+    public String createPickList() {
+        String pickList = "";
+        return pickList;
+    }
+    
+    
     /* This method requires a pre-validated User data object. 
      * It also assumes that an open database connection was provided to the constructor.
      * It returns true if it is able to insert the user data into the database.
@@ -124,7 +133,8 @@ public class WebUserMods {
                 } else if (e.getMessage().toLowerCase().contains("duplicate entry")) {
                     this.errorMsg = "Cannot insert: duplicate entry."; // for example a unique key constraint.
                 } else if (e.getMessage().toLowerCase().contains("foreign key")) {
-                    this.errorMsg = "Cannot insert: invalid reference (bad foreign key value)."; // for example a unique key constraint.
+                    this.errorMsg = "Cannot insert: invalid reference (bad foreign key value)." +
+                            " Please use a valid User Role Key."; // for example a unique key constraint.
                 } else {
                     this.errorMsg = "WebUserMods.insert: SQL Exception while attempting insert. "
                             + "SQLState:" + e.getSQLState()

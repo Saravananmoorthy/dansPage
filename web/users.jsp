@@ -27,9 +27,9 @@
     <jsp:include page="pre-content.jsp" />
     
     <br>
-    <span class="add">
+    <div class="intraLink">
     <a href="insertUser.jsp"><h3>Add A New Camper</h3></a>
-    </span>
+    </div>
 
     <%
         String dbDataOrError = "";

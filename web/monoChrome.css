@@ -65,15 +65,15 @@ and open the template in the editor.
                 color:grey;
             }
             
-            .add a {
+            .intraLink a {
                 text-decoration: none;
             }
             
-            .add a:link {
+            intraLink a:link {
                 color:black;
             }
             
-            .add a:visited {
+            .intraLink a:visited {
                color:grey;
             }
             

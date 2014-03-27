@@ -65,6 +65,18 @@ and open the template in the editor.
                 color:#023e56;
             }
             
+            .intraLink a {
+                text-decoration: none;
+            }
+            
+            intraLink a:link {
+                color:#023e56;
+            }
+            
+            .intraLink a:visited {
+               color:#023e56;
+            }
+            
             .newLine {
                 clear:both;
             }

@@ -86,6 +86,15 @@
             provided for us.
         </p>
     <h2>Lab 7 Insert</h2>
+        <p>
+            I didn't have any issues with this lab. Everything seems to be working
+            properly. I had wanted to implement the extra credit, but unfortunately
+            other school projects that are more pressing have prevented me. As such
+            I have appended an additional sentence to the error message from a bad
+            user role to help the user understand what is going on. I still hope to
+            have the drop down implemented before the semester ends.
+        <p>
+            This version of the site does not yet contain the challenge.
     <h2>Lab 8 Log On</h2>
     <h2>Lab 9 Insert Associative</h2>
     <h2>Lab 10 Update Ajax</h2>
