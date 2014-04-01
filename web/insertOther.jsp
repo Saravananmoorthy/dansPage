@@ -59,22 +59,22 @@
             }
         } // postback
     %>
-    <h1>User Registration</h1>
+    <h1>Add a Park</h1>
     <form name="myForm" action="insertOther.jsp" method="POST">
         <table style="text-align:left; border:thin solid gray; padding:5px;">
             <tr>
-                <td>User Email</td>
+                <td>Park name</td>
                 <td><input type="text" name="parkName" value="<%= parkData.parkName%>" /></td>
                 <td class="error"><%=parkValidate.getParkNameMsg()%></td>
             </tr>
             <tr>
-                <td>Password</td>
-                <td><input type="password" name="userPw" value="<%= parkData.stateName%>" /></td>
+                <td>State Name</td>
+                <td><input type="text" name="stateName" value="<%= parkData.stateName%>" /></td>
                 <td class="error"><%=parkValidate.getStateNameMsg()%></td>
             </tr>
 
             <tr>
-                <td>Membership Fee</td>
+                <td>Overnight Fee</td>
                 <td><input type="text" name="overNightFee" value="<%= parkData.overNightFee%>" /></td>
                 <td class="error"><%=parkValidate.getOverNightFeeMsg()%></td>
             </tr>

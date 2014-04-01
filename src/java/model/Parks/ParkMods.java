@@ -96,8 +96,8 @@ public class ParkMods {
         }
 
         TypedData parkTypedData = (TypedData) parkValidate.getTypedData();
-        String sql = "INSERT INTO parks (park_name, overnight_fee, state_name,) "
-                + "VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO parks (park_name, overnight_fee, state_name) "
+                + "VALUES (?,?,?)";
         try {
             PreparedStatement pStatement = dbc.getConn().prepareStatement(sql);
             this.debugMsg += DbEncodeUtils.encodeString(pStatement, 1, parkTypedData.getParkName());
