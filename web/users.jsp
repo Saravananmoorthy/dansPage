@@ -51,7 +51,7 @@
                 if (delMsg.length() == 0) {
                     out.println("<h3>Camper " + delKey + " has been deleted</h3>");
                 } else {
-                    out.println("<h3>Unable to delete Camper " + delKey + ". " + sqlMods.getErrorMsg() + "</h3>");
+                    out.println("<h3>" + sqlMods.getErrorMsg() + "</h3>");
                 }
             } else {
                 out.println("<h1>Campers</h1>"); // place holder for message (so data grid remains in same place before and after delete.s
@@ -65,6 +65,7 @@
         } else {
             dbDataOrError = dbError;
         }
+        dbc.close();
     %>
     <form name="updateDelete" action="users.jsp" method="get">
         <input type="hidden" name="deletePK">

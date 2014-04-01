@@ -59,7 +59,8 @@ public class ParkMods {
             
             if (tempErrorMesg.contains("FOREIGN KEY")) {
                 this.errorMsg = "This park cannot be deleted because there are"
-                        + " still trip reports for the park.";
+                        + " still trip reports for the park. Please delete all"
+                        + " trip reports associated with this park first.";
             }
             
             else {

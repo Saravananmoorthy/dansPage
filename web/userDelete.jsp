@@ -7,8 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%> 
 
 <%@page language="java" import="SQL.DbConn" %>
-<%@page language="java" import="view.ParkView" %>
-<%@page language="java" import="model.Parks.ParkMods" %>
+<%@page language="java" import="view.WebUserView" %>
+<%@page language="java" import="model.WebUser.WebUserMods" %>
 
 <!DOCTYPE HTML>
 
@@ -28,10 +28,10 @@
     
     <br>
     <div class="intraLink">
-    <a href="insertOther.jsp"><h3>Add A New Park</h3></a>
+    <a href="insertUser.jsp"><h3>Add A New Camper</h3></a>
     </div>
 
-        <%
+    <%
         String dbDataOrError = "";
 
         // Get database connection and check if you got it.
@@ -44,44 +44,44 @@
             if (delKey != null && delKey.length() > 0) {
 
                 // yep, they want to delete a row, instantiate objects needed to do the delete.
-                ParkMods sqlMods = new ParkMods(dbc);
+                WebUserMods sqlMods = new WebUserMods(dbc);
 
                 // try to delete the row that has PK = delKey
                 String delMsg = sqlMods.delete(delKey);
                 if (delMsg.length() == 0) {
-                    out.println("<h3>Park " + delKey + " has been deleted</h3>");
+                    out.println("<h3>Camper " + delKey + " has been deleted</h3>");
                 } else {
-                    out.println("<h3>" + sqlMods.getErrorMsg() + "</h3>");
+                    out.println("<h3>Unable to delete Camper " + delKey + ". " + sqlMods.getErrorMsg() + "</h3>");
                 }
             } else {
-                out.println("<h1>Parks</h1>"); // place holder for message (so data grid remains in same place before and after delete.s
+                out.println("<h1>Campers</h1>"); // place holder for message (so data grid remains in same place before and after delete.s
             }
             // delete processed (if necessary)
 
             // now print out the whole table
-            dbDataOrError = ParkView.listDelUsers("resultSetFormat", dbc,
-                    "javascript:deleteParkRow", "icons/delete.png");
+            dbDataOrError = WebUserView.listDelUsers("resultSetFormat", dbc,
+                    "javascript:deleteRow", "icons/delete.png");
             dbc.close();
         } else {
             dbDataOrError = dbError;
         }
-        dbc.close();
     %>
-    <form name="updateDelete" action="other.jsp" method="get">
+    <form name="updateDelete" action="users.jsp" method="get">
         <input type="hidden" name="deletePK">
     </form>
 
     <% out.println(dbDataOrError);%>
-    
+
     <script language="Javascript" type="text/javascript">
 
-        function deleteParkRow(primaryKey) {
-            if (confirm("Do you really want to delete park " + primaryKey + "?")) {
+        function deleteRow(primaryKey) {
+            if (confirm("Do you really want to delete camper " + primaryKey + "?")) {
                 document.updateDelete.deletePK.value = primaryKey;
                 document.updateDelete.submit();
             }
         }
 
     </script>
+
 
     <jsp:include page="post-content.jsp" />

@@ -60,7 +60,8 @@ public class WebUserMods {
 
             if (tempErrorMesg.contains("FOREIGN KEY")) {
                 this.errorMsg = "This camper cannot be deleted because there are"
-                        + " still trip reports under their name.";
+                        + " still trip reports under their name. Please delete"
+                        + " all the trip reports from this user first.";
             } else {
                 this.errorMsg += "Problem with SQL in WebUserSql.delete: "
                         + "SQLState [" + e.getSQLState()
