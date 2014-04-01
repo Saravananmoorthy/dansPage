@@ -1,8 +1,7 @@
 package model.WebUser;
 
 //import model.WebUser.*;
-import SQL.DbConn;
-import SQL.DbEncodeUtils;
+import SQL.*;  //no need to list each one if we're importing the entire package
 import java.sql.*;
 
 /**
@@ -88,8 +87,7 @@ public class WebUserMods {
         String pickList = "";
         return pickList;
     }
-    
-    
+
     /* This method requires a pre-validated User data object. 
      * It also assumes that an open database connection was provided to the constructor.
      * It returns true if it is able to insert the user data into the database.
@@ -132,10 +130,9 @@ public class WebUserMods {
                     // this error would only be possible for a non-auto-increment primary key.
                     this.errorMsg = "Cannot insert: a record with that ID already exists.";
                 } else if (e.getMessage().toLowerCase().contains("duplicate entry")) {
-                    this.errorMsg = "Cannot insert: duplicate entry."; // for example a unique key constraint.
+                    this.errorMsg = "A user with that email address already exists!"; // for example a unique key constraint.
                 } else if (e.getMessage().toLowerCase().contains("foreign key")) {
-                    this.errorMsg = "Cannot insert: invalid reference (bad foreign key value)." +
-                            " Please use a valid User Role Key."; // for example a unique key constraint.
+                    this.errorMsg = "Please use a valid User Role Key."; // for example a unique key constraint.
                 } else {
                     this.errorMsg = "WebUserMods.insert: SQL Exception while attempting insert. "
                             + "SQLState:" + e.getSQLState()
@@ -158,4 +155,77 @@ public class WebUserMods {
             return this.errorMsg;
         }
     }// method
+
+    /**
+     * Find the webUser record that has the given primary key. If found, return
+     * true and fill up the WebUser object with found data, otherwise, return
+     * false.
+     *
+     * @param primaryKey (input) the primary key of the record to be found.
+     * @param sqlPrep (input) an object that knows the SQL statements for the DB
+     * we are working with.
+     * @param stringData (output) the found record (if the record was found).
+     * @return returns true if record was found, false otherwise.
+     */
+    public StringData find(String primaryKey) {
+
+        this.errorMsg = "";  // clear any error message from before.
+        try {
+            String sql = "SELECT * FROM web_user where web_user_id=?";
+            PreparedStatement sqlSt = dbc.getConn().prepareStatement(sql);
+            sqlSt.setString(1, primaryKey);
+
+            try {
+                ResultSet results = sqlSt.executeQuery(); // expecting only one row in result set
+                StringData stringData = this.extractResultSetToStringData(results);//
+
+                if (stringData != null) {
+                    System.out.println("*** WebUserMods.find: Web User (found or not found) is " + stringData.toString());
+                    return stringData; // if stringData is full, record found. else all fields will be blank "".
+                } else { // stringData null means there was a problem extracting data
+                    // check the System.out message in the log to see exact exception error msg.
+                    return null;
+                }
+            } catch (Exception e) {
+                this.errorMsg = e.getMessage();
+                System.out.println("*** WebUserMods.find: exception thrown running Select Statement " + primaryKey
+                        + ". Error is: " + this.errorMsg);
+                return null;
+            }
+        }// try
+        catch (Exception e) {
+            this.errorMsg = e.getMessage();
+            System.out.println("*** WebUserMods.find: exception thrown Preparing Select Statement with PK " + primaryKey
+                    + ". Error is: " + this.errorMsg);
+            return null;
+        }
+    } // method    
+
+    public StringData extractResultSetToStringData(ResultSet results) {
+        StringData wuStringData = new StringData();
+        try {
+            if (results.next()) { // we are expecting only one rec in result set, so while loop not needed.
+                wuStringData.webUserId = FormatUtils.objectToString(results.getObject("web_user_id"));
+                wuStringData.userEmail = FormatUtils.objectToString(results.getObject("user_email"));
+                wuStringData.userPw = FormatUtils.objectToString(results.getObject("user_password"));
+                wuStringData.userPw2 = wuStringData.userPw;
+                wuStringData.membershipFee = FormatUtils.objectToString(results.getObject("membership_fee"));
+                wuStringData.userRoleId = FormatUtils.objectToString(results.getObject("user_role_id"));
+                wuStringData.birthday = FormatUtils.formatDate(results.getObject("birthday"));
+                wuStringData.recordStatus = "Record Found";
+
+                System.out.println("*** WebUserMods.extractResultSetToStringData: record values are "
+                        + wuStringData.toString());
+
+                return wuStringData; // means OK, record found and wu has been filled
+            } else {
+                wuStringData.recordStatus = "Record Not Found";
+                return wuStringData; // not found, all fields will be blank
+            }
+        } catch (Exception e) {
+            System.out.println("*** WebUserMods.extractResultSetToStringData() Exception: " + e.getMessage());
+            return null;
+        } // catch misc error
+    } // method    
+
 } // class

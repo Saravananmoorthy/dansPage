@@ -120,7 +120,7 @@ public class ParkMods {
                     // this error would only be possible for a non-auto-increment primary key.
                     this.errorMsg = "Cannot insert: a record with that ID already exists.";
                 } else if (e.getMessage().toLowerCase().contains("duplicate entry")) {
-                    this.errorMsg = "Cannot insert: duplicate entry."; // for example a unique key constraint.
+                    this.errorMsg = "A park with that name already exists!"; // for example a unique key constraint.
                 } else if (e.getMessage().toLowerCase().contains("foreign key")) {
                     this.errorMsg = "Cannot insert: invalid reference (bad foreign key value)."; // for example a unique key constraint.
                 } else {
