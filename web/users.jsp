@@ -85,7 +85,7 @@
                 // try to update the Web User record. returns error message or empty string
                 formMsg = sqlMods.update(webUserValidate); // empty string means went in OK.
                 if (formMsg.length() == 0) { //trying to insert from a web user validation object.
-                    formMsg = "Record " + webUserStringData.userEmail + " updated. ";
+                    formMsg = webUserStringData.userEmail + " updated. ";
                 }
             } 
             

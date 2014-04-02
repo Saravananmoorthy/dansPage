@@ -161,7 +161,7 @@ public class ParkView {
         // Prepare some HTML that will be used repeatedly for the update icon that
         // calls an update javascript function (see below).
         if ((updateIcon == null) || (updateIcon.length() == 0)) {
-            return "Parkql.listAllUsers() error: update Icon file name (String input parameter) is null or empty.";
+            return "ParkSql.listAllUsers() error: update Icon file name (String input parameter) is null or empty.";
         }
         if ((updateFn == null) || (updateFn.length() == 0)) {
             return "ParkSql.listAllUsers() error: update javascript function name (String input parameter) is null or empty.";
@@ -183,7 +183,8 @@ public class ParkView {
         ResultSet rst = null;
         try {
             //sb.append("ready to create the statement & execute query " + "<br/>");
-            String sql = "select park_id, park_name, state_name, overnight_fee";
+            String sql = "select park_id, park_name, state_name, overnight_fee "
+                    + "FROM parks ORDER BY park_name";
             stmt = dbc.getConn().prepareStatement(sql);
             rst = stmt.executeQuery();
             //sb.append("executed the query " + "<br/><br/>");

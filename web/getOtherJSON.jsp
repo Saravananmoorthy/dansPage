@@ -11,7 +11,7 @@
     DbConn dbc = new DbConn();  // get an OPEN db connection. 
     String dbError = dbc.getErr();
     if (dbError.length() != 0) { // could not get connection
-        parkStringData.setRecordStatus("Database connection error in getWebUser.jsp: " + dbError);
+        parkStringData.setRecordStatus("Database connection error in getOtherJSON.jsp: " + dbError);
     } else { // got connection
         ParkMods sqlMods = new ParkMods(dbc);
         parkStringData = sqlMods.find(parkId);

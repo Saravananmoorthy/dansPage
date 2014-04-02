@@ -196,7 +196,7 @@ public class ParkMods {
             if (results.next()) { // we are expecting only one rec in result set, so while loop not needed.
                 parkStringData.parkId = FormatUtils.objectToString(results.getObject("park_id"));
                 parkStringData.parkName = FormatUtils.objectToString(results.getObject("park_name"));
-                parkStringData.overNightFee = FormatUtils.objectToString(results.getObject("over_night_fee"));
+                parkStringData.overNightFee = FormatUtils.objectToString(results.getObject("overnight_fee"));
                 parkStringData.stateName = FormatUtils.objectToString(results.getObject("state_name"));
                 parkStringData.recordStatus = "Record Found";
 
@@ -225,8 +225,7 @@ public class ParkMods {
         }
 
         TypedData parkTypedData = (TypedData) validate.getTypedData();
-        String sql = "UPDATE park SET park_name=? "
-                + ", state_name=?, overnight_fee=?";
+        String sql = "UPDATE parks SET park_name=?, state_name=?, overnight_fee=? where park_id=?";
 
         try {
             PreparedStatement sqlSt = dbc.getConn().prepareStatement(sql);
@@ -234,6 +233,7 @@ public class ParkMods {
             debugMsg += "<br/>" + DbEncodeUtils.encodeString(sqlSt, 1, parkTypedData.getParkName());
             debugMsg += "<br/>" + DbEncodeUtils.encodeString(sqlSt, 2, parkTypedData.getStateName());
             debugMsg += "<br/>" + DbEncodeUtils.encodeDecimal(sqlSt, 3, parkTypedData.getOverNightFee());
+            debugMsg += "<br/>" + DbEncodeUtils.encodeInteger(sqlSt, 4, parkTypedData.getParkId());
             
 
             //System.out.println("******* Trying to update Web User with id: ["+ wu.getIdWebUser() + "]");
