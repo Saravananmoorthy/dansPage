@@ -87,27 +87,15 @@
                 if (formMsg.length() == 0) { //trying to insert from a web user validation object.
                     formMsg = "Record " + webUserStringData.userEmail + " updated. ";
                 }
-
-            } // checking if strWebUserId not null (means they wanted to update)
+            } 
+            
             // this is a String that holds the whole result set formated into a HTML table.
             dbDataOrError = WebUserView.listUpdateDeleteUsers("resultSetFormat", "javascript:deleteRow",
                     "icons/delete.png", "javascript:sendRequest", "icons/update.png", dbc);
-         // got open connection
-
+         
             // PREVENT DB connection leaks: shouldnt hurt to close it even if it was never opened.
             dbc.close();
-    //else {
-            //out.println("<h1>Campers</h1>"); // place holder for message (so data grid remains in same place before and after delete.s
-            // }
-            // delete processed (if necessary)
-            // now print out the whole table
-            // dbDataOrError = WebUserView.listDelUsers("resultSetFormat", dbc,
-            //       "javascript:deleteRow", "icons/delete.png");
-            //dbc.close();
-            // } else {
-            //   dbDataOrError = dbError;
-            // }
-            // dbc.close();
+        }
 %>
 
     <div id="inputArea">
@@ -116,7 +104,7 @@
 
         </form>
         <br/>
-        <form name="updateForm" action="CRUD_webUser.jsp" method="get">           
+        <form name="updateForm" action="users.jsp" method="get">           
             Web User Id <input type="hidden"  name="webUserId" value="<%= webUserStringData.webUserId%>" /> 
             <br/>
             <table class="inputTable">
@@ -159,10 +147,7 @@
     </div>
     <div class="newLine"></div>
     <br/>
-    <span class="pseudoHeader" style="margin-left:100px">Web Users</span>
-    - click <a href="insertUser.jsp">here</a> to insert a Web User (not implemented in sample code)
-    <br/>
-    <br/>
+    
     <%=dbDataOrError%>
 
     <script language="Javascript" type="text/javascript">
@@ -239,7 +224,7 @@
                 //alert ("birthday is "+webUserObj.birthday);
                 document.updateForm.birthday.value = webUserObj.birthday;
 
-                // alert ("record status is "+webUserObj.recordStatus);
+               
             }
         }
 
