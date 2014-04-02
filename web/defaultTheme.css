@@ -137,3 +137,31 @@ and open the template in the editor.
                 font-weight: bold
             }
             
+            #message {
+                font-size:14px; 
+                font-weight:bold; 
+                color:red;
+            }
+            
+            .pseudoHeader {
+                font-size:22px; 
+                font-weight:bold;
+            }
+            
+            .prompt {
+                text-align: right;
+                padding-right: 5px;
+            }
+            
+            .inputTable {
+                margin-right: 10px;
+                text-align:left; 
+                border:thin solid gray; 
+                padding:5px; 
+            }
+            
+            #inputArea {
+                display:none;
+                margin-left:55px;
+            }
+            
