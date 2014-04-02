@@ -108,12 +108,62 @@
             //   dbDataOrError = dbError;
             // }
             // dbc.close();
-    %>
-    <form name="updateDelete" action="users.jsp" method="get">
-        <input type="hidden" name="deletePK">
-    </form>
+%>
 
-    <% out.println(dbDataOrError);%>
+    <div id="inputArea">
+        <form name="updateDelete" action="users.jsp" method="get">
+            <input type="hidden" name="deletePK">
+
+        </form>
+        <br/>
+        <form name="updateForm" action="CRUD_webUser.jsp" method="get">           
+            Web User Id <input type="hidden"  name="webUserId" value="<%= webUserStringData.webUserId%>" /> 
+            <br/>
+            <table class="inputTable">
+                <tr>
+                    <td class="prompt">User Email:</td>
+                    <td><input type="text" name="userEmail" size="45" value="<%= webUserStringData.userEmail%>" /></td>
+                    <td class="error"><%=webUserValidate.getUserEmailMsg()%></td>
+                </tr>
+                <tr>
+                    <td class="prompt">Password:</td>
+                    <td><input type="password" name="userPw" size="45" value="<%= webUserStringData.userPw%>" /></td>
+                    <td class="error"><%=webUserValidate.getUserPwMsg()%></td>
+                </tr>
+                <tr>
+                    <td class="prompt">Retype Password:</td>
+                    <td><input type="password" name="userPw2" size="45" value="<%= webUserStringData.userPw%>" /></td>
+                    <td class="error"><%=webUserValidate.getUserPw2Msg()%></td>
+                </tr>
+                <tr>
+                    <td class="prompt">Membership Fee:</td>
+                    <td><input type="text" name="membershipFee" value="<%= webUserStringData.membershipFee%>" /></td>
+                    <td class="error"><%=webUserValidate.getMembershipFeeMsg()%></td>   
+                <tr>
+                    <td class="prompt">User Role:</td>
+                    <td><input type="text" name="userRoleId" value="<%= webUserStringData.userRoleId%>" /></td>
+                    <td class="error"><%=webUserValidate.getUserRoleMsg()%></td>
+                </tr>
+                <tr>
+                    <td class="prompt">Birthday:</td>
+                    <td><input type="text" name="birthday" value="<%= webUserStringData.birthday%>" /></td>
+                    <td class="error"><%=webUserValidate.getBirthdayMsg()%></td>                    
+                </tr>
+                <tr>
+                    <td class="prompt"><input type="submit" value="Update" /></td>
+                    <td><input type="button" value="Clear Data" onclick="clearFields()"/></td>
+                    <td id="message"><%=formMsg%></td>
+                </tr>
+            </table>          
+        </form>
+    </div>
+    <div class="newLine"></div>
+    <br/>
+    <span class="pseudoHeader" style="margin-left:100px">Web Users</span>
+    - click <a href="insertUser.jsp">here</a> to insert a Web User (not implemented in sample code)
+    <br/>
+    <br/>
+    <%=dbDataOrError%>
 
     <script language="Javascript" type="text/javascript">
 
@@ -146,9 +196,7 @@
         }
 
         function clearFields() {
-            //alert("clearing...")
             document.getElementById("inputArea").style.display = "none";
-
             document.updateForm.webUserId.value = "";
             document.updateForm.userEmail.value = "";
             document.updateForm.userPw.value = "";
@@ -199,7 +247,7 @@
         // asking for all the data associated with a particular primary key
         function sendRequest(primaryKey) {
             alert('sending request for web user ' + primaryKey);
-            httpReq.open("GET", "get_webUser_JSON.jsp?primaryKey=" + primaryKey);
+            httpReq.open("GET", "getWebUserJSON.jsp?primaryKey=" + primaryKey);
             httpReq.onreadystatechange = handleResponse;
             httpReq.send(null);
         }
