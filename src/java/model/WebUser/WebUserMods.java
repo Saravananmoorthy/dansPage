@@ -226,6 +226,72 @@ public class WebUserMods {
             System.out.println("*** WebUserMods.extractResultSetToStringData() Exception: " + e.getMessage());
             return null;
         } // catch misc error
-    } // method    
+    } // method
+    
+    // Returning "" empty string means the UPDATE was successful
+    public String update(Validate validate) {
+        this.errorMsg = "";
+
+        // dont even try to insert if the user data didnt pass validation.
+        if (!validate.isValidated()) {
+            this.errorMsg = "Please edit record and resubmit";
+            return this.errorMsg;
+        }
+
+        TypedData wuTypedData = (TypedData) validate.getTypedData();
+        String sql = "UPDATE web_user SET user_email=? "
+                + ", user_password=?, membership_fee=?, user_role_id=? "
+                + ", birthday=? where web_user_id = ?";
+
+        try {
+            PreparedStatement sqlSt = dbc.getConn().prepareStatement(sql);
+            debugMsg += "<br/>Sql was: " + sql;
+            debugMsg += "<br/>" + DbEncodeUtils.encodeString(sqlSt, 1, wuTypedData.getUserEmail());
+            debugMsg += "<br/>" + DbEncodeUtils.encodeString(sqlSt, 2, wuTypedData.getUserPw());
+            debugMsg += "<br/>" + DbEncodeUtils.encodeDecimal(sqlSt, 3, wuTypedData.getMembershipFee());
+            debugMsg += "<br/>" + DbEncodeUtils.encodeInteger(sqlSt, 4, wuTypedData.getUserRoleId());
+            debugMsg += "<br/>" + DbEncodeUtils.encodeDate(sqlSt, 5, wuTypedData.getBirthday());
+            debugMsg += "<br/>" + DbEncodeUtils.encodeInteger(sqlSt, 6, wuTypedData.getWebUserId());
+
+            //System.out.println("******* Trying to update Web User with id: ["+ wu.getIdWebUser() + "]");
+            try {
+                int numRows = sqlSt.executeUpdate();
+                if (numRows == 1) {
+                    this.errorMsg = "";
+                    return this.errorMsg; // all is GOOD, one record was updated like we expected.
+                } else {
+                    // we could be here (numRows==0) if record was not found.
+                    // we could be here (numRows>1) if we forgot where clause -- would update all recs.
+                    // In either case, it would probalby be a programmer error.
+                    this.errorMsg = "Error: " + new Integer(numRows).toString()
+                            + " records were updated (when only 1 record expected for update).";
+                    return this.errorMsg;
+                }
+            } // try
+            catch (SQLException e) {
+                this.errorMsg = "SqlMods.update: SQL Exception during update operation. "
+                        + "SQLState [" + e.getSQLState()
+                        + "], error message [" + e.getMessage() + "]";
+                System.out.println(this.errorMsg);
+                //e.printStackTrace();
+                return this.errorMsg;
+            } // catch
+            catch (Exception e) {
+                this.errorMsg = "SqlMods.update: General Exception during update operation. "
+                        + e.getMessage();
+                System.out.println(this.errorMsg);
+                //e.printStackTrace();
+                return this.errorMsg;
+            } // catch
+        } // try
+        catch (Exception e) {
+            this.errorMsg = "SqlMods.update: Problem Compiling Prepared Statement. "
+                    + e.getMessage();
+            System.out.println(this.errorMsg);
+            //e.printStackTrace();
+            return this.errorMsg;
+        } // catch
+    }// method
+
 
 } // class
