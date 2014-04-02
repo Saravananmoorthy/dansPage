@@ -1,7 +1,6 @@
 package model.WebUser;
 
-//import model.WebUser.*;
-import SQL.*;  //no need to list each one if we're importing the entire package
+import SQL.*;   //no need to list each one if we're importing the entire package
 import java.sql.*;
 
 /**

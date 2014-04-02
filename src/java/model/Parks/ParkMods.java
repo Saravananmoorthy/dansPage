@@ -1,7 +1,6 @@
 package model.Parks;
 
-import SQL.DbConn;
-import SQL.DbEncodeUtils;
+import SQL.*;   //no need to list each one if we're importing the entire package
 import java.sql.*;
 
 /** 
@@ -145,4 +144,136 @@ public class ParkMods {
             return this.errorMsg;
         }
     }// method
+    
+        /**
+     * Find the webUser record that has the given primary key. If found, return
+     * true and fill up the WebUser object with found data, otherwise, return
+     * false.
+     *
+     * @param primaryKey (input) the primary key of the record to be found.
+     * @param sqlPrep (input) an object that knows the SQL statements for the DB
+     * we are working with.
+     * @param stringData (output) the found record (if the record was found).
+     * @return returns true if record was found, false otherwise.
+     */
+    public StringData find(String primaryKey) {
+
+        this.errorMsg = "";  // clear any error message from before.
+        try {
+            String sql = "SELECT * FROM parks where park_id=?";
+            PreparedStatement sqlSt = dbc.getConn().prepareStatement(sql);
+            sqlSt.setString(1, primaryKey);
+
+            try {
+                ResultSet results = sqlSt.executeQuery(); // expecting only one row in result set
+                StringData stringData = this.extractResultSetToStringData(results);//
+
+                if (stringData != null) {
+                    System.out.println("*** ParkMods.find: Park (found or not found) is " + stringData.toString());
+                    return stringData; // if stringData is full, record found. else all fields will be blank "".
+                } else { // stringData null means there was a problem extracting data
+                    // check the System.out message in the log to see exact exception error msg.
+                    return null;
+                }
+            } catch (Exception e) {
+                this.errorMsg = e.getMessage();
+                System.out.println("*** ParkMods.find: exception thrown running Select Statement " + primaryKey
+                        + ". Error is: " + this.errorMsg);
+                return null;
+            }
+        }// try
+        catch (Exception e) {
+            this.errorMsg = e.getMessage();
+            System.out.println("*** ParkMods.find: exception thrown Preparing Select Statement with PK " + primaryKey
+                    + ". Error is: " + this.errorMsg);
+            return null;
+        }
+    } // method    
+    
+    public StringData extractResultSetToStringData(ResultSet results) {
+        StringData parkStringData = new StringData();
+        try {
+            if (results.next()) { // we are expecting only one rec in result set, so while loop not needed.
+                parkStringData.parkId = FormatUtils.objectToString(results.getObject("park_id"));
+                parkStringData.parkName = FormatUtils.objectToString(results.getObject("park_name"));
+                parkStringData.overNightFee = FormatUtils.objectToString(results.getObject("over_night_fee"));
+                parkStringData.stateName = FormatUtils.objectToString(results.getObject("state_name"));
+                parkStringData.recordStatus = "Record Found";
+
+                System.out.println("*** ParkMods.extractResultSetToStringData: record values are "
+                        + parkStringData.toString());
+
+                return parkStringData; // means OK, record found and wu has been filled
+            } else {
+                parkStringData.recordStatus = "Record Not Found";
+                return parkStringData; // not found, all fields will be blank
+            }
+        } catch (Exception e) {
+            System.out.println("*** ParkMods.extractResultSetToStringData() Exception: " + e.getMessage());
+            return null;
+        } // catch misc error
+    } // method
+    
+    // Returning "" empty string means the UPDATE was successful
+    public String update(Validate validate) {
+        this.errorMsg = "";
+
+        // dont even try to insert if the user data didnt pass validation.
+        if (!validate.isValidated()) {
+            this.errorMsg = "Please edit record and resubmit";
+            return this.errorMsg;
+        }
+
+        TypedData parkTypedData = (TypedData) validate.getTypedData();
+        String sql = "UPDATE park SET park_name=? "
+                + ", state_name=?, overnight_fee=?";
+
+        try {
+            PreparedStatement sqlSt = dbc.getConn().prepareStatement(sql);
+            debugMsg += "<br/>Sql was: " + sql;
+            debugMsg += "<br/>" + DbEncodeUtils.encodeString(sqlSt, 1, parkTypedData.getParkName());
+            debugMsg += "<br/>" + DbEncodeUtils.encodeString(sqlSt, 2, parkTypedData.getStateName());
+            debugMsg += "<br/>" + DbEncodeUtils.encodeDecimal(sqlSt, 3, parkTypedData.getOverNightFee());
+            
+
+            //System.out.println("******* Trying to update Web User with id: ["+ wu.getIdWebUser() + "]");
+            try {
+                int numRows = sqlSt.executeUpdate();
+                if (numRows == 1) {
+                    this.errorMsg = "";
+                    return this.errorMsg; // all is GOOD, one record was updated like we expected.
+                } else {
+                    // we could be here (numRows==0) if record was not found.
+                    // we could be here (numRows>1) if we forgot where clause -- would update all recs.
+                    // In either case, it would probalby be a programmer error.
+                    this.errorMsg = "Error: " + new Integer(numRows).toString()
+                            + " records were updated (when only 1 record expected for update).";
+                    return this.errorMsg;
+                }
+            } // try
+            catch (SQLException e) {
+                this.errorMsg = "SqlMods.update: SQL Exception during update operation. "
+                        + "SQLState [" + e.getSQLState()
+                        + "], error message [" + e.getMessage() + "]";
+                System.out.println(this.errorMsg);
+                //e.printStackTrace();
+                return this.errorMsg;
+            } // catch
+            catch (Exception e) {
+                this.errorMsg = "SqlMods.update: General Exception during update operation. "
+                        + e.getMessage();
+                System.out.println(this.errorMsg);
+                //e.printStackTrace();
+                return this.errorMsg;
+            } // catch
+        } // try
+        catch (Exception e) {
+            this.errorMsg = "SqlMods.update: Problem Compiling Prepared Statement. "
+                    + e.getMessage();
+            System.out.println(this.errorMsg);
+            //e.printStackTrace();
+            return this.errorMsg;
+        } // catch
+    }// method
+
 } // class
