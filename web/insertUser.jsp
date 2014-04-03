@@ -54,6 +54,7 @@
                     if (formMsg.length() == 0) { //trying to insert from a web user validation object.
                         formMsg = "Record inserted. ";
                     }
+                    dbc.close();
                 } else {
                     formMsg = dbError; // db connection error
                 }
@@ -61,7 +62,7 @@
                 formMsg = "Please try again."; // user data entry error
             }
         } // postback
-    %>
+%>
     <h1>User Registration</h1>
     <form name="myForm" action="insertUser.jsp" method="POST">
         <table style="text-align:left; border:thin solid gray; padding:5px;">

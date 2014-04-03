@@ -1,14 +1,12 @@
 package view;
 
-// classes imported from java.sql.*
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
-// classes in my project
 import SQL.DbConn;
 import SQL.FormatUtils;
 
 public class WebUserView {
+
 
     /* This method returns a HTML table displaying all the records of the web_user table. 
      * cssClassForResultSetTable: the name of a CSS style that will be applied to the HTML table.
@@ -21,7 +19,8 @@ public class WebUserView {
         ResultSet results = null;
         try {
 
-            String sql = "select web_user_id, user_email, user_password, membership_fee, user_role_id, birthday from web_user";
+            String sql = "select web_user_id, user_email, user_password, "
+                    + "membership_fee, user_role_id, birthday from web_user";
             stmt = dbc.getConn().prepareStatement(sql);
             results = stmt.executeQuery();
 
@@ -54,6 +53,7 @@ public class WebUserView {
                     + "<br/> partial output: <br/>" + sb.toString();
         }
     }
+
 
     /* This method returns a HTML table displaying all the records of the web_user table. 
      * cssClassForResultSetTable: the name of a CSS style that will be applied to the HTML table.
@@ -91,7 +91,8 @@ public class WebUserView {
         ResultSet results = null;
         try {
 
-            String sql = "select web_user_id, user_email, user_password, membership_fee, user_role_id, birthday from web_user";
+            String sql = "select web_user_id, user_email, user_password, "
+                    + "membership_fee, user_role_id, birthday from web_user";
             stmt = dbc.getConn().prepareStatement(sql);
             results = stmt.executeQuery();
 
@@ -99,7 +100,8 @@ public class WebUserView {
             sb.append(cssClassForResultSetTable);
             sb.append("'>");
             sb.append("<tr>");
-            sb.append("<td style='border:none; text-align:center; background-color:transparent;'></td>");// extra column at left for delete icon
+            sb.append("<td style='border:none; text-align:center; "
+                    + "background-color:transparent;'></td>");// extra column at left for delete icon
 
             sb.append("<th>User ID</th>");
             sb.append("<th>User Email</th>");

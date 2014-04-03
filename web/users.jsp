@@ -87,16 +87,16 @@
                 if (formMsg.length() == 0) { //trying to insert from a web user validation object.
                     formMsg = webUserStringData.userEmail + " updated. ";
                 }
-            } 
-            
+            }
+
             // this is a String that holds the whole result set formated into a HTML table.
             dbDataOrError = WebUserView.listUpdateDeleteUsers("resultSetFormat", "javascript:deleteRow",
                     "icons/delete.png", "javascript:sendRequest", "icons/update.png", dbc);
-         
+
             // PREVENT DB connection leaks: shouldnt hurt to close it even if it was never opened.
             dbc.close();
         }
-%>
+    %>
 
     <div id="inputArea">
         <form name="updateDelete" action="users.jsp" method="get">
@@ -147,7 +147,7 @@
     </div>
     <div class="newLine"></div>
     <br/>
-    
+
     <%=dbDataOrError%>
 
     <script language="Javascript" type="text/javascript">
@@ -193,45 +193,22 @@
 
         function handleResponse() {
             document.getElementById("inputArea").style.display = "block";
-            //alert('handling response');
             if (httpReq.readyState == 4 && httpReq.status == 200) {
-                //alert('handling response ready 4 status 200');
                 var response = httpReq.responseText;
-                alert("response is " + response);
-
-                // be careful -- field names on the document are case sensative
-                // field names extracted from the JSON response are also case sensative.
                 var webUserObj = eval(response);
-
-                //alert ("webUserId is "+webUserObj.webUserId);
                 document.updateForm.webUserId.value = webUserObj.webUserId;
-
-                //alert ("userEmail is "+webUserObj.userEmail);
                 document.updateForm.userEmail.value = webUserObj.userEmail;
-
-                //alert ("userPw is "+webUserObj.userPw);
                 document.updateForm.userPw.value = webUserObj.userPw;
-
-                //alert ("userPw2 is "+webUserObj.userPw2);
                 document.updateForm.userPw2.value = webUserObj.userPw2;
-
-                //alert ("membershipFee is "+webUserObj.membershipFee);
                 document.updateForm.membershipFee.value = webUserObj.membershipFee;
-
-                //alert ("userRoleId is "+webUserObj.userRoleId);
                 document.updateForm.userRoleId.value = webUserObj.userRoleId;
-
-                //alert ("birthday is "+webUserObj.birthday);
                 document.updateForm.birthday.value = webUserObj.birthday;
-
-               
             }
         }
 
         // this is ajax call to server, 
         // asking for all the data associated with a particular primary key
         function sendRequest(primaryKey) {
-            alert('sending request for web user ' + primaryKey);
             httpReq.open("GET", "getWebUserJSON.jsp?primaryKey=" + primaryKey);
             httpReq.onreadystatechange = handleResponse;
             httpReq.send(null);

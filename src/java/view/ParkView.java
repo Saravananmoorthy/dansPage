@@ -1,15 +1,13 @@
 package view;
 
-// classes imported from java.sql.*
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
-// classes in my project
 import SQL.DbConn;
 import SQL.FormatUtils;
  
 public class ParkView {
 
+    
     /* This method returns a HTML table displaying all the records of the web_user table. 
      * cssClassForResultSetTable: the name of a CSS style that will be applied to the HTML table.
      *   (This style should be defined in the JSP page (header or style sheet referenced by the page).
@@ -52,7 +50,9 @@ public class ParkView {
                     + "<br/> partial output: <br/>" + sb.toString();
         }
     }
-/* This method returns a HTML table displaying all the records of the web_user table. 
+    
+    
+    /* This method returns a HTML table displaying all the records of the web_user table. 
      * cssClassForResultSetTable: the name of a CSS style that will be applied to the HTML table.
      *   (This style should be defined in the JSP page (header or style sheet referenced by the page).
      * delFn:  the name of a javascript function in the JSP page, a function that expects an
@@ -137,6 +137,7 @@ public class ParkView {
                     + "<br/> partial output: <br/>" + sb.toString();
         }
     }
+    
     
     public static String listUpdateDeleteUsers(String cssClassForResultSetTable, String delFn, String delIcon,
             String updateFn, String updateIcon, DbConn dbc) {
@@ -234,5 +235,4 @@ public class ParkView {
                     + "<br/> partial output: <br/>" + sb.toString();
         }
     }
-
 }

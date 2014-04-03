@@ -176,8 +176,7 @@
             if (httpReq.readyState == 4 && httpReq.status == 200) {
                 //alert('handling response ready 4 status 200');
                 var response = httpReq.responseText;
-                alert("response is " + response);
-
+                
                 // be careful -- field names on the document are case sensative
                 // field names extracted from the JSON response are also case sensative.
                 var parkObj = eval(response);
@@ -192,7 +191,6 @@
         // this is ajax call to server, 
         // asking for all the data associated with a particular primary key
         function sendRequest(primaryKey) {
-            alert('sending request for park ' + primaryKey);
             httpReq.open("GET", "getOtherJSON.jsp?primaryKey=" + primaryKey);
             httpReq.onreadystatechange = handleResponse;
             httpReq.send(null);

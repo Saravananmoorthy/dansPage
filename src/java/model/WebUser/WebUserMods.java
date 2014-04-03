@@ -3,7 +3,8 @@ package model.WebUser;
 import SQL.*;   //no need to list each one if we're importing the entire package
 import java.sql.*;
 
-/**
+
+/*
  * This class contains all code that modifies records in a table in the
  * database. So, Insert, Update, and Delete code will be in this class
  * (eventually). Right now, it's just doing DELETE.
@@ -103,7 +104,8 @@ public class WebUserMods {
         }
 
         TypedData wuTypedData = (TypedData) wuValidate.getTypedData();
-        String sql = "INSERT INTO web_user (user_email, user_password, membership_fee, user_role_id, birthday"
+        String sql = "INSERT INTO web_user (user_email, user_password, "
+                + "membership_fee, user_role_id, birthday"
                 + ") VALUES (?,?,?,?,?)";
         try {
             PreparedStatement pStatement = dbc.getConn().prepareStatement(sql);
@@ -155,7 +157,7 @@ public class WebUserMods {
         }
     }// method
 
-    /**
+    /*
      * Find the webUser record that has the given primary key. If found, return
      * true and fill up the WebUser object with found data, otherwise, return
      * false.
@@ -226,7 +228,7 @@ public class WebUserMods {
             return null;
         } // catch misc error
     } // method
-    
+
     // Returning "" empty string means the UPDATE was successful
     public String update(Validate validate) {
         this.errorMsg = "";
@@ -291,6 +293,4 @@ public class WebUserMods {
             return this.errorMsg;
         } // catch
     }// method
-
-
 } // class

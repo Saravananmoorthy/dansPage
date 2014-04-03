@@ -3,11 +3,12 @@ package model.Parks;
 import SQL.*;   //no need to list each one if we're importing the entire package
 import java.sql.*;
 
-/** 
- * This class contains all code that modifies records in a table in the database. 
- * So, Insert, Update, and Delete code will be in this class (eventually). Right now, 
- * it's just doing DELETE.
- * 
+
+/*
+ * This class contains all code that modifies records in a table in the
+ * database. So, Insert, Update, and Delete code will be in this class
+ * (eventually). Right now, it's just doing DELETE.
+ *
  * This class requires an open database connection for its constructor method.
  */
 public class ParkMods {
@@ -32,7 +33,7 @@ public class ParkMods {
     /* returns "" if all went well, otherwise returns error message */
     public String delete(String primaryKey) {
         this.errorMsg = "";  // clear any error message from before.
-        
+
         String sql = "DELETE FROM parks where park_id=?";
         try {
             PreparedStatement sqlSt = dbc.getConn().prepareStatement(sql);
@@ -53,32 +54,30 @@ public class ParkMods {
             if (e.getSQLState().equalsIgnoreCase("S1000")) {
                 this.errorMsg = "Could not delete.";
             }
-            
+
             String tempErrorMesg = e.getMessage();
-            
+
             if (tempErrorMesg.contains("FOREIGN KEY")) {
                 this.errorMsg = "This park cannot be deleted because there are"
                         + " still trip reports for the park. Please delete all"
                         + " trip reports associated with this park first.";
-            }
-            
-            else {
+            } else {
                 this.errorMsg += "Problem with SQL in WebUserSql.delete: "
-                    + "SQLState [" + e.getSQLState()
-                    + "], error message [" + tempErrorMesg + "]";
+                        + "SQLState [" + e.getSQLState()
+                        + "], error message [" + tempErrorMesg + "]";
             }
-            
+
             return this.errorMsg;
         } // catch
         catch (Exception e) {
             this.errorMsg = "General Error in ParkSql.delete: "
                     + e.getMessage();
             System.out.println(this.errorMsg);
-            
+
             return this.errorMsg;
         } // catch
     }// method delete   
-    
+
     /* This method requires a pre-validated Other data object. 
      * It also assumes that an open database connection was provided to the constructor.
      * It returns true if it is able to insert the user data into the database.
@@ -144,8 +143,8 @@ public class ParkMods {
             return this.errorMsg;
         }
     }// method
-    
-        /**
+
+    /*
      * Find the webUser record that has the given primary key. If found, return
      * true and fill up the WebUser object with found data, otherwise, return
      * false.
@@ -189,7 +188,7 @@ public class ParkMods {
             return null;
         }
     } // method    
-    
+
     public StringData extractResultSetToStringData(ResultSet results) {
         StringData parkStringData = new StringData();
         try {
@@ -213,7 +212,7 @@ public class ParkMods {
             return null;
         } // catch misc error
     } // method
-    
+
     // Returning "" empty string means the UPDATE was successful
     public String update(Validate validate) {
         this.errorMsg = "";
@@ -225,7 +224,8 @@ public class ParkMods {
         }
 
         TypedData parkTypedData = (TypedData) validate.getTypedData();
-        String sql = "UPDATE parks SET park_name=?, state_name=?, overnight_fee=? where park_id=?";
+        String sql = "UPDATE parks SET park_name=?, state_name=?, "
+                + "overnight_fee=? where park_id=?";
 
         try {
             PreparedStatement sqlSt = dbc.getConn().prepareStatement(sql);
@@ -234,7 +234,6 @@ public class ParkMods {
             debugMsg += "<br/>" + DbEncodeUtils.encodeString(sqlSt, 2, parkTypedData.getStateName());
             debugMsg += "<br/>" + DbEncodeUtils.encodeDecimal(sqlSt, 3, parkTypedData.getOverNightFee());
             debugMsg += "<br/>" + DbEncodeUtils.encodeInteger(sqlSt, 4, parkTypedData.getParkId());
-            
 
             //System.out.println("******* Trying to update Web User with id: ["+ wu.getIdWebUser() + "]");
             try {
@@ -275,5 +274,4 @@ public class ParkMods {
             return this.errorMsg;
         } // catch
     }// method
-
 } // class
