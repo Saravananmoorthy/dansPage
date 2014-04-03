@@ -33,22 +33,25 @@
     <a href="insertOther.jsp"><h3>Add A New Park</h3></a>
     </div>
 
-        <%
+    <%
        String dbDataOrError = "";
+       
         // All properties of a new webUserStringData object are "" (empty string).
         StringData parkStringData = new StringData();
-
+        
+        
         // All error mesages in the new Validate object are "" (empty string)  
         // This is good for first display.
         Validate parkValidate = new Validate();
-
+        
         String strParkId = ""; // will be null or "" unless user is trying to update
 
         // This will hold a confirmation or error message relating to user's update attempt
         String formMsg = "";
-        
+
+        // Get database connection and check if you got it.
+  
         DbConn dbc = new DbConn();
-        dbDataOrError = dbc.getErr();
         if (dbDataOrError.length() == 0) {
             
             // This object can do update, delete, insert.
@@ -155,7 +158,7 @@
             }
         }
 
-        function deleteParkRow(primaryKey) {
+        function deleteRow(primaryKey) {
             if (confirm("Do you really want to delete park " + primaryKey + "?")) {
                 document.updateDelete.deletePK.value = primaryKey;
                 document.updateDelete.submit();

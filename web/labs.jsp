@@ -95,7 +95,13 @@
             have the drop down implemented before the semester ends.
         <p>
             This version of the site does not yet contain the challenge.
-    <h2>Lab 8 Log On</h2>
+    <h2>Lab 8 Update Ajax</h2>
+        <p>
+            I also didn't have any issues with this lab. The sample code provided
+            a good basis for creating the code. I have cleaned up several of the
+            error and output messages to be more user friendly as well as removing
+            the dialog boxes related to the JSON data requests.
+        </p>
     <h2>Lab 9 Insert Associative</h2>
     <h2>Lab 10 Update Ajax</h2>
     <h2>My Challenge</h2>
