@@ -293,4 +293,52 @@ public class WebUserMods {
             return this.errorMsg;
         } // catch
     }// method
+
+    /*
+     * Find the webUser record that has the given primary key. If found, return
+     * true and fill up the WebUser object with found data, otherwise, return
+     * false.
+     *
+     * @param email (input) the email address of the record to be found.
+     * @param password (input) the password potentially associated with the
+     *      email address provided.
+     * @param webuserStringData (output) the found record (if the record was found).
+     * @return returns true if record was found, false otherwise.
+     */
+    public StringData findLogonUser(String email, String password) {
+        StringData webUserStringData = new StringData();
+        this.errorMsg = "";     //clean any existing error messages
+       
+        try {
+            String sql = "SELECT *  FROM web_user WHERE user_email = ? and user_password = ?";
+            PreparedStatement sqlSt = dbc.getConn().prepareStatement(sql);
+            sqlSt.setString(1, email);
+            sqlSt.setString(2, password);
+
+            try {
+                ResultSet results = sqlSt.executeQuery(); // expecting only one row in result set
+                webUserStringData = this.extractResultSetToStringData(results);//
+
+                if (webUserStringData != null) {
+                    System.out.println("*** WebUserMods.find: Web User (found or not found) is " + webUserStringData.toString());
+                    return webUserStringData; // if stringData is full, record found. else all fields will be blank "".
+                } else { // stringData null means there was a problem extracting data
+                    // check the System.out message in the log to see exact exception error msg.
+                    return null;
+                }
+            } catch (Exception e) {
+                this.errorMsg = e.getMessage();
+                System.out.println("*** WebUserMods.find: exception thrown running Select Statement " + email
+                        + ". Error is: " + this.errorMsg);
+                return null;
+            }
+        }// try
+        catch (Exception e) {
+            this.errorMsg = e.getMessage();
+            System.out.println("*** WebUserMods.find: exception thrown Preparing Select Statement with PK " + email
+                    + ". Error is: " + this.errorMsg);
+            return null;
+        }
+    } // method    
+
 } // class

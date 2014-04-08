@@ -104,7 +104,7 @@
             all of the jsp pages and added database close statements where ever they 
             were needed.
         </p>
-    <h2>Lab 9 Security</h2>
+    <h2>Lab 9 Logon</h2>
         <p>
         </p>
         <p>
@@ -115,7 +115,7 @@
             server to verify the data if it is wildly incorrect.
         </p>
     <h2>Lab 9 Insert Associative</h2>
-    <h2>Lab 10 Update Ajax</h2>
+    <h2>Lab 10 </h2>
     <h2>My Challenge</h2>
 
     <jsp:include page="post-content.jsp" />
