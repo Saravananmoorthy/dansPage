@@ -110,7 +110,7 @@
             <table class="inputTable">
                 <tr>
                     <td class="prompt">User Email:</td>
-                    <td><input type="text" name="userEmail" size="45" value="<%= webUserStringData.userEmail%>" /></td>
+                    <td><input type="email" name="userEmail" size="45" value="<%= webUserStringData.userEmail%>" /></td>
                     <td class="error"><%=webUserValidate.getUserEmailMsg()%></td>
                 </tr>
                 <tr>
@@ -129,12 +129,12 @@
                     <td class="error"><%=webUserValidate.getMembershipFeeMsg()%></td>   
                 <tr>
                     <td class="prompt">User Role:</td>
-                    <td><input type="text" name="userRoleId" value="<%= webUserStringData.userRoleId%>" /></td>
+                    <td><input type="number" step="1" min="1" max="5" name="userRoleId" value="<%= webUserStringData.userRoleId%>" /></td>
                     <td class="error"><%=webUserValidate.getUserRoleMsg()%></td>
                 </tr>
                 <tr>
                     <td class="prompt">Birthday:</td>
-                    <td><input type="text" name="birthday" value="<%= webUserStringData.birthday%>" /></td>
+                    <td><input type="date" name="birthday" value="<%= webUserStringData.birthday%>" /></td>
                     <td class="error"><%=webUserValidate.getBirthdayMsg()%></td>                    
                 </tr>
                 <tr>

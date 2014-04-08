@@ -104,6 +104,16 @@
             all of the jsp pages and added database close statements where ever they 
             were needed.
         </p>
+    <h2>Lab 9 Security</h2>
+        <p>
+        </p>
+        <p>
+            For this lab I also updated the users.jsp page to use HTML 5 validations in the
+            form. This includes changing the input types to "email", "date", and "number" where
+            appropriate. I belive this will make the site slightly more responsive as it adds
+            an initial layer of rudimentary checking that doesn't require a round trip to the
+            server to verify the data if it is wildly incorrect.
+        </p>
     <h2>Lab 9 Insert Associative</h2>
     <h2>Lab 10 Update Ajax</h2>
     <h2>My Challenge</h2>
