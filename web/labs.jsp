@@ -100,7 +100,9 @@
             I also didn't have any issues with this lab. The sample code provided
             a good basis for creating the code. I have cleaned up several of the
             error and output messages to be more user friendly as well as removing
-            the dialog boxes related to the JSON data requests.
+            the dialog boxes related to the JSON data requests. I also looped through
+            all of the jsp pages and added database close statements where ever they 
+            were needed.
         </p>
     <h2>Lab 9 Insert Associative</h2>
     <h2>Lab 10 Update Ajax</h2>
