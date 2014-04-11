@@ -320,7 +320,7 @@ public class WebUserMods {
                 webUserStringData = this.extractResultSetToStringData(results);//
 
                 if (webUserStringData != null) {
-                    System.out.println("*** WebUserMods.find: Web User (found or not found) is " + webUserStringData.toString());
+                    System.out.println("*** WebUserMods.findLogon: Web User (found or not found) is " + webUserStringData.toString());
                     return webUserStringData; // if stringData is full, record found. else all fields will be blank "".
                 } else { // stringData null means there was a problem extracting data
                     // check the System.out message in the log to see exact exception error msg.
@@ -328,14 +328,14 @@ public class WebUserMods {
                 }
             } catch (Exception e) {
                 this.errorMsg = e.getMessage();
-                System.out.println("*** WebUserMods.find: exception thrown running Select Statement " + email
+                System.out.println("*** WebUserMods.findLogon: exception thrown running Select Statement " + email
                         + ". Error is: " + this.errorMsg);
                 return null;
             }
         }// try
         catch (Exception e) {
             this.errorMsg = e.getMessage();
-            System.out.println("*** WebUserMods.find: exception thrown Preparing Select Statement with PK " + email
+            System.out.println("*** WebUserMods.findLogon: exception thrown Preparing Select Statement with PK " + email
                     + ". Error is: " + this.errorMsg);
             return null;
         }
