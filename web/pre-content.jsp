@@ -15,7 +15,12 @@
                 <div id="users"   class="tab">          <a href="users.jsp">Campers</a></div>
                 <div id="search"  class="tab">          <a href="search.jsp"> Search</a></div>
                 <div id="contact" class="tab">          <a href="contact.jsp">Contact</a></div>
+                <div id="admin"   class="tab">          <a href="admin.jsp">Admin</a></div>
+                <div id="logon"   class="tab">          <a href="logon.jsp">Logon</a></div>
                 <div id="labs"    class="tab">          <a href="labs.jsp">   Labs</a></div>
                 
             </div>  <!-- finishes off the nav div -->
+            <div>
+            <a href="logon.jsp">Logon</a>
+            </div>
             <div id="content" class="selected">
