@@ -127,7 +127,7 @@ public class StringData {
     public String toString() {
         return "webUserId[" + valueOrNull(webUserId) + "] userEmail[" + valueOrNull(userEmail)
                 + "] userPw[" + valueOrNull(userPw) + "] userPw2[" + valueOrNull(userPw2)
-                + "] membershipFee[" + valueOrNull(membershipFee) + "] userRoleId[ " + valueOrNull(userRoleId)
+                + "] membershipFee[" + valueOrNull(membershipFee) + "] userRoleId[" + valueOrNull(userRoleId)
                 + "] dateAdded[" + valueOrNull(birthday) + "] recordStatus[" + valueOrNull(recordStatus) + "]";
     } // toString()
 

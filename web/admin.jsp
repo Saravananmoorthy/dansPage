@@ -19,35 +19,36 @@
     <jsp:include page="pre-content.jsp" />
 
     <%
-        String msg = "Don't know who you are.";
+        String msg = "We don't know who you are.";
         String redirectMsg = "";
         StringData myWebUserStringDataObj = (model.WebUser.StringData) session.getAttribute("webUser");
-        String user_Name = myWebUserStringDataObj.getUserEmail();
-        String user_Role = myWebUserStringDataObj.getUserRoleId();
-        System.out.println("user_Role: " + user_Role);
-        int userRole = Integer.parseInt(user_Role);
-        System.out.println("int user role: " + userRole);
-            if (user_Name == null) {
-                redirectMsg = "Sorry you cannot access the ADMIN page because you are not logged in.";
-            } else if (userRole > 1) {
+        if (myWebUserStringDataObj != null) {
+            String user_Name = myWebUserStringDataObj.getUserEmail();
+            String user_Role = myWebUserStringDataObj.getUserRoleId();
+            int userRole = Integer.parseInt(user_Role);
+
+            if (userRole > 1) { //Admin has the lowest permission number.
                 redirectMsg = "Sorry you are not authorized to access the ADMIN page.";
             }
-            if (redirectMsg.length() != 0) {
-                try {
-                    response.sendRedirect("deny.jsp?errorMsg=" + redirectMsg);
-                } catch (Exception e) {
-                    msg += " Exception was thrown: " + e.getMessage();
-                }
+
+            msg = "Hello " + user_Name + " (your role is " + user_Role + ")";
+        } else {
+            redirectMsg = "Sorry you cannot access the ADMIN page because you are not logged in.";
+        }
+
+        if (redirectMsg.length() != 0) {
+            try {
+                response.sendRedirect("deny.jsp?errorMsg=" + redirectMsg);
+            } catch (Exception e) {
+                msg += " Exception was thrown: " + e.getMessage();
             }
-        msg = "Hello " + user_Name + " (your role is " + userRole + ")";
+        }
+
     %>
 
     <br/>
     <br/>
     <%=msg%>
-    <br/>
-    <br/>
-    <h3>You are allowed to access this ADMIN page.</h3>
-    
-    
-<jsp:include page="post-content.jsp" />
+    <br>
+
+    <jsp:include page="post-content.jsp" />

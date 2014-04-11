@@ -106,6 +106,10 @@
         </p>
     <h2>Lab 9 Logon</h2>
         <p>
+            I did not have time to implement the encryption for this lab. I did
+            create the seperate register page which asks the potential user for
+            a smaller set of information and by default sets the role to 4, which
+            has the lowest privledge.
         </p>
         <p>
             For this lab I also updated the users.jsp page to use HTML 5 validations in the

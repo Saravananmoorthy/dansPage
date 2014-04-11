@@ -308,7 +308,7 @@ public class WebUserMods {
     public StringData findLogonUser(String email, String password) {
         StringData webUserStringData = new StringData();
         this.errorMsg = "";     //clean any existing error messages
-       
+
         try {
             String sql = "SELECT *  FROM web_user WHERE user_email = ? and user_password = ?";
             PreparedStatement sqlSt = dbc.getConn().prepareStatement(sql);
