@@ -35,6 +35,7 @@
 
     <%
         String dbDataOrError = "";
+        String addAssocError = "no error";
 
         // All properties of a new webUserStringData object are "" (empty string).
         StringData parkStringData = new StringData();
@@ -66,6 +67,11 @@
                 } else {
                     out.println("<h3>" + sqlMods.getErrorMsg() + "</h3>");
                 }
+            }
+            
+            String addAssoc = request.getParameter("addPK");
+            if (addAssoc != null && addAssoc.length() > 0) {
+                addAssocError = addAssoc;
             }
 
             // webUserId (html form input) will have a value (not null, not empty)
@@ -100,8 +106,12 @@
     <div id="inputArea">
         <form name="updateDelete" action="other.jsp" method="get">
             <input type="hidden" name="deletePK">
-
         </form>
+        
+        <form name="addAssoc" action="other.jsp" method="get">
+            <input type="hidden" name="addPK">
+        </form>
+        
         <br/>
         <form name="updateForm" action="other.jsp" method="get">           
             Park Id <input type="hidden"  name="parkId" value="<%= parkStringData.parkId%>" /> 
@@ -133,6 +143,8 @@
     <br/>
 
     <%=dbDataOrError%>
+    <br>
+    <%=addAssocError%>
 
     <script language="Javascript" type="text/javascript">
 
@@ -162,6 +174,11 @@
                 document.updateDelete.deletePK.value = primaryKey;
                 document.updateDelete.submit();
             }
+        }
+        
+        function addAssoc(primaryKey) {
+            document.addAssoc.addPK.value = primaryKey;
+            document.addAssoc.submit();
         }
 
         function clearFields() {
@@ -196,10 +213,6 @@
             httpReq.open("GET", "getOtherJSON.jsp?primaryKey=" + primaryKey);
             httpReq.onreadystatechange = handleResponse;
             httpReq.send(null);
-        }
-        
-        function addAssoc() {
-            
         }
 
     </script>
