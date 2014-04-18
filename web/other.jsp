@@ -35,9 +35,16 @@
 
     <%
         String dbDataOrError = "";
+        model.WebUser.StringData webUserStringDataObj = (model.WebUser.StringData) session.getAttribute("webUser");
+        /* there is a conflicting namespace with WebUser and ParkUser that has
+         *   only now shown up. Since we're at the end of the semester it seems
+         *   to be the best course of action to simply call in the data type
+         *   directly instead of refactoring to to fix the conflict.
+         */
+        
         String addAssocError = "no error";
 
-        // All properties of a new webUserStringData object are "" (empty string).
+        // All properties of a new parkStringData object are "" (empty string).
         StringData parkStringData = new StringData();
 
         // All error mesages in the new Validate object are "" (empty string)  
@@ -70,8 +77,12 @@
             }
             
             String addAssoc = request.getParameter("addPK");
+            String blah = "";
             if (addAssoc != null && addAssoc.length() > 0) {
-                addAssocError = addAssoc;
+                if (webUserStringDataObj != null) {
+                    blah = webUserStringDataObj.getUserEmail();
+                }
+                addAssocError = "hello " + blah + " " + addAssoc;
             }
 
             // webUserId (html form input) will have a value (not null, not empty)

@@ -25,14 +25,14 @@ public class StringData {
     }
 
     /**
-     * @return the userPassword
+     * @return the overNightFee
      */
     public String getOverNightFee() {
         return overNightFee;
     }
 
     /**
-     * @param userPassword the userPassword to set
+     * @param overNightFee the overNightFee to set
      */
     public void setOverNightFee(String overNightFee) {
         this.overNightFee = overNightFee;
@@ -40,14 +40,14 @@ public class StringData {
 
 
     /**
-     * @return the overNightFee2
+     * @return the stateName
      */
     public String getStateName() {
         return stateName;
     }
 
     /**
-     * @param stateName the overNightFee2 to set
+     * @param stateName the stateName to set
      */
     public void setStateName(String stateName) {
         this.stateName = stateName;
