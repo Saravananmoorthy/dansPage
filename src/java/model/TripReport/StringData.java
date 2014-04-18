@@ -1,7 +1,5 @@
 package model.TripReport;
 
-import model.TripReport.*;
-
 public class StringData {
 
     public String tripId = "";
