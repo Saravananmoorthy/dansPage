@@ -8,10 +8,12 @@ public class TypedData {
     private Integer tripId = null;
     private String tripTitle = "";
     private String tripDescription = "";
-    private java.math.BigDecimal numDaysSpent = null;
+    private Integer numDaysSpent = null;
     private String photosURL = "";
     private String gpsURL = "";
     private java.sql.Date tripDate = null;
+    private Integer parkId = null;
+    private Integer webUserId = null;
     
     
     
@@ -34,7 +36,9 @@ public class TypedData {
                 + "numDaysSpent: " + myToString(this.getNumDaysSpent()) + newLineString
                 + "photosURL: " + myToString(this.getPhotosURL()) + newLineString
                 + "gpsURL: " + myToString(this.getGpsURL()) + newLineString
-                + "tripDate: " + myToString(this.getTripDate()) + newLineString;
+                + "tripDate: " + myToString(this.getTripDate()) + newLineString
+                + "parkId: " + myToString(this.getParkId()) + newLineString
+                + "webUserId: " + myToString(this.getWebUserId()) + newLineString;
     }
 
     private String myToString(Object obj) {
@@ -119,14 +123,14 @@ public class TypedData {
     /**
      * @return the numDaysSpent
      */
-    public java.math.BigDecimal getNumDaysSpent() {
+    public Integer getNumDaysSpent() {
         return numDaysSpent;
     }
 
     /**
      * @param numDaysSpent the numDaysSpent to set
      */
-    public void setNumDaysSpent(java.math.BigDecimal numDaysSpent) {
+    public void setNumDaysSpent(Integer numDaysSpent) {
         this.numDaysSpent = numDaysSpent;
     }
     
@@ -143,4 +147,34 @@ public class TypedData {
     public void setTripDate(java.sql.Date tripDate) {
         this.tripDate = tripDate;
     }
+    
+    /**
+     * @return the parkId
+     */
+    public Integer getParkId() {
+        return parkId;
+    }
+
+    /**
+     * @param parkId the parkId to set
+     */
+    public void setParkId(Integer parkId) {
+        this.parkId = parkId;
+    }
+    
+    /**
+     * @return the webUserId
+     */
+    public Integer getWebUserId() {
+        return webUserId;
+    }
+
+    /**
+     * @param webUserId the parkId to set
+     */
+    public void setWebUserId(Integer webUserId) {
+        this.webUserId = webUserId;
+    }
+
+    
 }

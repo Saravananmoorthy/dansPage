@@ -17,6 +17,8 @@ public class Validate {
     private String photosURLMsg = "";
     private String gpsURLMsg = "";
     private String tripDateMsg = "";
+    private String parkIdMsg = "";
+    private String webUserIdMsg = "";
     
     private boolean isValidated = false; // true iff all fields validate ok.
     private String debugMsg = "";
@@ -32,10 +34,10 @@ public class Validate {
     public Validate() {
     }
 
-    public Validate(StringData tip) {
+    public Validate(StringData trip) {
         // validationUtils method validates each user input (String even if destined for other type) from WebUser object
         // side effect of validationUtils method puts validated, converted typed value into TypedData object
-        this.trip = tip;
+        this.trip = trip;
 
         if (trip.tripId != null && trip.tripId.length() != 0) {
             ValidateInteger vi = new ValidateInteger(trip.tripId, true);
@@ -58,9 +60,17 @@ public class Validate {
         tripT.setGpsURL(vstr.getConvertedString());
         this.gpsURLMsg = vstr.getError();
 
-        ValidateDecimal vdec = new ValidateDecimal(trip.numDaysSpent, false);
-        tripT.setNumDaysSpent(vdec.getConvertedDecimal());
-        this.numDaysSpentMsg = vdec.getError();
+        ValidateInteger vint = new ValidateInteger(trip.numDaysSpent, false);
+        tripT.setNumDaysSpent(vint.getConvertedInteger());
+        this.numDaysSpentMsg = vint.getError();
+        
+        vint = new ValidateInteger(trip.parkId, false);
+        tripT.setParkId(vint.getConvertedInteger());
+        this.parkIdMsg = vint.getError();
+        
+        vint = new ValidateInteger(trip.webUserId, false);
+        tripT.setWebUserId(vint.getConvertedInteger());
+        this.webUserIdMsg = vint.getError();
         
         ValidateDate vdate = new ValidateDate(trip.tripDate, false);
         tripT.setTripDate(vdate.getConvertedDate());
@@ -104,6 +114,14 @@ public class Validate {
         return this.tripDateMsg;
     }
     
+    public String getParkIdMsg() {
+        return this.parkIdMsg;
+    }
+    
+    public String getWebUserIdMsg() {
+        return this.webUserIdMsg;
+    }
+    
     public boolean isValidated() { 
         return this.isValidated;
     }
@@ -118,7 +136,9 @@ public class Validate {
                 + ", numDaysSpent error: " + this.numDaysSpentMsg
                 + ", photosURL error: " + this.photosURLMsg
                 + ", gpsURL error: " + this.gpsURLMsg
-                + ", tripDate error: " + this.tripDateMsg;
+                + ", tripDate error: " + this.tripDateMsg
+                + ", parkId error: " + this.parkIdMsg
+                + ", webUserId error: " + this.webUserIdMsg;
         return allMessages;
     }
 } // class
