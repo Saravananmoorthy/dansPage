@@ -8,6 +8,11 @@ public class StringData {
     public String tripTitle = "";
     public String tripDescription = "";
     public String numDaysSpent = "";
+    public String photosURL = "";
+    public String gpsURL = "";
+    public String webUserId = "";
+    public String parkId = "";
+    public String tripDate = "";
     public String recordStatus = "default"; // will be used later when doing ajax
 
     /**
@@ -67,7 +72,77 @@ public class StringData {
     public void setTripId(String tripId) {
         this.tripId = tripId;
     }
+    
+    /**
+     * @return the photosURL
+     */
+    public String getPhotosURL() {
+        return photosURL;
+    }
 
+    /**
+     * @param photosURL the photosURL to set
+     */
+    public void setPhotosURL(String photosURL) {
+        this.photosURL = photosURL;
+    }
+
+    /**
+     * @return the gpsURL
+     */
+    public String getGpsURL() {
+        return gpsURL;
+    }
+
+    /**
+     * @param gpsURL the gpsURL to set
+     */
+    public void setGpsURL(String gpsURL) {
+        this.gpsURL = gpsURL;
+    }
+    
+     /**
+     * @return the webUserId
+     */
+    public String getWebUserId() {
+        return webUserId;
+    }
+
+    /**
+     * @param webUserId the webUserId to set
+     */
+    public void setWebUserId(String webUserId) {
+        this.webUserId = webUserId;
+    }
+    
+    /**
+     * @return the parkId
+     */
+    public String getParkId() {
+        return parkId;
+    }
+
+    /**
+     * @param parkId the parkId to set
+     */
+    public void setParkId(String parkId) {
+        this.parkId = parkId;
+    }
+    
+    /**
+     * @return the tripDate
+     */
+    public String getTripDate() {
+        return tripDate;
+    }
+
+    /**
+     * @param tripDate the tripDate to set
+     */
+    public void setTripDate(String tripDate) {
+        this.tripDate = tripDate;
+    }
+    
     /**
      * @return the recordStatus
      */
@@ -84,8 +159,12 @@ public class StringData {
 
     @Override
     public String toString() {
-        return "parkId[" + valueOrNull(tripId) + "] parkName[" + valueOrNull(tripTitle)
-                + "] overNightFee[" + valueOrNull(tripDescription) + "] stateName[" + valueOrNull(numDaysSpent)
+        return "tripId[" + valueOrNull(tripId) + "] tripTitle[" + valueOrNull(tripTitle)
+                + "] tripDescription[" + valueOrNull(tripDescription) + "] numDaysSpent[" 
+                + valueOrNull(numDaysSpent) + "] tripDate[" + valueOrNull(tripDate) 
+                + "] webUserId[" + valueOrNull(webUserId) + "] parkId["
+                + valueOrNull(parkId) + "] photosURL[" + valueOrNull(photosURL)
+                + "] gpsURL[" + valueOrNull(gpsURL)
                 + "] recordStatus[" + valueOrNull(recordStatus) + "]";
     } // toString()
 
@@ -97,8 +176,12 @@ public class StringData {
     }
 
     public String toJSON() {
-        return "({ parkId: '" + valueOrNull(tripId) + "', parkName: '" + valueOrNull(tripTitle)
-                + "', overNightFee: '" + valueOrNull(tripDescription) + "', stateName: '" + valueOrNull(numDaysSpent)
+        return "({ tripId: '" + valueOrNull(tripId) + "', tripTitle: '" + valueOrNull(tripTitle)
+                + "', tripDescription: '" + valueOrNull(tripDescription) + "', "
+                + "numDaysSpent: '" + valueOrNull(numDaysSpent) + "', tripDate:" + valueOrNull(tripDate) 
+                + "', webUserId:" + valueOrNull(webUserId) + "', parkId:"
+                + valueOrNull(parkId) + "', photosURL:" + valueOrNull(photosURL)
+                + "', gpsURL:" + valueOrNull(gpsURL)
                 + "', recordStatus: '" + valueOrNull(recordStatus) + "' })";
     }
 } // class

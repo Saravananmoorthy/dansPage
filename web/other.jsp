@@ -8,9 +8,7 @@
 
 <%@page language="java" import="SQL.DbConn" %>
 <%@page language="java" import="view.ParkView" %>
-<%@page language="java" import="model.Parks.ParkMods" %>
-<%@page language="java" import="model.Parks.StringData" %>
-<%@page language="java" import="model.Parks.Validate" %>
+<%@page language="java" import="model.Parks.*" %>
 
 <!DOCTYPE HTML>
 
@@ -35,14 +33,13 @@
 
     <%
         String dbDataOrError = "";
-        model.WebUser.StringData webUserStringDataObj = (model.WebUser.StringData) session.getAttribute("webUser");
-        /* there is a conflicting namespace with WebUser and ParkUser that has
+        model.TripReport.StringData tripDataObj = new model.TripReport.StringData();
+        model.WebUser.StringData webUserDataObj = (model.WebUser.StringData) session.getAttribute("webUser");
+        /* there is a conflicting namespace with TripReport, WebUser, and ParkUser that has
          *   only now shown up. Since we're at the end of the semester it seems
          *   to be the best course of action to simply call in the data type
          *   directly instead of refactoring to to fix the conflict.
          */
-        
-        String addAssocError = "no error";
 
         // All properties of a new parkStringData object are "" (empty string).
         StringData parkStringData = new StringData();
@@ -55,6 +52,9 @@
 
         // This will hold a confirmation or error message relating to user's update attempt
         String formMsg = "";
+
+        //This will hold an error message indicating the user needs to log in before an add attempt
+        String addAssocError = "";
 
         // Get database connection and check if you got it.
         DbConn dbc = new DbConn();
@@ -75,14 +75,23 @@
                     out.println("<h3>" + sqlMods.getErrorMsg() + "</h3>");
                 }
             }
-            
-            String addAssoc = request.getParameter("addPK");
-            String blah = "";
-            if (addAssoc != null && addAssoc.length() > 0) {
-                if (webUserStringDataObj != null) {
-                    blah = webUserStringDataObj.getUserEmail();
+
+            String parkId = request.getParameter("addPK");
+            if (parkId != null && parkId.length() > 0) {
+                if (webUserDataObj != null) {
+                    tripDataObj.setWebUserId(webUserDataObj.getWebUserId());
+                    tripDataObj.setParkId(parkId);
+                    session.setAttribute("parkId", tripDataObj); //set Session Object
+                    //we want a session object of type trip report but it must contain the webUserId
+                    try {
+                        response.sendRedirect("insertAssoc.jsp");
+                    } catch (Exception e) {
+                        addAssocError += " Exception was thrown: " + e.getMessage();
+                    }
+                } else {
+                    addAssocError = "You must be logged in to add a trip repot.";
                 }
-                addAssocError = "hello " + blah + " " + addAssoc;
+
             }
 
             // webUserId (html form input) will have a value (not null, not empty)
@@ -114,15 +123,18 @@
 
     %>
 
+    <br>
+    <%=addAssocError%>
+
     <div id="inputArea">
         <form name="updateDelete" action="other.jsp" method="get">
             <input type="hidden" name="deletePK">
         </form>
-        
+
         <form name="addAssoc" action="other.jsp" method="get">
             <input type="hidden" name="addPK">
         </form>
-        
+
         <br/>
         <form name="updateForm" action="other.jsp" method="get">           
             Park Id <input type="hidden"  name="parkId" value="<%= parkStringData.parkId%>" /> 
@@ -154,8 +166,7 @@
     <br/>
 
     <%=dbDataOrError%>
-    <br>
-    <%=addAssocError%>
+
 
     <script language="Javascript" type="text/javascript">
 
@@ -186,7 +197,7 @@
                 document.updateDelete.submit();
             }
         }
-        
+
         function addAssoc(primaryKey) {
             document.addAssoc.addPK.value = primaryKey;
             document.addAssoc.submit();

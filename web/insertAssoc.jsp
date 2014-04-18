@@ -1,5 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<%@page language="java" import="model.TripReport.StringData" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,21 +20,25 @@
     <jsp:include page="pre-content.jsp" />
 
 
-        <%
-            String msg = "You are now logged off!";   
-    try {
-          session.invalidate();
-     }
-          catch (Exception e) {
-          msg = "Exception was thrown trying to log off: " + e.getMessage();
-     }
+    <h3>
+        Soon you'll be able to add a trip report here.
+    </h3>
 
-        %>
-
-        <br/>
-        <br/>
-        <h3><%=msg%></h3>
+    <%
+        String info = "";
+        String parkId ="";
+        StringData myTripDataObj = (model.TripReport.StringData) session.getAttribute("parkId");
         
-          
-    
-<jsp:include page="post-content.jsp" />
+        if (myTripDataObj != null) {
+            info = myTripDataObj.getWebUserId();
+            parkId = myTripDataObj.getParkId();
+        }
+
+
+    %>
+
+    UserId: <%=info%>
+    <br>
+    ParkId: <%=parkId%>
+
+    <jsp:include page="post-content.jsp" />
