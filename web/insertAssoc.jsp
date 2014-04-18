@@ -1,3 +1,4 @@
+<%@page import="SQL.DbConn"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page language="java" import="model.TripReport.*" %>
 
@@ -23,12 +24,50 @@
         Soon you'll be able to add a trip report here.
     </h3>
 
-    <%  Validate tripValidate = new Validate();
+    <%
+        String formMsg = "";
+        Validate tripValidate;
+        StringData myTripDataObj = (model.TripReport.StringData) session.getAttribute("parkId");
+
         String info = "";
         String parkId = "";
-        String formMsg="";
 
-        StringData myTripDataObj = (model.TripReport.StringData) session.getAttribute("parkId");
+        if (request.getParameter("tripTitle") == null) {
+            // first display.  All form fields are null, iff any one form field is null.
+            tripValidate = new Validate();
+        } else {
+            myTripDataObj.setTripTitle(request.getParameter("tripTitle"));
+            myTripDataObj.setTripDescription(request.getParameter("tripDescription"));
+            myTripDataObj.setNumDaysSpent(request.getParameter("numDaysSpent"));
+            myTripDataObj.setTripDate(request.getParameter("tripDate"));
+            myTripDataObj.setPhotosURL(request.getParameter("photosURL"));
+            myTripDataObj.setGpsURL(request.getParameter("gpsURL"));
+
+            tripValidate = new Validate(myTripDataObj);
+
+            if (tripValidate.isValidated()) {
+                // get an OPEN db connection.  Using default constructor (no inputs)
+                // means the dbconn object will try to determine where it's running
+                // and use the right connection string.
+                DbConn dbc = new DbConn();
+                //out.print("<h4>Connection Msg: "+dbc.getConnectionMsg()+"</h4>");
+                String dbError = dbc.getErr();
+                if (dbError.length() == 0) {
+
+                    TripReportMods tripMods = new TripReportMods(dbc);
+
+                    formMsg = tripMods.insert(tripValidate);
+                    if (formMsg.length() == 0) {
+                        formMsg = "Trip record inserted.";
+                    }
+                    dbc.close();
+                } else {
+                    formMsg = dbError;
+                }
+            } else {
+                formMsg = "Please try again.";
+            }
+        }
 
         if (myTripDataObj != null) {
             info = myTripDataObj.getWebUserId();

@@ -58,6 +58,7 @@
 
         // Get database connection and check if you got it.
         DbConn dbc = new DbConn();
+        dbDataOrError = dbc.getErr();
         if (dbDataOrError.length() == 0) {
 
             // This object can do update, delete, insert.
