@@ -118,8 +118,23 @@
             an initial layer of rudimentary checking that doesn't require a round trip to the
             server to verify the data if it is wildly incorrect.
         </p>
-    <h2>Lab 9 Insert Associative</h2>
-    <h2>Lab 10 </h2>
+    <h2>Lab 10 Insert Associative</h2>
+        <p>
+            This lab did take me a little longer than the last labs did. This wasn't
+            because it was any harder, but rather because it required me to pull 
+            together all of the different parts that I have been working on through
+            out the semester and put them together in a slightly different order. 
+            During this lab I also started the process of a final code inspection 
+            and cleanup to prepare for the final submission.
+        </p>
+        <p>
+            I did make one deviation from the lab specs. Instead of creating a 
+            separate class to hold the insert for the associative table, I placed
+             the code in the TripReportsMods class. I made this decision for two reasons: 
+             1. that class already existed and it seemed better to group related 
+             functionality than to create an extra file.
+             2. this mirrors the design of the *Mods classes for the other two tables.
+        </p>
     <h2>My Challenge</h2>
 
     <jsp:include page="post-content.jsp" />

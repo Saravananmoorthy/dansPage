@@ -18,14 +18,22 @@
 
 
     <jsp:include page="pre-content.jsp" />
-   
+
 
     <%
         String formMsg = "";
         Validate tripValidate;
         StringData myTripDataObj = (model.TripReport.StringData) session.getAttribute("parkId");
 
-        
+        if (myTripDataObj == null) {
+            //session has timed out, re-direct back to logon page
+            try {
+                response.sendRedirect("deny.jsp?errorMsg=You must be logged in to add a trip");
+            } catch (Exception e) {
+                formMsg += " Exception was thrown: " + e.getMessage();
+            }
+        }
+
         if (request.getParameter("tripTitle") == null) {
             // first display.  All form fields are null, iff any one form field is null.
             tripValidate = new Validate();
@@ -63,52 +71,51 @@
             }
         }
 
-        
+
     %>
 
-   <h1>Trip Entry</h1>
+    <h1>Trip Entry</h1>
     <form name="addTrip" action="insertAssoc.jsp" method="GET">
-        ParkId <input type="hidden"  name="parkId" value="<%= myTripDataObj.parkId%>" /> 
-        WebUserId <input type="hidden"  name="webUserId" value="<%= myTripDataObj.webUserId%>" /> 
+        <input type="hidden"  name="parkId" value="<%= myTripDataObj.parkId%>" /> 
+        <input type="hidden"  name="webUserId" value="<%= myTripDataObj.webUserId%>" /> 
 
 
-    <table class="inputTable">
-        <tr>
-            <td class="prompt">Trip Title:</td>
-            <td><input type="text" name="tripTitle" maxlength="64" value="<%= myTripDataObj.tripTitle%>" /></td>
-            <td class="error"><%=tripValidate.getTripTitleMsg()%></td>
-        </tr>
-        <tr>
-            <td class="prompt">Days Spent:</td>
-            <td><input type="text" name="numDaysSpent" value="<%= myTripDataObj.numDaysSpent%>" /></td>
-            <td class="error"><%=tripValidate.getNumDaysSpentMsg()%></td>   
-        </tr>
-        <tr>
-            <td class="prompt">Photos at:</td>
-            <td><input type="text" name="photosURL" value="<%=myTripDataObj.photosURL%>" /></td>
-            <td class="error"><%=tripValidate.getPhotosURLMsg()%></td>
-        </tr>
-        <tr>
-            <td class="prompt">GPS data at:</td>
-            <td><input type="text" name="gpsURL" value="<%=myTripDataObj.gpsURL%>" /></td>
-            <td class="error"><%=tripValidate.getGpsURLMsg()%></td>
-        </tr>
-        <tr>
-            <td class="prompt">Trip Date:</td>
-            <td><input type="text" name="tripDate" value="<%=myTripDataObj.tripDate%>" /></td>
-            <td class="error"><%=tripValidate.getTripDateMsg()%></td>
-        </tr>
-        <tr>
-            <td class="prompt">Trip Description:</td>
-            <td><input type=textarea name="tripDescription" maxlength="512" value="<%= myTripDataObj.tripDescription%>" /></td>
-            <td class="error"><%=tripValidate.getTripDescriptionMsg()%></td>
-        </tr>
-        <tr>
-            <td class="prompt"><input type="submit" value="Add" /></td>
-            <td><input type="button" value="Clear Data" onclick="clearFields()"/></td>
-            <td id="message"><%=formMsg%></td>
-        </tr>
-    </table>      
+        <table class="inputTable">
+            <tr>
+                <td class="prompt">Trip Title:</td>
+                <td><input type="text" name="tripTitle" maxlength="64" value="<%= myTripDataObj.tripTitle%>" /></td>
+                <td class="error"><%=tripValidate.getTripTitleMsg()%></td>
+            </tr>
+            <tr>
+                <td class="prompt">Days Spent:</td>
+                <td><input type="text" name="numDaysSpent" value="<%= myTripDataObj.numDaysSpent%>" /></td>
+                <td class="error"><%=tripValidate.getNumDaysSpentMsg()%></td>   
+            </tr>
+            <tr>
+                <td class="prompt">Photos at:</td>
+                <td><input type="text" name="photosURL" value="<%=myTripDataObj.photosURL%>" /></td>
+                <td class="error"><%=tripValidate.getPhotosURLMsg()%></td>
+            </tr>
+            <tr>
+                <td class="prompt">GPS data at:</td>
+                <td><input type="text" name="gpsURL" value="<%=myTripDataObj.gpsURL%>" /></td>
+                <td class="error"><%=tripValidate.getGpsURLMsg()%></td>
+            </tr>
+            <tr>
+                <td class="prompt">Trip Date:</td>
+                <td><input type="text" name="tripDate" value="<%=myTripDataObj.tripDate%>" /></td>
+                <td class="error"><%=tripValidate.getTripDateMsg()%></td>
+            </tr>
+            <tr>
+                <td class="prompt">Trip Description:</td>
+                <td><input type=textarea name="tripDescription" maxlength="512" value="<%= myTripDataObj.tripDescription%>" /></td>
+                <td class="error"><%=tripValidate.getTripDescriptionMsg()%></td>
+            </tr>
+            <tr>
+                <td class="prompt"><input type="submit" value="Add" /></td>
+                <td id="message"><%=formMsg%></td>
+            </tr>
+        </table>      
     </form>
 
     <jsp:include page="post-content.jsp" />
