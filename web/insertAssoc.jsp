@@ -18,20 +18,14 @@
 
 
     <jsp:include page="pre-content.jsp" />
-
-
-    <h3>
-        Soon you'll be able to add a trip report here.
-    </h3>
+   
 
     <%
         String formMsg = "";
         Validate tripValidate;
         StringData myTripDataObj = (model.TripReport.StringData) session.getAttribute("parkId");
 
-        String info = "";
-        String parkId = "";
-
+        
         if (request.getParameter("tripTitle") == null) {
             // first display.  All form fields are null, iff any one form field is null.
             tripValidate = new Validate();
@@ -69,17 +63,13 @@
             }
         }
 
-        if (myTripDataObj != null) {
-            info = myTripDataObj.getWebUserId();
-            parkId = myTripDataObj.getParkId();
-        }
-
-
+        
     %>
 
-    UserId: <%=info%>
-    <br>
-    ParkId: <%=parkId%>
+   <h1>Trip Entry</h1>
+    <form name="addTrip" action="insertAssoc.jsp" method="GET">
+        ParkId <input type="hidden"  name="parkId" value="<%= myTripDataObj.parkId%>" /> 
+        WebUserId <input type="hidden"  name="webUserId" value="<%= myTripDataObj.webUserId%>" /> 
 
 
     <table class="inputTable">
@@ -118,6 +108,7 @@
             <td><input type="button" value="Clear Data" onclick="clearFields()"/></td>
             <td id="message"><%=formMsg%></td>
         </tr>
-    </table>          
+    </table>      
+    </form>
 
     <jsp:include page="post-content.jsp" />

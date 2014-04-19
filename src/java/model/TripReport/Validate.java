@@ -52,11 +52,11 @@ public class Validate {
         tripT.setTripDescription(vstr.getConvertedString());
         this.tripDescriptionMsg = vstr.getError();
         
-        vstr = new ValidateString(trip.photosURL, 128, true);
+        vstr = new ValidateString(trip.photosURL, 128, false);
         tripT.setPhotosURL(vstr.getConvertedString());
         this.photosURLMsg = vstr.getError();
         
-        vstr = new ValidateString(trip.gpsURL, 128, true);
+        vstr = new ValidateString(trip.gpsURL, 128, false);
         tripT.setGpsURL(vstr.getConvertedString());
         this.gpsURLMsg = vstr.getError();
 
