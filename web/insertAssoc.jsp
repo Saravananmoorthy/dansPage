@@ -16,9 +16,7 @@
         <title>Get Out Local</title>
     </head>
 
-
     <jsp:include page="pre-content.jsp" />
-
 
     <%
         String formMsg = "";
@@ -52,7 +50,6 @@
                 // means the dbconn object will try to determine where it's running
                 // and use the right connection string.
                 DbConn dbc = new DbConn();
-                //out.print("<h4>Connection Msg: "+dbc.getConnectionMsg()+"</h4>");
                 String dbError = dbc.getErr();
                 if (dbError.length() == 0) {
 
@@ -70,15 +67,12 @@
                 formMsg = "Please try again.";
             }
         }
-
-
     %>
 
     <h1>Trip Entry</h1>
     <form name="addTrip" action="insertAssoc.jsp" method="GET">
         <input type="hidden"  name="parkId" value="<%= myTripDataObj.parkId%>" /> 
         <input type="hidden"  name="webUserId" value="<%= myTripDataObj.webUserId%>" /> 
-
 
         <table class="inputTable">
             <tr>
@@ -108,7 +102,8 @@
             </tr>
             <tr>
                 <td class="prompt">Trip Description:</td>
-                <td><input type=textarea name="tripDescription" maxlength="512" value="<%= myTripDataObj.tripDescription%>" /></td>
+                <td><input type=textarea name="tripDescription" maxlength="512" 
+                           value="<%= myTripDataObj.tripDescription%>" /></td>
                 <td class="error"><%=tripValidate.getTripDescriptionMsg()%></td>
             </tr>
             <tr>

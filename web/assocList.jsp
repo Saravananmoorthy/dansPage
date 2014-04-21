@@ -23,23 +23,25 @@
         </script>
         <title>Get Out Local</title>
     </head>
+
     <jsp:include page="pre-content.jsp" />
 
-        <%
-            DbConn dbc = new DbConn();
-            String dbErrorOrData = dbc.getErr();
-            if (dbErrorOrData.length() == 0) { // got open connection
+    <%
+        DbConn dbc = new DbConn();
+        String dbErrorOrData = dbc.getErr();
+        if (dbErrorOrData.length() == 0) { // got open connection
 
-                // this returns a string that contains a HTML table with the data in it
-                dbErrorOrData = TripReportView.listAllTrips("resultSetFormat", dbc);
+            // this returns a string that contains a HTML table with the data in it
+            dbErrorOrData = TripReportView.listAllTrips("resultSetFormat", dbc);
 
-                // PREVENT DB connection leaks:
-                //    EVERY code path that opens a db connection, must also close it.
-                dbc.close();
-            }
-        %>
+            // PREVENT DB connection leaks:
+            //    EVERY code path that opens a db connection, must also close it.
+            dbc.close();
+        }
+    %>
 
-        <h1>Trip Reports</h1>
-        <% out.print(dbErrorOrData); %>
-   
+    <h1>Trip Reports</h1>
+
+    <%=dbErrorOrData%>
+
     <jsp:include page="post-content.jsp" />

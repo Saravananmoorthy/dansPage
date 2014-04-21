@@ -28,10 +28,10 @@
             int userRole = Integer.parseInt(user_Role);
 
             if (userRole > 1) { //Admin has the lowest permission number.
-                redirectMsg = "Sorry you are not authorized to access the ADMIN page.";
+                redirectMsg = "Sorry. You are not authorized to access the ADMIN page.";
             }
 
-            msg = "Hello " + user_Name + " (your role is " + user_Role + ")";
+            msg = "Hello " + user_Name + ", your role is " + user_Role + ".";
         } else {
             redirectMsg = "Sorry you cannot access the ADMIN page because you are not logged in.";
         }

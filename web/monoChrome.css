@@ -1,165 +1,156 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
 /* 
     Created on : Feb 13, 2014, 9:07:52 PM
     Author     : dan mcginnis
 */
 
-            body {
-                font-family: "Tahoma", "Helvetica", "Arial", sans-serif;
-                background-image: url(images/shadowTrees.jpeg);  /* Pic size:200-300K, but for sure <500K. Put in folder "images" */
-                /*Background image courtesy of http://www.tonyjohnson.info/ */
-                background-repeat: no-repeat;
-                background-size: cover;  /* bg pic will stretch when window is resized */
-                background-color: gainsboro; /* select color that matches your bg pic */
-                opacity:0.70;
-            }
-            
-            #container {
-                width:85%;  
-                margin:auto;  /* this means center the container div (itself, not its contents) */
-                font-size: 14px;
-                min-width: 750px;  /* if user tries to size smaller than this, scroll bar will kick in. */
-            }
-            
-            #title {
-                color: whitesmoke;
-                font-weight: bold;
-                font-size: 30px;
-                letter-spacing: 2px;
-            }
-            
-            #nav {
-            }
-            
-            .tab {
-                width:12%;
-                float:left;
-                font-size:22px;
-                min-width:100px; /* tab will only get this narrow when user sizes down window */
-                text-align:center;
-                background-color:whitesmoke;
-                border-top-left-radius:10px;               
-                border-top-right-radius:10px;   
-                margin:auto; 
-                color: black;
-             }
-             
-            .tab:hover { 
-                background-color:gainsboro;
-                color: whitesmoke;
-            }
-            
-            .tab a {
-                text-decoration: none;
-            }
-            
-            .tab a:link {
-                color:black;
-            }
-            
-            .tab a:visited {
-                color:grey;
-            }
-            
-            .intraLink a {
-                text-decoration: none;
-            }
-            
-            intraLink a:link {
-                color:black;
-            }
-            
-            .intraLink a:visited {
-               color:grey;
-            }
-            
-            .newLine {
-                clear:both;
-            }
-            
-            #content {
-                color:black;
-                font-size: 18px;
-                clear:both;
-                margin:0px;
-            }
-            
-            .selected {
-                background-color:whitesmoke;
-            }
-            
-            #footer {
-                background-color:whitesmoke;
-                text-align: right;
-                color: black; 
-            }
-            
-            #footer a {
-                text-decoration: none;
-                color: black;
-            }
-            
-            img {
-                float:left;   
-                margin: 10px;
-                margin-top:0px;
-                margin-bottom:15px;
-            }
-            
-            #themeSelector {
-                background-color:whitesmoke;
-                text-align: left;
-                color: black;
-                font-size: 15px;
-            }
-            
-            .resultSetFormat th {
-                text-align: center;
-                border: thick solid gainsboro; 
-                background-color:#e9e7e7; 
-                padding:5px;
-            }
-            
-            .resultSetFormat td {
-                text-align: right;
-                border: snow thick solid;
-                background-color:white; 
-                padding:5px;
-            }
-            
-            .error {
-                color:red;
-                font-weight: bold
-            }
-            
-            #message {
-                font-size:14px; 
-                font-weight:bold; 
-                color:red;
-            }
-            
-            .pseudoHeader {
-                font-size:22px; 
-                font-weight:bold;
-            }
-            
-            .prompt {
-                text-align: right;
-                padding-right: 5px;
-            }
-            
-            .inputTable {
-                margin-right: 10px;
-                text-align:left; 
-                border:thin solid gray; 
-                padding:5px; 
-            }
-            
-            #inputArea {
-                display:none;
-                margin-left:55px;
-            }
+body {
+    font-family: "Tahoma", "Helvetica", "Arial", sans-serif;
+    background-image: url(images/shadowTrees.jpeg);  
+    background-repeat: no-repeat;
+    background-size: cover;  /* bg pic will stretch when window is resized */
+    background-color: gainsboro; 
+    opacity:0.70;
+}
+
+#container {
+    width:85%;  
+    margin:auto;  /* this means center the container div (itself, not its contents) */
+    font-size: 14px;
+    min-width: 750px;  /* if user tries to size smaller than this, scroll bar will kick in. */
+}
+
+#title {
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 30px;
+    letter-spacing: 2px;
+}
+
+.tab {
+    width:12%;
+    float:left;
+    font-size:22px;
+    min-width:100px; /* tab will only get this narrow when user sizes down window */
+    text-align:center;
+    background-color:whitesmoke;
+    border-top-left-radius:10px;               
+    border-top-right-radius:10px;   
+    margin:auto; 
+    color: black;
+}
+
+.tab:hover { 
+    background-color:gainsboro;
+    color: whitesmoke;
+}
+
+.tab a {
+    text-decoration: none;
+}
+
+.tab a:link {
+    color:black;
+}
+
+.tab a:visited {
+    color:grey;
+}
+
+.intraLink a {
+    text-decoration: none;
+}
+
+intraLink a:link {
+    color:black;
+}
+
+.intraLink a:visited {
+    color:grey;
+}
+
+.newLine {
+    clear:both;
+}
+
+#content {
+    color:black;
+    font-size: 18px;
+    clear:both;
+    margin:0px;
+}
+
+.selected {
+    background-color:whitesmoke;
+}
+
+#footer {
+    background-color:whitesmoke;
+    text-align: right;
+    color: black; 
+}
+
+#footer a {
+    text-decoration: none;
+    color: black;
+}
+
+img {
+    float:left;   
+    margin: 10px;
+    margin-top:0px;
+    margin-bottom:15px;
+}
+
+#themeSelector {
+    background-color:whitesmoke;
+    text-align: left;
+    color: black;
+    font-size: 15px;
+}
+
+.resultSetFormat th {
+    text-align: center;
+    border: thick solid gainsboro; 
+    background-color:#e9e7e7; 
+    padding:5px;
+}
+
+.resultSetFormat td {
+    text-align: right;
+    border: snow thick solid;
+    background-color:white; 
+    padding:5px;
+}
+
+.error {
+    color:red;
+    font-weight: bold
+}
+
+#message {
+    font-size:14px; 
+    font-weight:bold; 
+    color:red;
+}
+
+.pseudoHeader {
+    font-size:22px; 
+    font-weight:bold;
+}
+
+.prompt {
+    text-align: right;
+    padding-right: 5px;
+}
+
+.inputTable {
+    margin-right: 10px;
+    text-align:left; 
+    border:thin solid gray; 
+    padding:5px; 
+}
+
+#inputArea {
+    display:none;
+    margin-left:55px;
+}

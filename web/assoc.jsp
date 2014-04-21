@@ -24,9 +24,10 @@
         </script>
         <title>Get Out Local</title>
     </head>
+
     <jsp:include page="pre-content.jsp" />
 
-        <%
+    <%
         String dbDataOrError = "";
 
         // Get database connection and check if you got it.
@@ -51,7 +52,6 @@
             } else {
                 out.println("<h1>Trip Reports</h1>"); // place holder for message (so data grid remains in same place before and after delete.s
             }
-            // delete processed (if necessary)
 
             // now print out the whole table
             dbDataOrError = TripReportView.listDelUsers("resultSetFormat", dbc,
@@ -61,12 +61,14 @@
             dbDataOrError = dbError;
         }
     %>
+
+
     <form name="updateDelete" action="assoc.jsp" method="get">
         <input type="hidden" name="deletePK">
     </form>
 
     <% out.println(dbDataOrError);%>
-    
+
     <script language="Javascript" type="text/javascript">
 
         function deleteTripRow(primaryKey) {

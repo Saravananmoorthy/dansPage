@@ -16,6 +16,7 @@
         </script>
         <title>Get Out Local</title>
     </head>
+
     <jsp:include page="pre-content.jsp" />
 
     <%
@@ -41,14 +42,12 @@
                 // means the dbconn object will try to determine where it's running
                 // and use the right connection string.
                 DbConn dbc = new DbConn();
-                //out.print("<h4>Connection Msg: "+dbc.getConnectionMsg()+"</h4>");
                 String dbError = dbc.getErr();
                 if (dbError.length() == 0) {
                     ParkMods wus = new ParkMods(dbc);
-
                     // insert the validated web user object
                     formMsg = wus.insert(parkValidate);
-                    if (formMsg.length() == 0) { //trying to insert from a web user validation object.
+                    if (formMsg.length() == 0) {
                         formMsg = "Record inserted. ";
                     }
                     dbc.close();
@@ -58,8 +57,9 @@
             } else {
                 formMsg = "Please try again."; // user data entry error
             }
-        } // postback
-%>
+        }
+    %>
+
     <h1>Add a Park</h1>
     <form name="myForm" action="insertOther.jsp" method="POST">
         <table style="text-align:left; border:thin solid gray; padding:5px;">
@@ -84,7 +84,9 @@
             </tr>
         </table>
     </form>
+
     <div class="intraLink">
         <a href="other.jsp"><h3>List All Parks</h3></a>
     </div>
+
     <jsp:include page="post-content.jsp" />

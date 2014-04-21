@@ -24,6 +24,7 @@
         </script>
         <title>Get Out Local</title>
     </head>
+
     <jsp:include page="pre-content.jsp" />
 
     <br>
@@ -48,7 +49,7 @@
         // This is good for first display.
         Validate parkValidate = new Validate();
 
-        String strParkId = ""; // will be null or "" unless user is trying to update
+        String strParkId = "";
 
         // This will hold a confirmation or error message relating to user's update attempt
         String formMsg = "";
@@ -83,7 +84,10 @@
                     tripDataObj.setWebUserId(webUserDataObj.getWebUserId());
                     tripDataObj.setParkId(parkId);
                     session.setAttribute("parkId", tripDataObj); //set Session Object
-                    //we want a session object of type trip report but it must contain the webUserId
+                    /* We want a session object of type trip report but it must 
+                     * contain the webUserId and ParkId. I suspect on a high
+                     * volume site we'd need a more efficient solution.
+                     */
                     try {
                         response.sendRedirect("insertAssoc.jsp");
                     } catch (Exception e) {
@@ -95,8 +99,9 @@
 
             }
 
-            // webUserId (html form input) will have a value (not null, not empty)
-            // if the user is trying to update.
+            /* webUserId (html form input) will have a value (not null, not empty)
+             * if the user is trying to update.
+             */
             strParkId = request.getParameter("parkId");
             if (strParkId != null && strParkId.length() > 0) {
                 // postback -- fill WebUserData object with form data.
@@ -143,17 +148,20 @@
             <table class="inputTable">
                 <tr>
                     <td class="prompt">Park Name:</td>
-                    <td><input type="text" name="parkName" size="45" value="<%= parkStringData.parkName%>" /></td>
+                    <td><input type="text" name="parkName" size="45" 
+                               value="<%= parkStringData.parkName%>" /></td>
                     <td class="error"><%=parkValidate.getParkNameMsg()%></td>
                 </tr>
                 <tr>
                     <td class="prompt">State Name:</td>
-                    <td><input type="text" name="stateName" size="45" value="<%= parkStringData.stateName%>" /></td>
+                    <td><input type="text" name="stateName" size="45" 
+                               value="<%= parkStringData.stateName%>" /></td>
                     <td class="error"><%=parkValidate.getStateNameMsg()%></td>
                 </tr>
                 <tr>
                     <td class="prompt">Overnight Fee:</td>
-                    <td><input type="text" name="overNightFee" value="<%= parkStringData.overNightFee%>" /></td>
+                    <td><input type="text" name="overNightFee" 
+                               value="<%= parkStringData.overNightFee%>" /></td>
                     <td class="error"><%=parkValidate.getOverNightFeeMsg()%></td>   
                 <tr>
                     <td class="prompt"><input type="submit" value="Update" /></td>

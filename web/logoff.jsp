@@ -14,25 +14,20 @@
         <title>Get Out Local</title>
     </head>
 
-
     <jsp:include page="pre-content.jsp" />
 
+    <%
+        String msg = "You are now logged off!";
+        try {
+            session.invalidate();
+        } catch (Exception e) {
+            msg = "Exception was thrown trying to log off: " + e.getMessage();
+            //seems unlikely we'd ever get here but Java requires we catch here.
+        }
+    %>
 
-        <%
-            String msg = "You are now logged off!";   
-    try {
-          session.invalidate();
-     }
-          catch (Exception e) {
-          msg = "Exception was thrown trying to log off: " + e.getMessage();
-     }
+    <br>
+    <br>
+    <h3><%=msg%></h3>
 
-        %>
-
-        <br/>
-        <br/>
-        <h3><%=msg%></h3>
-        
-          
-    
-<jsp:include page="post-content.jsp" />
+    <jsp:include page="post-content.jsp" />

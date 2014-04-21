@@ -4,7 +4,6 @@
     Author     : dan mcginnis
 --%>
 
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@page language="java" import="SQL.DbConn" %>
@@ -50,7 +49,9 @@
                 if (webuserStringData.getUserEmail().length() == 0) {
                     msg = "You entered an invalid username or password";
                 } else {
-                    msg = "Welcome " + webuserStringData.getUserEmail() + ", your user role ID is " + webuserStringData.getUserRoleId();
+                    msg = "Welcome " + webuserStringData.getUserEmail()
+                            + ", your user role ID is "
+                            + webuserStringData.getUserRoleId();
                     session.setAttribute("webUser", webuserStringData); //set Session Object
                 }
 
@@ -59,6 +60,7 @@
                 dbc.close();
             }
             //  pwEncrypted = Encrypt.encryptPw(passW);
+            // currently encrypted passwords is not implemented
         } // postback
 %>
 
@@ -69,13 +71,13 @@
         <br>
         Please enter your password: <input type="password" name="pw">
 
-        <!--            <br/>
-                    Your password encrypts to this: <%= pwEncrypted%>
-                    <br/>-->
-        <br/>
+        <!-- <br/>
+        Your password encrypts to this: <%= pwEncrypted%>
+        Passwords not currently encrypted.
+        <br/>-->
+        <br>
         <input type = "submit" value = "Log On" > <br/>
         <h3>  <%=msg%></h3>
     </form>
-
 
     <jsp:include page="post-content.jsp" />

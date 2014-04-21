@@ -24,14 +24,15 @@
         </script>
         <title>Get Out Local</title>
     </head>
+
     <jsp:include page="pre-content.jsp" />
-    
+
     <br>
     <div class="intraLink">
-    <a href="insertOther.jsp"><h3>Add A New Park</h3></a>
+        <a href="insertOther.jsp"><h3>Add A New Park</h3></a>
     </div>
 
-        <%
+    <%
         String dbDataOrError = "";
 
         // Get database connection and check if you got it.
@@ -51,12 +52,13 @@
                 if (delMsg.length() == 0) {
                     out.println("<h3>Park " + delKey + " has been deleted</h3>");
                 } else {
-                    out.println("<h3>Unable to delete Park " + delKey + ". " + sqlMods.getErrorMsg() + "</h3>");
+                    out.println("<h3>Unable to delete Park " + delKey + ". "
+                            + sqlMods.getErrorMsg() + "</h3>");
                 }
             } else {
                 out.println("<h1>Parks</h1>"); // place holder for message (so data grid remains in same place before and after delete.s
             }
-            // delete processed (if necessary)
+        // delete processed (if necessary)
 
             // now print out the whole table
             dbDataOrError = ParkView.listDelUsers("resultSetFormat", dbc,
@@ -66,12 +68,13 @@
             dbDataOrError = dbError;
         }
     %>
+
     <form name="updateDelete" action="other.jsp" method="get">
         <input type="hidden" name="deletePK">
     </form>
 
     <% out.println(dbDataOrError);%>
-    
+
     <script language="Javascript" type="text/javascript">
 
         function deleteParkRow(primaryKey) {

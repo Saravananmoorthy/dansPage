@@ -16,6 +16,7 @@
         </script>
         <title>Get Out Local</title>
     </head>
+
     <jsp:include page="pre-content.jsp" />
 
     <%
@@ -25,7 +26,7 @@
 
         Validate wuValidate;
         if (request.getParameter("userEmail") == null) {
-            // first display.  All form fields are null, if and only iff any one form field is null.
+            // first display.  All form fields are null, iff any one form field is null.
             wuValidate = new Validate(); // no error messages
         } else {
             // postback -- fill WebUserData object with form data.
@@ -39,12 +40,10 @@
             wuValidate = new Validate(wuData); // populate error messages from user inputs
 
             if (wuValidate.isValidated()) {
-
                 // get an OPEN db connection.  Using default constructor (no inputs)
                 // means the dbconn object will try to determine where it's running
                 // and use the right connection string.
                 DbConn dbc = new DbConn();
-                //out.print("<h4>Connection Msg: "+dbc.getConnectionMsg()+"</h4>");
                 String dbError = dbc.getErr();
                 if (dbError.length() == 0) {
                     WebUserMods wus = new WebUserMods(dbc);
@@ -61,8 +60,9 @@
             } else {
                 formMsg = "Please try again."; // user data entry error
             }
-        } // postback
-%>
+        }
+    %>
+
     <h1>User Registration</h1>
     <form name="myForm" action="insertUser.jsp" method="POST">
         <table style="text-align:left; border:thin solid gray; padding:5px;">
@@ -94,13 +94,15 @@
             <tr>
                 <td>Birthday</td>
                 <td><input type="text" name="birthday" value="<%= wuData.birthday%>" /></td>
-                <td class="error"><%=wuValidate.getBirthdayMsg()%></td>                    </tr>
+                <td class="error"><%=wuValidate.getBirthdayMsg()%></td>
+            </tr>
             <tr>
                 <td><input type="submit" value="Submit" /></td>
                 <td colspan="2" class="error"><%=formMsg%></td>
             </tr>
         </table>
     </form>
+
     <div class="intraLink">
         <a href="users.jsp"><h3>List All Campers</h3></a>
     </div>
