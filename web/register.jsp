@@ -16,10 +16,10 @@
         </script>
         <title>Get Out Local</title>
     </head>
+
     <jsp:include page="pre-content.jsp" />
 
     <%
-
         String formMsg = "";
         StringData wuData = new StringData();  // all properties of a new WebUser object are "" (empty string)
 
@@ -34,21 +34,18 @@
             wuData.userPw2 = request.getParameter("userPw2");
             wuData.membershipFee = "";
             wuData.birthday = "";
-            wuData.userRoleId = "4";        //self register is always lowest priority
+            wuData.userRoleId = "4";   //self register is always lowest priority user
 
             wuValidate = new Validate(wuData); // populate error messages from user inputs
 
             if (wuValidate.isValidated()) {
-
                 // get an OPEN db connection.  Using default constructor (no inputs)
                 // means the dbconn object will try to determine where it's running
                 // and use the right connection string.
                 DbConn dbc = new DbConn();
-                //out.print("<h4>Connection Msg: "+dbc.getConnectionMsg()+"</h4>");
                 String dbError = dbc.getErr();
                 if (dbError.length() == 0) {
                     WebUserMods wus = new WebUserMods(dbc);
-
                     // insert the validated web user object
                     formMsg = wus.insert(wuValidate);
                     if (formMsg.length() == 0) { //trying to insert from a web user validation object.
@@ -62,7 +59,8 @@
                 formMsg = "Please try again."; // user data entry error
             }
         } // postback
-    %>
+%>
+
     <h1>User Registration</h1>
     <form name="myForm" action="register.jsp" method="POST">
         <table style="text-align:left; border:thin solid gray; padding:5px;">
@@ -86,6 +84,5 @@
             </tr>
         </table>
     </form>
-
 
     <jsp:include page="post-content.jsp" />

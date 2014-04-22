@@ -17,7 +17,6 @@
     }
 %>
 
-
 <body onload="setTheme();
         setInputArea()">
     <br/>
@@ -35,7 +34,6 @@
         </div>  <!-- finishes off the nav div -->
 
         <br>
-
 
         <div id="content" class="selected">
             <div class="intraLink" style="text-align: right">
