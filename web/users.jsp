@@ -27,15 +27,10 @@
         <title>Get Out Local</title>
     </head>
 
-    <jsp:include page="pre-content.jsp" />
-
-    <br>
-    <div class="intraLink">
-        <a href="insertUser.jsp"><h3>Add A New Camper</h3></a>
-    </div>
 
     <%
         String dbDataOrError = "";
+        String msg = "";
         // All properties of a new webUserStringData object are "" (empty string).
         StringData webUserStringData = new StringData();
 
@@ -63,9 +58,9 @@
                 // try to delete the row that has PK = delKey
                 String delMsg = sqlMods.delete(delKey);
                 if (delMsg.length() == 0) {
-                    out.println("<h3>Camper " + delKey + " has been deleted</h3>");
+                    msg = "<h3>Camper " + delKey + " has been deleted</h3>";
                 } else {
-                    out.println("<h3>" + sqlMods.getErrorMsg() + "</h3>");
+                    msg = "<h3>" + sqlMods.getErrorMsg() + "</h3>";
                 }
             }
 
@@ -98,6 +93,15 @@
             dbc.close();
         }
     %>
+    
+    <jsp:include page="pre-content.jsp" />
+    
+    <%=msg%>
+
+    <br>
+    <div class="intraLink">
+        <a href="insertUser.jsp"><h3>Add A New Camper</h3></a>
+    </div>
 
     <div id="inputArea">
         <form name="updateDelete" action="users.jsp" method="get">

@@ -25,10 +25,10 @@
         <title>Get Out Local</title>
     </head>
 
-    <jsp:include page="pre-content.jsp" />
 
     <%
         String dbDataOrError = "";
+        String msg = "";
 
         // Get database connection and check if you got it.
         DbConn dbc = new DbConn();
@@ -45,12 +45,12 @@
                 // try to delete the row that has PK = delKey
                 String delMsg = sqlMods.delete(delKey);
                 if (delMsg.length() == 0) {
-                    out.println("<h3>Trip " + delKey + " has been deleted</h3>");
+                    msg = "<h3>Trip " + delKey + " has been deleted</h3>";
                 } else {
-                    out.println("<h3>Unable to delete Trip " + delKey + ". " + sqlMods.getErrorMsg() + "</h3>");
+                    msg = "<h3>Unable to delete Trip " + delKey + ". " + sqlMods.getErrorMsg() + "</h3>";
                 }
             } else {
-                out.println("<h1>Trip Reports</h1>"); // place holder for message (so data grid remains in same place before and after delete.s
+                msg = "<h1>Trip Reports</h1>"; // place holder for message (so data grid remains in same place before and after delete.s
             }
 
             // now print out the whole table
@@ -61,13 +61,17 @@
             dbDataOrError = dbError;
         }
     %>
+    
+    <jsp:include page="pre-content.jsp" />
+    
+    <%=msg%>
 
 
     <form name="updateDelete" action="assoc.jsp" method="get">
         <input type="hidden" name="deletePK">
     </form>
 
-    <% out.println(dbDataOrError);%>
+    <%=dbDataOrError%>
 
     <script language="Javascript" type="text/javascript">
 

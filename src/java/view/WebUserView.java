@@ -7,7 +7,6 @@ import SQL.FormatUtils;
 
 public class WebUserView {
 
-
     /* This method returns a HTML table displaying all the records of the web_user table. 
      * cssClassForResultSetTable: the name of a CSS style that will be applied to the HTML table.
      *   (This style should be defined in the JSP page (header or style sheet referenced by the page).
@@ -69,15 +68,18 @@ public class WebUserView {
         // Prepare some HTML that will be used repeatedly for the delete icon that
         // calls a delete javascript function (see below).
         if ((delIcon == null) || (delIcon.length() == 0)) {
-            return "WebUserSql.listAllUsers() error: delete Icon file name (String input parameter) is null or empty.";
+            return "WebUserSql.listAllUsers() error: delete Icon file name "
+                    + "(String input parameter) is null or empty.";
         }
         if ((delFn == null) || (delFn.length() == 0)) {
-            return "WebUserSql.listAllUsers() error: delete javascript function name (String input parameter) is null or empty.";
+            return "WebUserSql.listAllUsers() error: delete javascript "
+                    + "function name (String input parameter) is null or empty.";
         }
 
         // This is the first half of the HTML that defines a table cell that will hold the delete
         // icon which will be linked to a javascript function for deleting the current row.
-        String delStart = "<td style='border:none; text-align:center; background-color:transparent;'><a href='" + delFn + "(";
+        String delStart = "<td style='border:none; text-align:center; "
+                + "background-color:transparent;'><a href='" + delFn + "(";
         // This is the HTML for the second half of that same HTML
         // In between the first half and the second half will be the actual PK of the current row
         // (input parameter to the javascript function).
@@ -125,7 +127,6 @@ public class WebUserView {
                 // this is the column with a delete icon that has a link to a javascript function.
                 // the input parameter to the delete javascript function is the PK of the user in this row.
                 sb.append(delStart + primaryKeyInt.toString() + delEnd);
-
                 sb.append(FormatUtils.formatIntegerTd(results.getObject("web_user_id")));
                 sb.append(FormatUtils.formatStringTd(results.getObject("user_email")));
                 sb.append(FormatUtils.formatStringTd(results.getObject("user_password")));
@@ -150,15 +151,18 @@ public class WebUserView {
         // Prepare some HTML that will be used repeatedly for the delete icon that
         // calls a delete javascript function (see below).
         if ((delIcon == null) || (delIcon.length() == 0)) {
-            return "WebUserSql.listAllUsers() error: delete Icon file name (String input parameter) is null or empty.";
+            return "WebUserSql.listAllUsers() error: delete Icon file name "
+                    + "(String input parameter) is null or empty.";
         }
         if ((delFn == null) || (delFn.length() == 0)) {
-            return "WebUserSql.listAllUsers() error: delete javascript function name (String input parameter) is null or empty.";
+            return "WebUserSql.listAllUsers() error: delete javascript function "
+                    + "name (String input parameter) is null or empty.";
         }
 
         // This is the first half of the HTML that defines a table cell that will hold the delete
         // icon which will be linked to a javascript function for deleting the current row.
-        String delStart = "<td style='border:none; background-color:transparent; text-align:center;'><a href='" + delFn + "(";
+        String delStart = "<td style='border:none; background-color:transparent; "
+                + "text-align:center;'><a href='" + delFn + "(";
         // This is the HTML for the second half of that same HTML
         // In between the first half and the second half will be the actual PK of the current row
         // (input parameter to the javascript function).
@@ -167,15 +171,18 @@ public class WebUserView {
         // Prepare some HTML that will be used repeatedly for the update icon that
         // calls an update javascript function (see below).
         if ((updateIcon == null) || (updateIcon.length() == 0)) {
-            return "WebUserSql.listAllUsers() error: update Icon file name (String input parameter) is null or empty.";
+            return "WebUserSql.listAllUsers() error: update Icon file name "
+                    + "(String input parameter) is null or empty.";
         }
         if ((updateFn == null) || (updateFn.length() == 0)) {
-            return "WebUserSql.listAllUsers() error: update javascript function name (String input parameter) is null or empty.";
+            return "WebUserSql.listAllUsers() error: update javascript function "
+                    + "name (String input parameter) is null or empty.";
         }
 
         // This is the first half of the HTML that defines a table cell that will hold the update
         // icon which will be linked to a javascript function for updating the current row.
-        String updateStart = "<td style='border:none; background-color:transparent; text-align:center;'><a href='" + updateFn + "(";
+        String updateStart = "<td style='border:none; background-color:transparent; "
+                + "text-align:center;'><a href='" + updateFn + "(";
         // This is the HTML for the second half of that same HTML
         // In between the first half and the second half will be the actual PK of the current row
         // (input parameter to the javascript function).
@@ -188,12 +195,10 @@ public class WebUserView {
         PreparedStatement stmt = null;
         ResultSet rst = null;
         try {
-            //sb.append("ready to create the statement & execute query " + "<br/>");
             String sql = "select web_user_id, user_email, user_password, membership_fee,  "
                     + " user_role_id, birthday from web_user order by user_email";
             stmt = dbc.getConn().prepareStatement(sql);
             rst = stmt.executeQuery();
-            //sb.append("executed the query " + "<br/><br/>");
             sb.append("<table class='" + cssClassForResultSetTable + "'>");
             sb.append("<tr>");
             sb.append("<th style='border:none; background-color:transparent;'>&nbsp;</th>");// extra column at left for delete icon

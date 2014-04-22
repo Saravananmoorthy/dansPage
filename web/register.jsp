@@ -17,8 +17,6 @@
         <title>Get Out Local</title>
     </head>
 
-    <jsp:include page="pre-content.jsp" />
-
     <%
         String formMsg = "";
         StringData wuData = new StringData();  // all properties of a new WebUser object are "" (empty string)
@@ -59,7 +57,9 @@
                 formMsg = "Please try again."; // user data entry error
             }
         } // postback
-%>
+    %>
+
+    <jsp:include page="pre-content.jsp" />
 
     <h1>User Registration</h1>
     <form name="myForm" action="register.jsp" method="POST">

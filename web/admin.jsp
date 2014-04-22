@@ -15,9 +15,6 @@
         <title>Get Out Local</title>
     </head>
 
-
-    <jsp:include page="pre-content.jsp" />
-
     <%
         String msg = "We don't know who you are.";
         String redirectMsg = "";
@@ -43,8 +40,9 @@
                 msg += " Exception was thrown: " + e.getMessage();
             }
         }
-
     %>
+
+    <jsp:include page="pre-content.jsp" />
 
     <br/>
     <br/>

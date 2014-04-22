@@ -25,15 +25,9 @@
         <title>Get Out Local</title>
     </head>
 
-    <jsp:include page="pre-content.jsp" />
-
-    <br>
-    <div class="intraLink">
-        <a href="insertOther.jsp"><h3>Add A New Park</h3></a>
-    </div>
-
     <%
         String dbDataOrError = "";
+        String msg = "";
         model.TripReport.StringData tripDataObj = new model.TripReport.StringData();
         model.WebUser.StringData webUserDataObj = (model.WebUser.StringData) session.getAttribute("webUser");
         /* there is a conflicting namespace with TripReport, WebUser, and ParkUser that has
@@ -72,9 +66,9 @@
                 // try to delete the row that has PK = delKey
                 String delMsg = sqlMods.delete(delKey);
                 if (delMsg.length() == 0) {
-                    out.println("<h3>Park " + delKey + " has been deleted</h3>");
+                    msg = "<h3>Park " + delKey + " has been deleted</h3>";
                 } else {
-                    out.println("<h3>" + sqlMods.getErrorMsg() + "</h3>");
+                    msg = "<h3>" + sqlMods.getErrorMsg() + "</h3>";
                 }
             }
 
@@ -126,8 +120,16 @@
             // PREVENT DB connection leaks: shouldnt hurt to close it even if it was never opened.
             dbc.close();
         }
-
     %>
+
+    <jsp:include page="pre-content.jsp" />
+
+    <%=msg%>
+
+    <br>
+    <div class="intraLink">
+        <a href="insertOther.jsp"><h3>Add A New Park</h3></a>
+    </div>
 
     <br>
     <%=addAssocError%>

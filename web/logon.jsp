@@ -23,9 +23,6 @@
         <title>Get Out Local</title>
     </head>
 
-
-    <jsp:include page="pre-content.jsp" />
-
     <%
         String msg = ""; // first display will show nothing on screen.
         String user_Name = request.getParameter("uname");
@@ -54,15 +51,14 @@
                             + webuserStringData.getUserRoleId();
                     session.setAttribute("webUser", webuserStringData); //set Session Object
                 }
-
                 // PREVENT DB connection leaks:
                 //    EVERY code path that opens a db connection, must also close it.
                 dbc.close();
             }
-            //  pwEncrypted = Encrypt.encryptPw(passW);
-            // currently encrypted passwords is not implemented
         } // postback
-%>
+    %>
+
+    <jsp:include page="pre-content.jsp" />
 
     <br>
     <br>
@@ -70,11 +66,6 @@
         Please enter your username: <input type="input" name="uname" value="<%=user_Name%>">
         <br>
         Please enter your password: <input type="password" name="pw">
-
-        <!-- <br/>
-        Your password encrypts to this: <%= pwEncrypted%>
-        Passwords not currently encrypted.
-        <br/>-->
         <br>
         <input type = "submit" value = "Log On" > <br/>
         <h3>  <%=msg%></h3>

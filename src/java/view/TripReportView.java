@@ -1,13 +1,11 @@
 package view;
 
-// classes imported from java.sql.*
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-// classes in my project
 import SQL.DbConn;
 import SQL.FormatUtils;
- 
+
 public class TripReportView {
 
     /* This method returns a HTML table displaying all the records of the web_user table. 
@@ -20,12 +18,12 @@ public class TripReportView {
         PreparedStatement stmt = null;
         ResultSet results = null;
         try {
-             String sql = "select trip_id, title, days_spent, date, "
-                     + "user_email, park_name, photos_url "
-                     + "FROM web_user, trip_reports, parks "
-                     + "WHERE web_user.web_user_id = trip_reports.web_user_id "
-                     + "and parks.park_id = trip_reports.park_id "
-                     + "ORDER BY trip_id";
+            String sql = "select trip_id, title, days_spent, date, "
+                    + "user_email, park_name, photos_url "
+                    + "FROM web_user, trip_reports, parks "
+                    + "WHERE web_user.web_user_id = trip_reports.web_user_id "
+                    + "and parks.park_id = trip_reports.park_id "
+                    + "ORDER BY trip_id";
             stmt = dbc.getConn().prepareStatement(sql);
             results = stmt.executeQuery();
             sb.append("<table class='");
@@ -34,25 +32,21 @@ public class TripReportView {
             sb.append("<tr>");
             sb.append("<th>Trip ID</th>");
             sb.append("<th>Title</th>");
-            //sb.append("<th style='text-align:left'>Description</th>");
             sb.append("<th>Days Spent</th>");
             sb.append("<th>Date</th>");
             sb.append("<th>Submitted By</th>");
             sb.append("<th>Park Name</th>");
             sb.append("<th>Photos</th></tr>");
-            //sb.append("<th class='tableHeader'>GPS</th></tr>");
             while (results.next()) {
                 sb.append("<tr>");
                 sb.append(FormatUtils.formatIntegerTd(results.getObject("trip_id")));
                 sb.append(FormatUtils.formatStringTd(results.getObject("title")));
-                //sb.append(FormatUtils.formatStringTd(results.getObject("description")));
                 //Description excluded because it makes for a very unbalanced table
                 sb.append(FormatUtils.formatIntegerTd(results.getObject("days_spent")));
                 sb.append(FormatUtils.formatDateTd(results.getObject("date")));
                 sb.append(FormatUtils.formatStringTd(results.getObject("user_email")));
                 sb.append(FormatUtils.formatStringTd(results.getObject("park_name")));
                 sb.append(FormatUtils.formatStringTd(results.getObject("photos_url")));
-                //sb.append(FormatUtils.formatStringTd(results.getObject("gps_url")));
                 sb.append("</tr>\n");
             }
             sb.append("</table>");
@@ -64,7 +58,7 @@ public class TripReportView {
                     + "<br/> partial output: <br/>" + sb.toString();
         }
     }
-/* This method returns a HTML table displaying all the records of the web_user table. 
+    /* This method returns a HTML table displaying all the records of the web_user table. 
      * cssClassForResultSetTable: the name of a CSS style that will be applied to the HTML table.
      *   (This style should be defined in the JSP page (header or style sheet referenced by the page).
      * delFn:  the name of a javascript function in the JSP page, a function that expects an
@@ -72,21 +66,25 @@ public class TripReportView {
      * delIcon: the name of the file that holds the delete icon (to be repeated for each web_user record).
      * dbc: an open database connection.
      */
+
     public static String listDelUsers(String cssClassForResultSetTable, DbConn dbc,
             String delFn, String delIcon) {
 
         // Prepare some HTML that will be used repeatedly for the delete icon that
         // calls a delete javascript function (see below).
         if ((delIcon == null) || (delIcon.length() == 0)) {
-            return "WebUserSql.listAllUsers() error: delete Icon file name (String input parameter) is null or empty.";
+            return "WebUserSql.listAllUsers() error: delete Icon file name "
+                    + "(String input parameter) is null or empty.";
         }
         if ((delFn == null) || (delFn.length() == 0)) {
-            return "WebUserSql.listAllUsers() error: delete javascript function name (String input parameter) is null or empty.";
+            return "WebUserSql.listAllUsers() error: delete javascript "
+                    + "function name (String input parameter) is null or empty.";
         }
 
         // This is the first half of the HTML that defines a table cell that will hold the delete
         // icon which will be linked to a javascript function for deleting the current row.
-        String delStart = "<td style='border:none; text-align:center; background-color:transparent;'><a href='" + delFn + "(";
+        String delStart = "<td style='border:none; text-align:center; "
+                + "background-color:transparent;'><a href='" + delFn + "(";
         // This is the HTML for the second half of that same HTML
         // In between the first half and the second half will be the actual PK of the current row
         // (input parameter to the javascript function).
@@ -100,19 +98,20 @@ public class TripReportView {
         ResultSet results = null;
         try {
             String sql = "select trip_id, title, days_spent, date, "
-                     + "user_email, park_name, photos_url "
-                     + "FROM web_user, trip_reports, parks "
-                     + "WHERE web_user.web_user_id = trip_reports.web_user_id "
-                     + "and parks.park_id = trip_reports.park_id "
-                     + "ORDER BY trip_id";
+                    + "user_email, park_name, photos_url "
+                    + "FROM web_user, trip_reports, parks "
+                    + "WHERE web_user.web_user_id = trip_reports.web_user_id "
+                    + "and parks.park_id = trip_reports.park_id "
+                    + "ORDER BY trip_id";
             stmt = dbc.getConn().prepareStatement(sql);
             results = stmt.executeQuery();
             sb.append("<table class='");
             sb.append(cssClassForResultSetTable);
             sb.append("'>");
             sb.append("<tr>");
-            sb.append("<td style='border:none; text-align:center; background-color:transparent;'></td>");// extra column at left for delete icon
-            
+            sb.append("<td style='border:none; text-align:center; "
+                    + "background-color:transparent;'></td>");// extra column at left for delete icon
+
             sb.append("<th>Trip ID</th>");
             sb.append("<th>Title</th>");
             //sb.append("<th style='text-align:left'>Description</th>");
@@ -141,15 +140,12 @@ public class TripReportView {
 
                 sb.append(FormatUtils.formatIntegerTd(results.getObject("trip_id")));
                 sb.append(FormatUtils.formatStringTd(results.getObject("title")));
-                //sb.append(FormatUtils.formatStringTd(results.getObject("description")));
                 //Description excluded because it makes for a very unbalanced table
                 sb.append(FormatUtils.formatIntegerTd(results.getObject("days_spent")));
                 sb.append(FormatUtils.formatDateTd(results.getObject("date")));
                 sb.append(FormatUtils.formatStringTd(results.getObject("user_email")));
                 sb.append(FormatUtils.formatStringTd(results.getObject("park_name")));
                 sb.append(FormatUtils.formatStringTd(results.getObject("photos_url")));
-                //sb.append(FormatUtils.formatStringTd(results.getObject("gps_url")));
-                
                 sb.append("</tr>\n");
             }
             sb.append("</table>");
@@ -161,5 +157,4 @@ public class TripReportView {
                     + "<br/> partial output: <br/>" + sb.toString();
         }
     }
-
 }

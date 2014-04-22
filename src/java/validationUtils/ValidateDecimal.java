@@ -5,26 +5,25 @@ public class ValidateDecimal {
     private java.math.BigDecimal convertedDecimal = null;
     private String error = "";
 
-    /* Check string "val" to see if it has a valid integer in it.
-     * if required is false, "" (empty string is OK), convertedInteger => null.
+    /* Check string "val" to see if it has a valid decimal in it.
+     * if required is false, "" (empty string is OK), convertedDecimal => null.
      *
      * error holds "" if value passes validation.
      */
     public ValidateDecimal(String val, boolean required) {
         this.convertedDecimal = null;
         if (val == null) {
-            this.error = "Programmer error: should not be trying to validate null in ValidateDecimal constructor";
+            this.error = "Programmer error: should not be trying to validate "
+                    + "null in ValidateDecimal constructor";
             return;
         }
         if ((val.length() == 0) && !required) {
-            //System.out.println("******************ValidateDecimal: Null is OK.");
             this.error = "";  // Since this field is not required, empty string is valid user entry.
             return;
         }
         try {
             this.convertedDecimal = new java.math.BigDecimal(val);
             this.error = "";
-            //System.out.println("******************ValidateDecimal: "+val+ " is a good decimal.");
         } catch (Exception e) {
             this.error = "Please enter an dollar amount";
         }

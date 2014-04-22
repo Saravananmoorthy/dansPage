@@ -64,15 +64,18 @@ public class ParkView {
         // Prepare some HTML that will be used repeatedly for the delete icon that
         // calls a delete javascript function (see below).
         if ((delIcon == null) || (delIcon.length() == 0)) {
-            return "ParkSql.listAllUsers() error: delete Icon file name (String input parameter) is null or empty.";
+            return "ParkSql.listAllUsers() error: delete Icon file name "
+                    + "(String input parameter) is null or empty.";
         }
         if ((delFn == null) || (delFn.length() == 0)) {
-            return "ParkSql.listAllUsers() error: delete javascript function name (String input parameter) is null or empty.";
+            return "ParkSql.listAllUsers() error: delete javascript function "
+                    + "name (String input parameter) is null or empty.";
         }
 
         // This is the first half of the HTML that defines a table cell that will hold the delete
         // icon which will be linked to a javascript function for deleting the current row.
-        String delStart = "<td style='border:none; text-align:center; background-color:transparent;'><a href='" + delFn + "(";
+        String delStart = "<td style='border:none; text-align:center; "
+                + "background-color:transparent;'><a href='" + delFn + "(";
         // This is the HTML for the second half of that same HTML
         // In between the first half and the second half will be the actual PK of the current row
         // (input parameter to the javascript function).
@@ -96,7 +99,8 @@ public class ParkView {
             sb.append(cssClassForResultSetTable);
             sb.append("'>");
             sb.append("<tr>");
-            sb.append("<td style='border:none; text-align:center; background-color:transparent;'></td>");// extra column at left for delete icon
+            sb.append("<td style='border:none; text-align:center; "
+                    + "background-color:transparent;'></td>");// extra column at left for delete icon
 
             sb.append("<th>Park ID</th>");
             sb.append("<th>Park Name</th>");
@@ -142,15 +146,18 @@ public class ParkView {
         // Prepare some HTML that will be used repeatedly for the delete icon that
         // calls a delete javascript function (see below).
         if ((delIcon == null) || (delIcon.length() == 0)) {
-            return "ParkSql.listAllUsers() error: delete Icon file name (String input parameter) is null or empty.";
+            return "ParkSql.listAllUsers() error: delete Icon file name "
+                    + "(String input parameter) is null or empty.";
         }
         if ((delFn == null) || (delFn.length() == 0)) {
-            return "ParkSql.listAllUsers() error: delete javascript function name (String input parameter) is null or empty.";
+            return "ParkSql.listAllUsers() error: delete javascript function "
+                    + "name (String input parameter) is null or empty.";
         }
 
         // This is the first half of the HTML that defines a table cell that will hold the delete
         // icon which will be linked to a javascript function for deleting the current row.
-        String delStart = "<td style='border:none; background-color:transparent; text-align:center;'><a href='" + delFn + "(";
+        String delStart = "<td style='border:none; background-color:transparent; "
+                + "text-align:center;'><a href='" + delFn + "(";
         // This is the HTML for the second half of that same HTML
         // In between the first half and the second half will be the actual PK of the current row
         // (input parameter to the javascript function).
@@ -159,15 +166,18 @@ public class ParkView {
         // Prepare some HTML that will be used repeatedly for the update icon that
         // calls an update javascript function (see below).
         if ((updateIcon == null) || (updateIcon.length() == 0)) {
-            return "ParkSql.listAllUsers() error: update Icon file name (String input parameter) is null or empty.";
+            return "ParkSql.listAllUsers() error: update Icon file name "
+                    + "(String input parameter) is null or empty.";
         }
         if ((updateFn == null) || (updateFn.length() == 0)) {
-            return "ParkSql.listAllUsers() error: update javascript function name (String input parameter) is null or empty.";
+            return "ParkSql.listAllUsers() error: update javascript function "
+                    + "name (String input parameter) is null or empty.";
         }
 
         // This is the first half of the HTML that defines a table cell that will hold the update
         // icon which will be linked to a javascript function for updating the current row.
-        String updateStart = "<td style='border:none; background-color:transparent; text-align:center;'><a href='" + updateFn + "(";
+        String updateStart = "<td style='border:none; background-color:transparent; "
+                + "text-align:center;'><a href='" + updateFn + "(";
         // This is the HTML for the second half of that same HTML
         // In between the first half and the second half will be the actual PK of the current row
         // (input parameter to the javascript function).
@@ -176,15 +186,18 @@ public class ParkView {
         // Prepare some HTML that will be used repeatedly for the add icon that
         // calls an add javascript function (see below).
         if ((addIcon == null) || (addIcon.length() == 0)) {
-            return "ParkSql.listAllUsers() error: add Icon file name (String input parameter) is null or empty.";
+            return "ParkSql.listAllUsers() error: add Icon file name "
+                    + "(String input parameter) is null or empty.";
         }
         if ((addFn == null) || (addFn.length() == 0)) {
-            return "ParkSql.listAllUsers() error: add javascript function name (String input parameter) is null or empty.";
+            return "ParkSql.listAllUsers() error: add javascript function name "
+                    + "(String input parameter) is null or empty.";
         }
 
         // This is the first half of the HTML that defines a table cell that will hold the update
         // icon which will be linked to a javascript function for updating the current row.
-        String addStart = "<td style='border:none; background-color:transparent; text-align:center;'><a href='" + addFn + "(";
+        String addStart = "<td style='border:none; background-color:transparent; "
+                + "text-align:center;'><a href='" + addFn + "(";
         // This is the HTML for the second half of that same HTML
         // In between the first half and the second half will be the actual PK of the current row
         // (input parameter to the javascript function).
@@ -234,7 +247,7 @@ public class ParkView {
                 // this is the column with an update icon that has a link to a javascript function.
                 // the input parameter to the update javascript function is the PK of the user in this row.
                 sb.append(updateStart + primaryKeyInt.toString() + updateEnd);
-                
+
                 // this is the column with an add icon that has a link to a javascript function.
                 // the input parameter to the add javascript function is the PK of the user in this row.
                 sb.append(addStart + primaryKeyInt.toString() + addEnd);

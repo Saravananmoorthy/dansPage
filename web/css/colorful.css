@@ -5,7 +5,7 @@
 
 body {
     font-family: "Tahoma", "Helvetica", "Arial", sans-serif;
-    background-image: url("../images/campsite_background_by_dipi11.png");  
+    background-image: url(../images/campsite_background_by_dipi11.png);  
     /*Background image courtesy of http://www.tonyjohnson.info/ */
     background-repeat: no-repeat;
     background-size: cover;  /* bg pic will stretch when window is resized */

@@ -80,14 +80,6 @@ public class WebUserMods {
         } // catch
     }// method delete
 
-    /* This method will create a pick list for user roles to prevent someone
-     * from entering an invalid user role.
-     */
-    public String createPickList() {
-        String pickList = "";
-        return pickList;
-    }
-
     /* This method requires a pre-validated User data object. 
      * It also assumes that an open database connection was provided to the constructor.
      * It returns true if it is able to insert the user data into the database.

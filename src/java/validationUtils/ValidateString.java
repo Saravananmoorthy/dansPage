@@ -44,4 +44,3 @@ public class ValidateString {
         return this.convertedString;
     }
 } // class
-

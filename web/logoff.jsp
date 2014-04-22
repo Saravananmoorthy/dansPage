@@ -14,7 +14,6 @@
         <title>Get Out Local</title>
     </head>
 
-    <jsp:include page="pre-content.jsp" />
 
     <%
         String msg = "You are now logged off!";
@@ -26,6 +25,8 @@
         }
     %>
 
+    <jsp:include page="pre-content.jsp" />
+    
     <br>
     <br>
     <h3><%=msg%></h3>
