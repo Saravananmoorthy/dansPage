@@ -5,12 +5,12 @@
 
 body {
     font-family: "Tahoma", "Helvetica", "Arial", sans-serif;
-    background-image: url(images/campsite_background_by_dipi11.png);  
+    background-image: url("../images/BG_Campsite_Big.jpg");  
     /*Background image courtesy of http://www.tonyjohnson.info/ */
     background-repeat: no-repeat;
     background-size: cover;  /* bg pic will stretch when window is resized */
-    background-color: #6e7343; 
-    opacity:0.75;
+    background-color: #1c1c24; 
+    opacity:0.88;
 }
 
 #container {
@@ -21,12 +21,11 @@ body {
 }
 
 #title {
-    color: #a17438;
+    color: #bbbac2;
     font-weight: bold;
     font-size: 30px;
     letter-spacing: 2px;
 }
-
 
 .tab {
     width:12%;
@@ -34,7 +33,7 @@ body {
     font-size:22px;
     min-width:100px; /* tab will only get this narrow when user sizes down window */
     text-align:center;
-    background-color:#9b9b57;
+    background-color:#bbbac2;
     border-top-left-radius:10px;               
     border-top-right-radius:10px;   
     margin:auto; 
@@ -42,8 +41,7 @@ body {
 }
 
 .tab:hover { 
-    background-color:#76a791;
-    color: #a5d6e1;
+    background-color:#a1a0af; 
 }
 
 .tab a {
@@ -51,11 +49,11 @@ body {
 }
 
 .tab a:link {
-    color:#023e56;
+    color:#1e1e29;
 }
 
 .tab a:visited {
-    color:#023e56;
+    color:#2d2e3f;
 }
 
 .intraLink a {
@@ -63,11 +61,11 @@ body {
 }
 
 intraLink a:link {
-    color:#023e56;
+    color:#1e1e29;
 }
 
 .intraLink a:visited {
-    color:#023e56;
+    color:#2d2e3f;
 }
 
 .newLine {
@@ -75,25 +73,25 @@ intraLink a:link {
 }
 
 #content {
-    color:#023e56;
+    color:#1b1b24;
     font-size: 18px;
     clear:both;
     margin:0px;
 }
 
 .selected {
-    background-color:#9b9b57;
+    background-color:#bbbac2;
 }
 
 #footer {
-    background-color:#9b9b57;
+    background-color:#bbbac2;
     text-align: right;
-    color: #023e56; 
+    color: #1b1b24; 
 }
 
 #footer a {
     text-decoration: none;
-    color: #023e56;
+    color: #1b1b24;
 }
 
 img {
@@ -104,7 +102,7 @@ img {
 }
 
 #themeSelector {
-    background-color:#9b9b57;
+    background-color:#bbbac2;
     text-align: left;
     color: #1b1b24; 
     font-size: 15px;
@@ -112,18 +110,18 @@ img {
 
 .resultSetFormat th {
     text-align: center;
-    border: medium solid #cb6b24; 
-    background-color:#159bb9; 
+    border: medium solid #ad4e1c ; 
+    background-color: #cb6b24; 
     padding:5px;
-    color: #010100;
+    color: #2e2f40;
 }
 
 .resultSetFormat td {
     text-align: right;
-    border: thin solid #cb6b24; 
-    background-color:#052c35; 
+    border: thin solid #2d2e3f; 
+    background-color:aliceblue; 
     padding:5px;
-    color: white;
+    color: #1b1b24;
 }
 
 .error {

@@ -5,12 +5,11 @@
 
 body {
     font-family: "Tahoma", "Helvetica", "Arial", sans-serif;
-    background-image: url(images/BG_Campsite_Big.jpg);  
-    /*Background image courtesy of http://www.tonyjohnson.info/ */
+    background-image: url("../images/shadowTrees.jpeg");  
     background-repeat: no-repeat;
     background-size: cover;  /* bg pic will stretch when window is resized */
-    background-color: #1c1c24; 
-    opacity:0.88;
+    background-color: gainsboro; 
+    opacity:0.70;
 }
 
 #container {
@@ -21,7 +20,7 @@ body {
 }
 
 #title {
-    color: #bbbac2;
+    color: whitesmoke;
     font-weight: bold;
     font-size: 30px;
     letter-spacing: 2px;
@@ -33,15 +32,16 @@ body {
     font-size:22px;
     min-width:100px; /* tab will only get this narrow when user sizes down window */
     text-align:center;
-    background-color:#bbbac2;
+    background-color:whitesmoke;
     border-top-left-radius:10px;               
     border-top-right-radius:10px;   
     margin:auto; 
-    color: #1b1b24;
+    color: black;
 }
 
 .tab:hover { 
-    background-color:#a1a0af; 
+    background-color:gainsboro;
+    color: whitesmoke;
 }
 
 .tab a {
@@ -49,11 +49,11 @@ body {
 }
 
 .tab a:link {
-    color:#1e1e29;
+    color:black;
 }
 
 .tab a:visited {
-    color:#2d2e3f;
+    color:grey;
 }
 
 .intraLink a {
@@ -61,11 +61,11 @@ body {
 }
 
 intraLink a:link {
-    color:#1e1e29;
+    color:black;
 }
 
 .intraLink a:visited {
-    color:#2d2e3f;
+    color:grey;
 }
 
 .newLine {
@@ -73,25 +73,25 @@ intraLink a:link {
 }
 
 #content {
-    color:#1b1b24;
+    color:black;
     font-size: 18px;
     clear:both;
     margin:0px;
 }
 
 .selected {
-    background-color:#bbbac2;
+    background-color:whitesmoke;
 }
 
 #footer {
-    background-color:#bbbac2;
+    background-color:whitesmoke;
     text-align: right;
-    color: #1b1b24; 
+    color: black; 
 }
 
 #footer a {
     text-decoration: none;
-    color: #1b1b24;
+    color: black;
 }
 
 img {
@@ -102,26 +102,24 @@ img {
 }
 
 #themeSelector {
-    background-color:#bbbac2;
+    background-color:whitesmoke;
     text-align: left;
-    color: #1b1b24; 
+    color: black;
     font-size: 15px;
 }
 
 .resultSetFormat th {
     text-align: center;
-    border: medium solid #ad4e1c ; 
-    background-color: #cb6b24; 
+    border: thick solid gainsboro; 
+    background-color:#e9e7e7; 
     padding:5px;
-    color: #2e2f40;
 }
 
 .resultSetFormat td {
     text-align: right;
-    border: thin solid #2d2e3f; 
-    background-color:aliceblue; 
+    border: snow thick solid;
+    background-color:white; 
     padding:5px;
-    color: #1b1b24;
 }
 
 .error {

@@ -14,7 +14,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link id="cssLinkID" href="defaultTheme.css" rel="stylesheet" type="text/css"/>
+        <link id="cssLinkID" href="css/gdefaultTheme.css" rel="stylesheet" type="text/css"/>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="myscript.js"  type="text/javascript"></script>
         <script>
@@ -23,23 +23,24 @@
         </script>
         <title>Get Out Local</title>
     </head>
+
     <jsp:include page="pre-content.jsp" />
 
-        <%
-            DbConn dbc = new DbConn();
-            String dbErrorOrData = dbc.getErr();
-            if (dbErrorOrData.length() == 0) { // got open connection
+    <%
+        DbConn dbc = new DbConn();
+        String dbErrorOrData = dbc.getErr();
+        if (dbErrorOrData.length() == 0) { // got open connection
 
-                // this returns a string that contains a HTML table with the data in it
-                dbErrorOrData = WebUserView.listAllUsers("resultSetFormat", dbc);
+            // this returns a string that contains a HTML table with the data in it
+            dbErrorOrData = WebUserView.listAllUsers("resultSetFormat", dbc);
 
-                // PREVENT DB connection leaks:
-                //    EVERY code path that opens a db connection, must also close it.
-                dbc.close();
-            }
-        %>
+            // PREVENT DB connection leaks:
+            //    EVERY code path that opens a db connection, must also close it.
+            dbc.close();
+        }
+    %>
 
-        <h1>Campers</h1>
-        <% out.print(dbErrorOrData); %>
-   
+    <h1>Campers</h1>
+    <%=dbErrorOrData%>
+
     <jsp:include page="post-content.jsp" />

@@ -15,7 +15,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link id="cssLinkID" href="defaultTheme.css" rel="stylesheet" type="text/css"/>
+        <link id="cssLinkID" href="css/defaultTheme.css" rel="stylesheet" type="text/css"/>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="myscript.js"  type="text/javascript"></script>
         <script>
@@ -25,10 +25,10 @@
         <title>Get Out Local</title>
     </head>
     <jsp:include page="pre-content.jsp" />
-    
+
     <br>
     <div class="intraLink">
-    <a href="insertUser.jsp"><h3>Add A New Camper</h3></a>
+        <a href="insertUser.jsp"><h3>Add A New Camper</h3></a>
     </div>
 
     <%
@@ -66,6 +66,7 @@
             dbDataOrError = dbError;
         }
     %>
+
     <form name="updateDelete" action="users.jsp" method="get">
         <input type="hidden" name="deletePK">
     </form>
@@ -82,6 +83,5 @@
         }
 
     </script>
-
 
     <jsp:include page="post-content.jsp" />

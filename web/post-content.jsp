@@ -6,9 +6,9 @@
 
 <div id="themeSelector">Change Background To: 
     <select onchange="javascript:changeTheme(this.value)">
-        <option value="defaultTheme.css">Default</option>
-        <option value="colorful.css">Colorful</option>
-        <option value="monoChrome.css">Monochrome</option>
+        <option value="css/defaultTheme.css">Default</option>
+        <option value="css/colorful.css">Colorful</option>
+        <option value="css/monoChrome.css">Monochrome</option>
     </select>  
 </div>
 

@@ -17,15 +17,8 @@
     <jsp:include page="pre-content.jsp" />
 
 
-    <%
-        String errorMessage = request.getParameter("errorMsg");
-        if (errorMessage == null) {
-            errorMessage = "Apparently you are not allowed to access that page...";
-        }
-    %>
-
     <br/>
     <br/>
-    <h3><%=errorMessage%></h3>
+    <h3>Not yet implemented</h3>
 
     <jsp:include page="post-content.jsp" />
