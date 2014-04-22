@@ -14,9 +14,7 @@ public class TypedData {
     private java.sql.Date tripDate = null;
     private Integer parkId = null;
     private Integer webUserId = null;
-    
-    
-    
+
     public String displayHTML() {
         return buildDisplay("<br>");
     }
@@ -49,7 +47,6 @@ public class TypedData {
         }
     }
 
-    
     /**
      * @return the tripId
      */
@@ -63,7 +60,7 @@ public class TypedData {
     public void setTripId(Integer tripId) {
         this.tripId = tripId;
     }
-    
+
     /**
      * @return the tripTitle
      */
@@ -91,7 +88,7 @@ public class TypedData {
     public void setTripDescription(String tripDescription) {
         this.tripDescription = tripDescription;
     }
-    
+
     /**
      * @return the photosURL
      */
@@ -105,8 +102,8 @@ public class TypedData {
     public void setPhotosURL(String photosURL) {
         this.photosURL = photosURL;
     }
-    
-     /**
+
+    /**
      * @return the gpsURL
      */
     public String getGpsURL() {
@@ -133,8 +130,8 @@ public class TypedData {
     public void setNumDaysSpent(Integer numDaysSpent) {
         this.numDaysSpent = numDaysSpent;
     }
-    
-     /**
+
+    /**
      * @return the tripDate
      */
     public java.sql.Date getTripDate() {
@@ -147,7 +144,7 @@ public class TypedData {
     public void setTripDate(java.sql.Date tripDate) {
         this.tripDate = tripDate;
     }
-    
+
     /**
      * @return the parkId
      */
@@ -161,7 +158,7 @@ public class TypedData {
     public void setParkId(Integer parkId) {
         this.parkId = parkId;
     }
-    
+
     /**
      * @return the webUserId
      */
@@ -175,6 +172,4 @@ public class TypedData {
     public void setWebUserId(Integer webUserId) {
         this.webUserId = webUserId;
     }
-
-    
 }

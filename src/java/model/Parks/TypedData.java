@@ -1,7 +1,5 @@
 package model.Parks;
 
-import model.Parks.*;
-
 /* This class just bundles together all the pre-validated String values that a 
  * user might enter as part of a Web_User record. 
  */
@@ -11,8 +9,7 @@ public class TypedData {
     private String parkName = "";
     private java.math.BigDecimal overNightFee = null;
     private String stateName = "";
-    
-    
+
     public String displayHTML() {
         return buildDisplay("<br>");
     }
@@ -40,7 +37,6 @@ public class TypedData {
         }
     }
 
-    
     /**
      * @return the parkId
      */
@@ -54,7 +50,7 @@ public class TypedData {
     public void setParkId(Integer parkId) {
         this.parkId = parkId;
     }
-    
+
     /**
      * @return the parkName
      */

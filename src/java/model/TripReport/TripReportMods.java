@@ -7,7 +7,7 @@ import java.sql.*;
 /**
  * This class contains all code that modifies records in a table in the
  * database. So, Insert, Update, and Delete code will be in this class
- * (eventually). Right now, it's just doing DELETE.
+ * (eventually).
  *
  * This class requires an open database connection for its constructor method.
  */
@@ -62,7 +62,8 @@ public class TripReportMods {
                     return "";
                 } else {
                     return "Error: " + new Integer(numRows).toString()
-                            + " records were inserted where only 1 expected."; // probably never get here, bulk sql insert   
+                            + " records were inserted where only 1 expected.";
+                    // probably never get here, bulk sql insert   
                 }
             } catch (SQLException e) {
                 return "TripReports insert: SQL Exception while attempting insert. "
@@ -70,7 +71,8 @@ public class TripReportMods {
                         + ", Error message: " + e.getMessage();
             }
         } catch (SQLException e) {
-            return "TripReportMods.insert: General Error while attempting the insert. " + e.getMessage();
+            return "TripReportMods.insert: General Error while attempting "
+                    + "the insert. " + e.getMessage();
         }
 
     }
@@ -97,7 +99,8 @@ public class TripReportMods {
         catch (SQLException e) {
             this.errorMsg = "";
             if (e.getSQLState().equalsIgnoreCase("S1000")) {
-                this.errorMsg = "Could not delete.";
+                this.errorMsg = "Could not delete the trip report. Please "
+                        + "cotact us.";
             }
 
             this.errorMsg += "Problem with SQL in TripReportsSql.delete: "

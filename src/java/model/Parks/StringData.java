@@ -1,7 +1,5 @@
 package model.Parks;
 
-import model.Parks.*;
-
 public class StringData {
 
     public String parkId = "";
@@ -38,7 +36,6 @@ public class StringData {
         this.overNightFee = overNightFee;
     }
 
-
     /**
      * @return the stateName
      */
@@ -52,7 +49,6 @@ public class StringData {
     public void setStateName(String stateName) {
         this.stateName = stateName;
     }
-
 
     /**
      * @return the parkId
@@ -85,7 +81,8 @@ public class StringData {
     @Override
     public String toString() {
         return "parkId[" + valueOrNull(parkId) + "] parkName[" + valueOrNull(parkName)
-                + "] overNightFee[" + valueOrNull(overNightFee) + "] stateName[" + valueOrNull(stateName)
+                + "] overNightFee[" + valueOrNull(overNightFee)
+                + "] stateName[" + valueOrNull(stateName)
                 + "] recordStatus[" + valueOrNull(recordStatus) + "]";
     } // toString()
 
@@ -97,8 +94,10 @@ public class StringData {
     }
 
     public String toJSON() {
-        return "({ parkId: '" + valueOrNull(parkId) + "', parkName: '" + valueOrNull(parkName)
-                + "', overNightFee: '" + valueOrNull(overNightFee) + "', stateName: '" + valueOrNull(stateName)
-                + "', recordStatus: '" + valueOrNull(recordStatus) + "' })";
+        return "({ parkId: '" + valueOrNull(parkId) + "', parkName: '"
+                + valueOrNull(parkName) + "', overNightFee: '"
+                + valueOrNull(overNightFee) + "', stateName: '"
+                + valueOrNull(stateName) + "', recordStatus: '"
+                + valueOrNull(recordStatus) + "' })";
     }
 } // class

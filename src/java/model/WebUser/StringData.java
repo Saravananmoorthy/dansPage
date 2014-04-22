@@ -125,10 +125,12 @@ public class StringData {
 
     @Override
     public String toString() {
-        return "webUserId[" + valueOrNull(webUserId) + "] userEmail[" + valueOrNull(userEmail)
-                + "] userPw[" + valueOrNull(userPw) + "] userPw2[" + valueOrNull(userPw2)
-                + "] membershipFee[" + valueOrNull(membershipFee) + "] userRoleId[" + valueOrNull(userRoleId)
-                + "] dateAdded[" + valueOrNull(birthday) + "] recordStatus[" + valueOrNull(recordStatus) + "]";
+        return "webUserId[" + valueOrNull(webUserId) + "] userEmail["
+                + valueOrNull(userEmail) + "] userPw[" + valueOrNull(userPw)
+                + "] userPw2[" + valueOrNull(userPw2) + "] membershipFee["
+                + valueOrNull(membershipFee) + "] userRoleId[" + valueOrNull(userRoleId)
+                + "] dateAdded[" + valueOrNull(birthday) + "] recordStatus["
+                + valueOrNull(recordStatus) + "]";
     } // toString()
 
     private String valueOrNull(String in) {
@@ -139,9 +141,11 @@ public class StringData {
     }
 
     public String toJSON() {
-        return "({ webUserId: '" + valueOrNull(webUserId) + "', userEmail: '" + valueOrNull(userEmail)
-                + "', userPw: '" + valueOrNull(userPw) + "', userPw2: '" + valueOrNull(userPw2)
-                + "', membershipFee: '" + valueOrNull(membershipFee) + "', userRoleId: '" + valueOrNull(userRoleId)
-                + "', birthday: '" + valueOrNull(birthday) + "', recordStatus: '" + valueOrNull(recordStatus) + "' })";
+        return "({ webUserId: '" + valueOrNull(webUserId) + "', userEmail: '"
+                + valueOrNull(userEmail) + "', userPw: '" + valueOrNull(userPw)
+                + "', userPw2: '" + valueOrNull(userPw2) + "', membershipFee: '"
+                + valueOrNull(membershipFee) + "', userRoleId: '" + valueOrNull(userRoleId)
+                + "', birthday: '" + valueOrNull(birthday) + "', recordStatus: '"
+                + valueOrNull(recordStatus) + "' })";
     }
 } // class

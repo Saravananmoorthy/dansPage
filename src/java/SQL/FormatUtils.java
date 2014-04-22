@@ -5,7 +5,8 @@ import java.text.SimpleDateFormat;
 import java.math.BigDecimal;
 
 /**
- * Formats various data types. Most methods wrap formatted data with an HTML <td>
+ * Formats various data types. Most methods wrap formatted data with an HTML
+ * <td>
  * tag. When wrapping in <td> tag, substitute "&nbsp;" (HTML non-breaking space)
  * for empty string. If this was not done, the cell in the HTML table will not
  * show its border and usually would not look right.
@@ -24,7 +25,8 @@ public class FormatUtils {
             dateformat.setLenient(false);
             return dateformat.format(dateval);
         } catch (Exception e) {
-            return "bad date in FormatUtils.formatDate: " + obj.toString() + " error: " + e.getMessage();
+            return "bad date in FormatUtils.formatDate: " + obj.toString()
+                    + " error: " + e.getMessage();
         }
     } // formatDate
 
@@ -52,7 +54,8 @@ public class FormatUtils {
             DecimalFormat intFormat = new DecimalFormat("$###,###,###,##0.00");
             return intFormat.format(bd);
         } catch (Exception e) {
-            return "bad Dollar Amount in FormatUtils:" + obj.toString() + " Error:" + e.getMessage();
+            return "bad Dollar Amount in FormatUtils:" + obj.toString()
+                    + " Error:" + e.getMessage();
         }
     } // formatDollar
 
@@ -79,7 +82,8 @@ public class FormatUtils {
                 DecimalFormat intFormat = new DecimalFormat("###,###,###,##0");
                 return intFormat.format(ival);
             } catch (Exception e) {
-                return "bad Integer in FormatUtils:" + obj.toString() + " Error:" + e.getMessage();
+                return "bad Integer in FormatUtils:" + obj.toString()
+                        + " Error:" + e.getMessage();
             }
         }
     } // formatInteger
@@ -126,7 +130,8 @@ public class FormatUtils {
         try {
             return o.toString();
         } catch (Exception e) {
-            return "Exception converting object to string FormatUtils.objectToString(): " + e.getMessage();
+            return "Exception converting object to string "
+                    + "FormatUtils.objectToString(): " + e.getMessage();
         }
     }
 } // FormatUtils class

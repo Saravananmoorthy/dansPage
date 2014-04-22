@@ -7,8 +7,7 @@ import java.sql.*;
 /*
  * This class contains all code that modifies records in a table in the
  * database. So, Insert, Update, and Delete code will be in this class
- * (eventually). Right now, it's just doing DELETE.
- *
+ * (eventually). 
  * This class requires an open database connection for its constructor method.
  */
 public class WebUserMods {
@@ -45,7 +44,8 @@ public class WebUserMods {
                 return this.errorMsg; // all is GOOD
             } else {
                 this.errorMsg = "Error - " + new Integer(numRows).toString()
-                        + " records deleted (1 was expected)."; // probably never get here
+                        + " records deleted (1 was expected)."; 
+                        // probably never get here
                 return this.errorMsg;
             }
         } // try
@@ -122,7 +122,8 @@ public class WebUserMods {
                     return ""; // all is GOOD, one record inserted is what we expect
                 } else {
                     this.errorMsg = "Error: " + new Integer(numRows).toString()
-                            + " records were inserted where only 1 expected."; // probably never get here, bulk sql insert
+                            + " records were inserted where only 1 expected."; 
+                            // probably never get here, bulk sql insert
                     return this.errorMsg;
                 }
             } // try execute the statement
@@ -131,9 +132,9 @@ public class WebUserMods {
                     // this error would only be possible for a non-auto-increment primary key.
                     this.errorMsg = "Cannot insert: a record with that ID already exists.";
                 } else if (e.getMessage().toLowerCase().contains("duplicate entry")) {
-                    this.errorMsg = "A user with that email address already exists!"; // for example a unique key constraint.
+                    this.errorMsg = "A user with that email address already exists!"; 
                 } else if (e.getMessage().toLowerCase().contains("foreign key")) {
-                    this.errorMsg = "Please use a valid User Role Key."; // for example a unique key constraint.
+                    this.errorMsg = "Please use a valid User Role Key."; 
                 } else {
                     this.errorMsg = "WebUserMods.insert: SQL Exception while attempting insert. "
                             + "SQLState:" + e.getSQLState()
@@ -224,7 +225,8 @@ public class WebUserMods {
                 return wuStringData; // not found, all fields will be blank
             }
         } catch (Exception e) {
-            System.out.println("*** WebUserMods.extractResultSetToStringData() Exception: " + e.getMessage());
+            System.out.println("*** WebUserMods.extractResultSetToStringData() "
+                    + "Exception: " + e.getMessage());
             return null;
         } // catch misc error
     } // method
@@ -320,7 +322,8 @@ public class WebUserMods {
                 webUserStringData = this.extractResultSetToStringData(results);//
 
                 if (webUserStringData != null) {
-                    System.out.println("*** WebUserMods.findLogon: Web User (found or not found) is " + webUserStringData.toString());
+                    System.out.println("*** WebUserMods.findLogon: Web User "
+                            + "(found or not found) is " + webUserStringData.toString());
                     return webUserStringData; // if stringData is full, record found. else all fields will be blank "".
                 } else { // stringData null means there was a problem extracting data
                     // check the System.out message in the log to see exact exception error msg.
@@ -328,17 +331,18 @@ public class WebUserMods {
                 }
             } catch (Exception e) {
                 this.errorMsg = e.getMessage();
-                System.out.println("*** WebUserMods.findLogon: exception thrown running Select Statement " + email
+                System.out.println("*** WebUserMods.findLogon: exception thrown "
+                        + "running Select Statement " + email
                         + ". Error is: " + this.errorMsg);
                 return null;
             }
         }// try
         catch (Exception e) {
             this.errorMsg = e.getMessage();
-            System.out.println("*** WebUserMods.findLogon: exception thrown Preparing Select Statement with PK " + email
+            System.out.println("*** WebUserMods.findLogon: exception thrown "
+                    + "Preparing Select Statement with PK " + email
                     + ". Error is: " + this.errorMsg);
             return null;
         }
     } // method    
-
 } // class

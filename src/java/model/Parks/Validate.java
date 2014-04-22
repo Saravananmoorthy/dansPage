@@ -1,7 +1,6 @@
 package model.Parks;
 
-import model.Parks.*;
-import validationUtils.*;  
+import validationUtils.*;
 
 /* This class validates a Parks object (bundle of pre-validated user entered string values)
  * and saves the validated data into a TypedData object (bundle of typed data values).
@@ -9,22 +8,22 @@ import validationUtils.*;
  * This class demonstrates the use of "object composition" and
  * "Single Responsibility" software design principles.
  */
-public class Validate { 
+public class Validate {
 
     // validation error messages, one per field to be validated
     private String parkNameMsg = "";
     private String overNightFeeMsg = "";
     private String stateNameMsg = "";
-    
+
     private boolean isValidated = false; // true iff all fields validate ok.
     private String debugMsg = "";
-    
+
     // Web User data fields from form (all String, pre-validation), bundled in this object
     private StringData park = new StringData();
-    
+
     // Web User data fields after validation (various data types), bundled into this object
     private TypedData parkT = new TypedData();
-    
+
     // default constructor is good for first rendering 
     //   -- all error messages are set to "" (empty string).
     public Validate() {
@@ -48,7 +47,6 @@ public class Validate {
         parkT.setStateName(vstr.getConvertedString());
         this.stateNameMsg = vstr.getError();
 
-       
         ValidateDecimal vdec = new ValidateDecimal(park.overNightFee, false);
         parkT.setOverNightFee(vdec.getConvertedDecimal());
         this.overNightFeeMsg = vdec.getError();
@@ -76,8 +74,8 @@ public class Validate {
     public String getOverNightFeeMsg() {
         return this.overNightFeeMsg;
     }
-    
-    public boolean isValidated() { 
+
+    public boolean isValidated() {
         return this.isValidated;
     }
 
@@ -85,7 +83,7 @@ public class Validate {
         return this.debugMsg;
     }
 
-    public String getAllValidationErrors() { 
+    public String getAllValidationErrors() {
         String allMessages = "parkName error: " + this.parkNameMsg
                 + ", overNightFee error: " + this.overNightFeeMsg
                 + ", stateName error: " + this.stateNameMsg;

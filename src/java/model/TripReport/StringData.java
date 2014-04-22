@@ -41,7 +41,6 @@ public class StringData {
         this.tripDescription = tripDescription;
     }
 
-
     /**
      * @return the numDaysSpent
      */
@@ -56,7 +55,6 @@ public class StringData {
         this.numDaysSpent = numDaysSpent;
     }
 
-
     /**
      * @return the tripId
      */
@@ -70,7 +68,7 @@ public class StringData {
     public void setTripId(String tripId) {
         this.tripId = tripId;
     }
-    
+
     /**
      * @return the photosURL
      */
@@ -98,8 +96,8 @@ public class StringData {
     public void setGpsURL(String gpsURL) {
         this.gpsURL = gpsURL;
     }
-    
-     /**
+
+    /**
      * @return the webUserId
      */
     public String getWebUserId() {
@@ -112,7 +110,7 @@ public class StringData {
     public void setWebUserId(String webUserId) {
         this.webUserId = webUserId;
     }
-    
+
     /**
      * @return the parkId
      */
@@ -126,7 +124,7 @@ public class StringData {
     public void setParkId(String parkId) {
         this.parkId = parkId;
     }
-    
+
     /**
      * @return the tripDate
      */
@@ -140,7 +138,7 @@ public class StringData {
     public void setTripDate(String tripDate) {
         this.tripDate = tripDate;
     }
-    
+
     /**
      * @return the recordStatus
      */
@@ -157,9 +155,10 @@ public class StringData {
 
     @Override
     public String toString() {
-        return "tripId[" + valueOrNull(tripId) + "] tripTitle[" + valueOrNull(tripTitle)
-                + "] tripDescription[" + valueOrNull(tripDescription) + "] numDaysSpent[" 
-                + valueOrNull(numDaysSpent) + "] tripDate[" + valueOrNull(tripDate) 
+        return "tripId[" + valueOrNull(tripId) + "] tripTitle["
+                + valueOrNull(tripTitle) + "] tripDescription["
+                + valueOrNull(tripDescription) + "] numDaysSpent["
+                + valueOrNull(numDaysSpent) + "] tripDate[" + valueOrNull(tripDate)
                 + "] webUserId[" + valueOrNull(webUserId) + "] parkId["
                 + valueOrNull(parkId) + "] photosURL[" + valueOrNull(photosURL)
                 + "] gpsURL[" + valueOrNull(gpsURL)
@@ -174,12 +173,13 @@ public class StringData {
     }
 
     public String toJSON() {
-        return "({ tripId: '" + valueOrNull(tripId) + "', tripTitle: '" + valueOrNull(tripTitle)
-                + "', tripDescription: '" + valueOrNull(tripDescription) + "', "
-                + "numDaysSpent: '" + valueOrNull(numDaysSpent) + "', tripDate:" + valueOrNull(tripDate) 
+        return "({ tripId: '" + valueOrNull(tripId) + "', tripTitle: '"
+                + valueOrNull(tripTitle) + "', tripDescription: '"
+                + valueOrNull(tripDescription) + "', " + "numDaysSpent: '"
+                + valueOrNull(numDaysSpent) + "', tripDate:" + valueOrNull(tripDate)
                 + "', webUserId:" + valueOrNull(webUserId) + "', parkId:"
                 + valueOrNull(parkId) + "', photosURL:" + valueOrNull(photosURL)
-                + "', gpsURL:" + valueOrNull(gpsURL)
-                + "', recordStatus: '" + valueOrNull(recordStatus) + "' })";
+                + "', gpsURL:" + valueOrNull(gpsURL) + "', recordStatus: '"
+                + valueOrNull(recordStatus) + "' })";
     }
 } // class

@@ -3,7 +3,6 @@ package model.Parks;
 import SQL.*;   //no need to list each one if we're importing the entire package
 import java.sql.*;
 
-
 /*
  * This class contains all code that modifies records in a table in the
  * database. So, Insert, Update, and Delete code will be in this class
@@ -13,7 +12,7 @@ import java.sql.*;
  */
 public class ParkMods {
 
-    private DbConn dbc;  // Open, live database connection
+    private DbConn dbc;  // Open live database connection
     private String errorMsg = "";
     private String debugMsg = "";
 
@@ -102,7 +101,6 @@ public class ParkMods {
             this.debugMsg += DbEncodeUtils.encodeDecimal(pStatement, 2, parkTypedData.getOverNightFee());
             this.debugMsg += DbEncodeUtils.encodeString(pStatement, 3, parkTypedData.getStateName());
 
-            //System.out.println("************* got past encoding");
             try {
                 int numRows = pStatement.executeUpdate();
                 if (numRows == 1) {
@@ -132,13 +130,15 @@ public class ParkMods {
             } // catch
             catch (Exception e) {
                 // this message would show up in the NetBeans log window (below the editor)
-                this.errorMsg = "ParkMods.insert: General Error while attempting the insert. " + e.getMessage();
+                this.errorMsg = "ParkMods.insert: General Error while "
+                        + "attempting the insert. " + e.getMessage();
                 System.out.println("****************** " + this.errorMsg);
                 return this.errorMsg;
             } // catch
         } // trying to prepare the statement
         catch (Exception e) {
-            this.errorMsg = "ParkMods.insert: General Error while trying to prepare the SQL INSERT statement. " + e.getMessage();
+            this.errorMsg = "ParkMods.insert: General Error while trying to "
+                    + "prepare the SQL INSERT statement. " + e.getMessage();
             System.out.println("****************** " + this.errorMsg);
             return this.errorMsg;
         }
@@ -168,7 +168,8 @@ public class ParkMods {
                 StringData stringData = this.extractResultSetToStringData(results);//
 
                 if (stringData != null) {
-                    System.out.println("*** ParkMods.find: Park (found or not found) is " + stringData.toString());
+                    System.out.println("*** ParkMods.find: Park (found or not "
+                            + "found) is " + stringData.toString());
                     return stringData; // if stringData is full, record found. else all fields will be blank "".
                 } else { // stringData null means there was a problem extracting data
                     // check the System.out message in the log to see exact exception error msg.
@@ -176,14 +177,16 @@ public class ParkMods {
                 }
             } catch (Exception e) {
                 this.errorMsg = e.getMessage();
-                System.out.println("*** ParkMods.find: exception thrown running Select Statement " + primaryKey
+                System.out.println("*** ParkMods.find: exception thrown running "
+                        + "Select Statement " + primaryKey
                         + ". Error is: " + this.errorMsg);
                 return null;
             }
         }// try
         catch (Exception e) {
             this.errorMsg = e.getMessage();
-            System.out.println("*** ParkMods.find: exception thrown Preparing Select Statement with PK " + primaryKey
+            System.out.println("*** ParkMods.find: exception thrown Preparing "
+                    + "Select Statement with PK " + primaryKey
                     + ". Error is: " + this.errorMsg);
             return null;
         }
@@ -199,7 +202,8 @@ public class ParkMods {
                 parkStringData.stateName = FormatUtils.objectToString(results.getObject("state_name"));
                 parkStringData.recordStatus = "Record Found";
 
-                System.out.println("*** ParkMods.extractResultSetToStringData: record values are "
+                System.out.println("*** ParkMods.extractResultSetToStringData: "
+                        + "record values are "
                         + parkStringData.toString());
 
                 return parkStringData; // means OK, record found and wu has been filled
@@ -208,7 +212,8 @@ public class ParkMods {
                 return parkStringData; // not found, all fields will be blank
             }
         } catch (Exception e) {
-            System.out.println("*** ParkMods.extractResultSetToStringData() Exception: " + e.getMessage());
+            System.out.println("*** ParkMods.extractResultSetToStringData() "
+                    + "Exception: " + e.getMessage());
             return null;
         } // catch misc error
     } // method
@@ -235,7 +240,6 @@ public class ParkMods {
             debugMsg += "<br/>" + DbEncodeUtils.encodeDecimal(sqlSt, 3, parkTypedData.getOverNightFee());
             debugMsg += "<br/>" + DbEncodeUtils.encodeInteger(sqlSt, 4, parkTypedData.getParkId());
 
-            //System.out.println("******* Trying to update Web User with id: ["+ wu.getIdWebUser() + "]");
             try {
                 int numRows = sqlSt.executeUpdate();
                 if (numRows == 1) {
@@ -255,14 +259,12 @@ public class ParkMods {
                         + "SQLState [" + e.getSQLState()
                         + "], error message [" + e.getMessage() + "]";
                 System.out.println(this.errorMsg);
-                //e.printStackTrace();
                 return this.errorMsg;
             } // catch
             catch (Exception e) {
                 this.errorMsg = "SqlMods.update: General Exception during update operation. "
                         + e.getMessage();
                 System.out.println(this.errorMsg);
-                //e.printStackTrace();
                 return this.errorMsg;
             } // catch
         } // try
@@ -270,7 +272,6 @@ public class ParkMods {
             this.errorMsg = "SqlMods.update: Problem Compiling Prepared Statement. "
                     + e.getMessage();
             System.out.println(this.errorMsg);
-            //e.printStackTrace();
             return this.errorMsg;
         } // catch
     }// method

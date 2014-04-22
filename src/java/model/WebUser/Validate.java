@@ -1,6 +1,6 @@
 package model.WebUser;
 
-import validationUtils.*;  
+import validationUtils.*;
 
 /* This class validates a WebUser object (bundle of pre-validated user entered string values)
  * and saves the validated data into a TypedData object (bundle of typed data values).
@@ -8,7 +8,7 @@ import validationUtils.*;
  * This class demonstrates the use of "object composition" and
  * "Single Responsibility" software design principles.
  */
-public class Validate { 
+public class Validate {
 
     // validation error messages, one per field to be validated
     private String userEmailMsg = "";
@@ -17,16 +17,16 @@ public class Validate {
     private String membershipFeeMsg = "";
     private String userRoleMsg = "";
     private String birthdayMsg = "";
-    
+
     private boolean isValidated = false; // true iff all fields validate ok.
     private String debugMsg = "";
-    
+
     // Web User data fields from form (all String, pre-validation), bundled in this object
     private StringData wu = new StringData();
-    
+
     // Web User data fields after validation (various data types), bundled into this object
     private TypedData wut = new TypedData();
-    
+
     // default constructor is good for first rendering 
     //   -- all error messages are set to "" (empty string).
     public Validate() {
@@ -68,7 +68,9 @@ public class Validate {
         wut.setBirthday(vdate.getConvertedDate());
         this.birthdayMsg = vdate.getError();
 
-        String allMessages = this.userEmailMsg + this.userPwMsg + this.userPw2Msg + this.membershipFeeMsg + this.userRoleMsg + this.birthdayMsg;
+        String allMessages = this.userEmailMsg + this.userPwMsg
+                + this.userPw2Msg + this.membershipFeeMsg
+                + this.userRoleMsg + this.birthdayMsg;
         isValidated = (allMessages.length() == 0);
     }
 
@@ -95,16 +97,16 @@ public class Validate {
     public String getMembershipFeeMsg() {
         return this.membershipFeeMsg;
     }
-    
+
     public String getUserRoleMsg() {
         return this.userRoleMsg;
     }
 
     public String getBirthdayMsg() {
-        return this.birthdayMsg; 
+        return this.birthdayMsg;
     }
 
-    public boolean isValidated() { 
+    public boolean isValidated() {
         return this.isValidated;
     }
 
@@ -112,7 +114,7 @@ public class Validate {
         return this.debugMsg;
     }
 
-    public String getAllValidationErrors() { 
+    public String getAllValidationErrors() {
         String allMessages = "userEmail error: " + this.userEmailMsg
                 + ", userPw error: " + this.userPwMsg
                 + ", userPw2 error: " + this.userPw2Msg

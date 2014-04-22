@@ -12,7 +12,7 @@ public class TypedData {
     private java.math.BigDecimal membershipFee = null;
     private Integer userRoleId = null;
     private java.sql.Date birthday = null;
-    
+
     public String displayHTML() {
         return buildDisplay("<br>");
     }
@@ -43,7 +43,6 @@ public class TypedData {
         }
     }
 
-    
     /**
      * @return the webUserId
      */
@@ -57,7 +56,7 @@ public class TypedData {
     public void setWebUserId(Integer webUserId) {
         this.webUserId = webUserId;
     }
-    
+
     /**
      * @return the userEmail
      */

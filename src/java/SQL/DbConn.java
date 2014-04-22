@@ -3,32 +3,40 @@ package SQL;
 import java.sql.DriverManager;
 import java.sql.Connection;
 
-/** Wrapper class for database connection.  
- *  Constructor opens connection.  Close method closes connection.  */
+/* Wrapper class for database connection.  
+ * Constructor opens connection.  
+ * Close method closes connection.  
+ */
 public class DbConn {
 
     private String errMsg = ""; // will remain "" unless error getting connection
     private String connectionMsg = "Connection Error-Uninitialized."; // log of getting connection
     private Connection conn = null;
 
-    /** Constructor - opens database connection to database, 
-     * This version determines if the app is running locally or not (by checking if "temple.edu"
-     * is at the end of the hostname of the machine on which you are running your app).
+    /**
+     * Constructor - opens database connection to database, This version
+     * determines if the app is running locally or not (by checking if
+     * "temple.edu" is at the end of the hostname of the machine on which you
+     * are running your app).
      */
     public DbConn() {
         this.connect(this.isTemple());
-    } // method
+    }
 
-    /** Constructor - opens database connection to database, 
-    This version uses boolean input parameter to determine if the app is running locally or not */
+    /**
+     * Constructor - opens database connection to database, This version uses
+     * boolean input parameter to determine if the app is running locally or not
+     */
     public DbConn(boolean isTemple) {
         this.connect(isTemple);
     }
 
-    /** Open a connection to your database either using the Temple connection string or the local 
-     * connection string.
-     * @param isTemple: if this is true, it will use the Temple connection string (else it will 
-     * use the local connection string).
+    /**
+     * Open a connection to your database either using the Temple connection
+     * string or the local connection string.
+     *
+     * @param isTemple: if this is true, it will use the Temple connection
+     * string (else it will use the local connection string).
      */
     private void connect(boolean isTemple) {
         this.connectionMsg = "";
@@ -38,15 +46,15 @@ public class DbConn {
             Class.forName(DRIVER).newInstance();
             this.connectionMsg += "got the driver... <br/>";
             try {
-                
+
                 // Assume you are running from home using tunneling...
                 String url = "jdbc:mysql://localhost:3307/SP14_2308_dmcginni?user=dmcginni&password=yailooph";
-                
+
                 // unless you are working from temple (wachman hall)
                 if (isTemple) {
-                      url = "jdbc:mysql://cis-linux2.temple.edu:3306/SP14_2308_dmcginni?user=dmcginni&password=yailooph";  
+                    url = "jdbc:mysql://cis-linux2.temple.edu:3306/SP14_2308_dmcginni?user=dmcginni&password=yailooph";
                     this.connectionMsg += "Working from CIS network - no tunneling. <br/>";
-                }                 
+                }
                 this.conn = DriverManager.getConnection(url);
                 this.connectionMsg += "Connected successfully. <br/>";
 
@@ -60,22 +68,31 @@ public class DbConn {
         }
     } // method
 
-    /** Returns database connection for use in SQL classes.  */
+    /**
+     * Returns database connection for use in SQL classes.
+     */
     public Connection getConn() {
         return this.conn;
     }
 
-    /** Returns database connection error message or "" if there is none.  */
+    /**
+     * Returns database connection error message or "" if there is none.
+     */
     public String getErr() {
         return this.errMsg;
     }
 
-    /** Returns debugging message or database connection error message if there is one.  */
+    /**
+     * Returns debugging message or database connection error message if there
+     * is one.
+     */
     public String getConnectionMsg() {
         return this.connectionMsg;  // will have messages even if OK.
     }
 
-    /** Close database connection.  */
+    /**
+     * Close database connection.
+     */
     public void close() {
         // be careful - you can get an error trying to
         // close a connection if it is null.
@@ -87,12 +104,13 @@ public class DbConn {
                 errMsg = "Error closing connection in DbConn: "
                         + e.getMessage();
                 System.out.println(errMsg);
-                //e.printStackTrace();
             } // catch
         } // if
     } // method
 
-    /** Checks the hostname to see if app is running at Temple or not.  */
+    /**
+     * Checks the hostname to see if app is running at Temple or not.
+     */
     private boolean isTemple() {
         boolean temple = false;
         try {
@@ -110,4 +128,3 @@ public class DbConn {
         return temple;
     }
 } // class
-
