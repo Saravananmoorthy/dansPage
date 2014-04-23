@@ -23,19 +23,32 @@
     <div id="container">
         <div id="title">Get Out Local</div>  <!-- finishes off the title div -->
         <div id="nav">
-            <div id="home"    class="tab selected"> <a href="index.jsp">  Home</a></div>
-            <div id="assoc"   class="tab">          <a href="assoc.jsp">Trip Reports</a></div>
+            <div id="home"    class="tab selected"> <a href="index.jsp">Home</a></div>
+            <div id="assoc"   class="tab">          <a href="assoc.jsp">Trips</a></div>
             <div id="other"   class="tab">          <a href="other.jsp">Parks</a></div>
             <div id="users"   class="tab">          <a href="users.jsp">Campers</a></div>
-            <div id="search"  class="tab">          <a href="search.jsp"> Search</a></div>
+            <div id="search"  class="tab">          <a href="search.jsp">Search</a></div>
             <div id="contact" class="tab">          <a href="contact.jsp">Contact</a></div>
             <div id="admin"   class="tab">          <a href="admin.jsp">Admin</a></div>
-            <div id="labs"    class="tab">          <a href="labs.jsp">   Labs</a></div>
+            <div id="labs"    class="tab">
+                <div class="menu">Labs
+                    <a href="labs.jsp">All Labs</a>
+                    <a href="labs.jsp#lab3">Home Page</a>
+                    <a href="labs.jsp#lab4">Forms Javascript Cookies</a>
+                    <a href="labs.jsp#lab5">Display Data</a>
+                    <a href="labs.jsp#lab6">Delete</a>
+                    <a href="labs.jsp#lab7">Insert</a>
+                    <a href="labs.jsp#lab8">Update Ajax</a>
+                    <a href="labs.jsp#lab9">Logon</a>
+                    <a href="labs.jsp#lab10">Insert Associative</a>
+                    <a href="labs.jsp#Chal1">My Challenge</a>
+                </div>
+            </div>
         </div>  <!-- finishes off the nav div -->
 
         <br>
-
-        <div id="content" class="selected">
-            <div class="intraLink" style="text-align: right">
-                <%=link%>
-            </div>
+        <div id="contentFooter">
+            <div id="content" class="selected">
+                <div class="intraLink" style="text-align: right">
+                    <%=link%>
+                </div>

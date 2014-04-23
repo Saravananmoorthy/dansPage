@@ -48,5 +48,6 @@
     <br/>
     <%=msg%>
     <br>
+    <br>
 
     <jsp:include page="post-content.jsp" />

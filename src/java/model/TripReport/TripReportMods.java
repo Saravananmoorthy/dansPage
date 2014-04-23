@@ -66,6 +66,10 @@ public class TripReportMods {
                     // probably never get here, bulk sql insert   
                 }
             } catch (SQLException e) {
+                if (e.getMessage().contains("title_UNIQUE")) {
+                    return "A trip report with that title already exists. Please "
+                            + "change the trip title.";
+            }
                 return "TripReports insert: SQL Exception while attempting insert. "
                         + "SQLState:" + e.getSQLState()
                         + ", Error message: " + e.getMessage();

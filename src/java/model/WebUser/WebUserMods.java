@@ -264,18 +264,21 @@ public class WebUserMods {
                 }
             } // try
             catch (SQLException e) {
+                if (e.getMessage().contains("foreign key constraint fails")) {
+                    this.errorMsg = "Please enter a valid user role.";
+                }
+                else {
                 this.errorMsg = "SqlMods.update: SQL Exception during update operation. "
                         + "SQLState [" + e.getSQLState()
                         + "], error message [" + e.getMessage() + "]";
+                }
                 System.out.println(this.errorMsg);
-                //e.printStackTrace();
                 return this.errorMsg;
             } // catch
             catch (Exception e) {
                 this.errorMsg = "SqlMods.update: General Exception during update operation. "
                         + e.getMessage();
                 System.out.println(this.errorMsg);
-                //e.printStackTrace();
                 return this.errorMsg;
             } // catch
         } // try
@@ -283,7 +286,6 @@ public class WebUserMods {
             this.errorMsg = "SqlMods.update: Problem Compiling Prepared Statement. "
                     + e.getMessage();
             System.out.println(this.errorMsg);
-            //e.printStackTrace();
             return this.errorMsg;
         } // catch
     }// method

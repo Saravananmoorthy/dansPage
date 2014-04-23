@@ -29,12 +29,12 @@
     <div class="intraLink">
         <a href="files/data_model.docx">My Data Model<a/>
     </div>
-    <h2>Lab 3 Home Page</h2>
+    <h2><a id="lab3">Lab 3 Home Page</a></h2>
     <p>
         This lab involved the creation of the basic site. I didn't deviate
         from the lab instructions.
     </p>
-    <h2>Lab 4 Forms Javascript Cookies</h2>
+    <h2><a id="lab4">Lab 4 Forms Javascript Cookies</a></h2>
     <p>
         For this lab I added a few HTML 5 tags to the form so that the name
         field and email field must be filled in. I also set the max characters
@@ -54,7 +54,7 @@
         script in each html page because it seemed to generate errors if I 
         moved it to the central javascript page.
     </p>
-    <h2>Lab 5 Display Data</h2>
+    <h2><a id="lab5">Lab 5 Display Data</a></h2>
     <p>
         I ran into several issues with Firefox not refreshing the css files
         as I changed them unless I specifically went to the url of the css
@@ -78,7 +78,7 @@
         the submission deadline, so I am leaving it in place, since it doesn't
         seem to be affecting the site.
     </p>
-    <h2>Lab 6 Delete</h2>
+    <h2><a id="lab6">Lab 6 Delete</a></h2>
     <p>
         The only issue that I had with this lab was an attempt to move the 
         sample javascript for deleting into the myscript.js file. But, I was
@@ -88,7 +88,7 @@
         I removed some commentted out code that was in the sample code 
         provided for us.
     </p>
-    <h2>Lab 7 Insert</h2>
+    <h2><a id="lab7">Lab 7 Insert</a></h2>
     <p>
         I didn't have any issues with this lab. Everything seems to be working
         properly. I had wanted to implement the extra credit, but unfortunately
@@ -98,7 +98,7 @@
         have the drop down implemented before the semester ends.
     <p>
         This version of the site does not yet contain the challenge.
-    <h2>Lab 8 Update Ajax</h2>
+    <h2><a id="lab8">Lab 8 Update Ajax</a></h2>
     <p>
         I also didn't have any issues with this lab. The sample code provided
         a good basis for creating the code. I have cleaned up several of the
@@ -107,7 +107,7 @@
         all of the jsp pages and added database close statements where ever they 
         were needed.
     </p>
-    <h2>Lab 9 Logon</h2>
+    <h2><a id="lab9">Lab 9 Logon</a></h2>
     <p>
         I did not have time to implement the encryption for this lab. I did
         create the seperate register page which asks the potential user for
@@ -121,7 +121,7 @@
         an initial layer of rudimentary checking that doesn't require a round trip to the
         server to verify the data if it is wildly incorrect.
     </p>
-    <h2>Lab 10 Insert Associative</h2>
+    <h2><a id="lab10">Lab 10 Insert Associative</a></h2>
     <p>
         This lab did take me a little longer than the last labs did. This wasn't
         because it was any harder, but rather because it required me to pull 
@@ -138,6 +138,6 @@
         functionality than to create an extra file.
         2. this mirrors the design of the *Mods classes for the other two tables.
     </p>
-    <h2>My Challenge</h2>
+    <h2><a id="chal1">My Challenge</a></h2>
 
     <jsp:include page="post-content.jsp" />

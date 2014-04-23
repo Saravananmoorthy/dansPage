@@ -14,6 +14,7 @@ body {
 }
 
 #container {
+    position: relative;
     width:85%;  
     margin:auto;  /* this means center the container div (itself, not its contents) */
     font-size: 14px;
@@ -21,12 +22,36 @@ body {
 }
 
 #title {
+    position: absolute;
+    top: 0px;
+    z-index: -3;
     color: #a17438;
     font-weight: bold;
     font-size: 30px;
     letter-spacing: 2px;
 }
 
+#nav {
+    position: absolute;
+    top: 50px;
+    z-index: 1;
+}
+
+#contentFooter {
+    position: absolute;
+    top: 78px;
+    z-index: -1;
+    width: 93%;
+    margin: 0px;
+    clear: both;
+}
+
+#content {
+    color:#023e56;
+    font-size: 18px;
+    clear:both;
+    margin:0px;
+}
 
 .tab {
     width:12%;
@@ -72,13 +97,6 @@ intraLink a:link {
 
 .newLine {
     clear:both;
-}
-
-#content {
-    color:#023e56;
-    font-size: 18px;
-    clear:both;
-    margin:0px;
 }
 
 .selected {
@@ -157,4 +175,30 @@ img {
 #inputArea {
     display:none;
     margin-left:55px;
+}
+
+.menu {
+    color: #023e56; 
+    text-align: center;
+    width: 10em;
+    background-color: #9b9b57;
+    border-top-left-radius:10px;               
+    border-top-right-radius:10px;  
+}
+
+.menu:hover a {
+    display: block;
+}
+
+.menu a {
+    display:none;
+    border: 2px solid #1b1b24;
+    background-color: #76a791;
+    width: 10em;
+    text-decoration: none;
+    color: #1b1b24;
+}
+
+.menu a:hover {
+    background-color: #9b9b57; 
 }

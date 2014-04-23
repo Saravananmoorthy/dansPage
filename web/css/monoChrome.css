@@ -13,6 +13,7 @@ body {
 }
 
 #container {
+    position: relative;
     width:85%;  
     margin:auto;  /* this means center the container div (itself, not its contents) */
     font-size: 14px;
@@ -20,10 +21,35 @@ body {
 }
 
 #title {
+    position: absolute;
+    top: 0px;
+    z-index: -3;
     color: whitesmoke;
     font-weight: bold;
     font-size: 30px;
     letter-spacing: 2px;
+}
+
+#nav {
+    position: absolute;
+     top: 50px;
+     z-index: 1;
+}
+
+#contentFooter {
+    position: absolute;
+    top: 78px;
+    z-index: -1;
+    width: 93%;
+    margin: 0px;
+    clear: both;
+}
+
+#content {
+    color: black;
+    font-size: 18px;
+    clear: both;
+    margin:0px;
 }
 
 .tab {
@@ -70,13 +96,6 @@ intraLink a:link {
 
 .newLine {
     clear:both;
-}
-
-#content {
-    color:black;
-    font-size: 18px;
-    clear:both;
-    margin:0px;
 }
 
 .selected {
@@ -153,4 +172,30 @@ img {
 #inputArea {
     display:none;
     margin-left:55px;
+}
+
+.menu {
+    color: black; 
+    text-align: center;
+    width: 10em;
+    background-color: whitesmoke;
+    border-top-left-radius:10px; 
+    border-top-right-radius:10px;  
+}
+
+.menu:hover a {
+    display: block;
+}
+
+.menu a {
+    display:none;
+    border: 2px solid #1b1b24;
+    background-color: White;
+    width: 10em;
+    text-decoration: none;
+    color: black;
+}
+
+.menu a:hover {
+    background-color: gainsboro;
 }
