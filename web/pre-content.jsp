@@ -41,7 +41,7 @@
                     <a href="labs.jsp#lab8">Update Ajax</a>
                     <a href="labs.jsp#lab9">Logon</a>
                     <a href="labs.jsp#lab10">Insert Associative</a>
-                    <a href="labs.jsp#Chal1">My Challenge</a>
+                    <a href="labs.jsp#chal1">My Challenge</a>
                 </div>
             </div>
         </div>  <!-- finishes off the nav div -->

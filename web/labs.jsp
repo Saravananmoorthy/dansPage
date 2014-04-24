@@ -139,5 +139,13 @@
         2. this mirrors the design of the *Mods classes for the other two tables.
     </p>
     <h2><a id="chal1">My Challenge</a></h2>
+    <p>
+        For the challenge I opted to do the CSS challenge because that I felt that
+        was the part of web programming that I was least familar with after this
+        pas semester. Betweent the documentation and the wc3 resources, I did not
+        have any issues implementing this challenge. I estimate that it probably 
+        took me about 90 minutes, not counting the selection of colors that 
+        matched the existing style sheets.
+    </p>
 
     <jsp:include page="post-content.jsp" />
