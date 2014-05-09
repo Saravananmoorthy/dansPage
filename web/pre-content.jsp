@@ -45,8 +45,6 @@
                 </div>
             </div>
         </div>  <!-- finishes off the nav div -->
-
-        <br>
         <div id="contentFooter">
             <div id="content" class="selected">
                 <div class="intraLink" style="text-align: right">

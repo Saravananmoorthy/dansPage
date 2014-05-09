@@ -3,6 +3,13 @@
     Author     : dan mcginnis
 */
 
+p {
+    margin:0px; 
+    padding:0px;
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+}
+
 body {
     font-family: "Tahoma", "Helvetica", "Arial", sans-serif;
     background-image: url(../images/BG_Campsite_Big.jpg);  
@@ -35,15 +42,17 @@ body {
     position: absolute;
     top: 50px;      //this is the correct value
     z-index: 1;
+    margin-bottom: 0px;
 }
 
 #contentFooter {
     position: absolute;
-    top: 78px;
+    top: 77px;
     z-index: -1;
-    width: 93%;
+    width: 96%;
     margin: 0px;
     clear: both;
+    margin-top: 0px;
 }
 
 #content {
